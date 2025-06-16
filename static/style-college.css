@@ -1,0 +1,294 @@
+/* *{
+    margin: 0;
+    padding: 0;
+} */
+
+html, body{
+    margin: 0px;
+    padding: 0px;
+    scroll-behavior: smooth;
+    height: 100%;
+}
+.main-container{
+    display:flex;
+    flex-direction: column;
+    /* height: 100vh; */
+}
+.header{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(221, 188, 123);
+    position: fixed;
+    top:0;
+    left:0;
+    z-index:1;
+    color: #343148FF;
+    width: 100%;
+}
+.header h2{
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+}
+.imp{
+    font-size: 45px;
+    color:rgb(12, 138, 127);
+}
+.imp1{
+    font-size: 35px;
+    color:rgb(12, 138, 127);
+}
+nav{
+    margin-left: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 10px;
+}
+nav ul li a{
+    color: #343148FF;
+    text-decoration: none;
+    position: relative;
+}
+nav a{
+    text-decoration: none;
+    color:#343148FF;
+    font-weight: 600;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.nav-link::after{
+    content: '';
+    width: 0px;
+    height: 3px;
+    background: #343148FF;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s;
+}
+.nav-link:hover::after{
+    width: 100%;
+    box-shadow: 2px 0px 2px #343148FF , 2px 2px 25px #343148FF,
+    2px 2px 50px #343148FF;
+}
+.logout{
+
+    border: none;
+    border-radius: 6px;
+    margin-left: 20px;
+    padding: 5px;
+    font-size: 14px;
+    background-color: #343148FF;
+}
+.logout:hover{
+    opacity:0.6;
+    color: white;
+    box-shadow: 2px 5px 5px white;
+}
+
+.logout i{
+    padding-left: 10px;
+}
+
+i .profile{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#dash-main{
+    display: flex;
+    height: 100vh;
+    top:0;
+}
+
+/*SIDE MENU*/
+.sidebar{
+    margin-top:78px;
+    height:60vh;
+    color: antiquewhite;
+    background-color: #000;
+    flex:0.4;
+    position:sticky;
+}
+.sidebar a{
+    text-decoration: none;
+    color: white;
+    /* color: ; */
+}
+.sidebar-title{
+    background-color: rgb(173, 65, 155);
+    border: .5px solid white;
+    padding: 20px;
+    font-size: 16px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 600;
+    text-align: center;
+}
+.sidebar-title:hover{
+    background-color: white;
+    color:rgb(173, 65, 155);
+}
+.sidebar a:hover{
+    text-decoration: none;
+    color: rgb(173, 65, 155);
+    /* color: ; */
+}
+/*Other clg content*/
+#otherclg-event, #myclg-event{
+    background-color: aquamarine;
+    flex: 2;
+    margin-top: 78px;
+    display: flex;
+    justify-content: space-around;
+    /* flex-wrap: wrap;
+    /* justify-content: center; */
+}
+
+.otherclg-content, .myclg-content{
+    width: 30%;
+    height: 40%;
+    background-color: rgb(223, 220, 223);
+    margin: 20px 10px 10px 25px;
+    border: 1px solid black;
+    /* border-radius: 20px; */
+}
+
+.event-header div{
+    display: inline-block;
+}
+
+.event-header h5, h4{
+    margin: 0px;
+}
+.event-header img{
+    padding: 5px 2px 0px 3px ;
+    border-radius: 50%;
+    width:30px;
+    height: 30px;
+}
+.event-name{
+    margin: 40px 3px 10px 3px;
+}
+
+.imp-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button{
+    border: none;
+    border-radius: 5px;
+    background-color: pink;
+    padding: 9px;
+    margin: 0px 10px 10px 10px;
+    cursor: pointer;
+}
+
+
+/*footer*/
+footer{
+    width: 100%;
+    text-align: center;
+    font-weight: 300;
+    margin-top: 50px;
+    padding: 10px 0px;
+    color:antiquewhite;
+    background: rgb(38, 38, 38);
+}
+/*Other College Event descripion pop up*/
+.desc-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(73, 73, 73, 0.95);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  color: #343148FF;
+  padding: 40px;
+  animation: popup 0.3s ease-in-out;
+  box-sizing: border-box;
+}
+
+/* Show popup when checkbox is checked */
+#desc-popup-toggle:checked + .desc-popup {
+  display: flex;
+}
+
+#register-popup:checked + .desc-popup {
+  display: flex;
+}
+
+.popup-content {
+  background: rgb(221, 190, 129);
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 700px;
+  width: 100%;
+  border: 2px solid #343148FF;
+  text-align: left;
+  box-shadow: 10px 0 20px rgb(53, 53, 53);
+  /* transition: all .2; */
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 36px;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Form styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+/* Submit button */
+.submit-btn {
+    background: #3b82f6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.register-form-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    animation: popup 0.3s ease-in-out;
+}
+@keyframes popup {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
