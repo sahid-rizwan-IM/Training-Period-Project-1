@@ -1,8 +1,3 @@
-/* *{
-    margin: 0;
-    padding: 0;
-} */
-
 html, body{
     margin: 0px;
     padding: 0px;
@@ -17,24 +12,16 @@ html, body{
 .header{
     display: flex;
     justify-content: center;
-    background-color: rgb(221, 188, 123);
+    background-color: #e9d0b6;
     position: fixed;
-    top:0;
-    left:0;
+    /* top:0;
+    left:0; */
     z-index:1;
     color: #343148FF;
     width: 100%;
 }
 .header h2{
     font-family:Verdana, Geneva, Tahoma, sans-serif ;
-}
-.imp{
-    font-size: 45px;
-    color:rgb(12, 138, 127);
-}
-.imp1{
-    font-size: 35px;
-    color:rgb(12, 138, 127);
 }
 nav{
     margin-left: 30%;
@@ -74,7 +61,7 @@ nav a{
     2px 2px 50px #343148FF;
 }
 .logout{
-
+    color: #e9d0b6;
     border: none;
     border-radius: 6px;
     margin-left: 20px;
@@ -105,35 +92,49 @@ i .profile{
 /*SIDE MENU*/
 .sidebar{
     margin-top:78px;
-    height:60vh;
+    /* height:60vh; */
     color: antiquewhite;
-    background-color: #000;
+    background-color: #ffffff;
     flex:0.4;
+    /* text-align: center; */
     position:sticky;
+
 }
 .sidebar a{
     text-decoration: none;
-    color: white;
-    /* color: ; */
+    color: #343148FF;
+    margin-top: 10px;
+    display:block;
+    /* padding: 20px; */
 }
+/* .sidebar ul{
+    text-decoration: none;
+}
+.sidebar ul{
+    background-color: #f8f3f3;
+    margin: 10px;
+    padding: 20px;
+} */
 .sidebar-title{
-    background-color: rgb(173, 65, 155);
-    border: .5px solid white;
+    background-color: #e9d0b6;
+    border: .5px solid rgb(252, 250, 250);
     padding: 20px;
     font-size: 16px;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 600;
     text-align: center;
+    box-shadow: 2px 4px 5px rgb(38, 38, 38);
+    transition: all 0.5 ease;
 }
 .sidebar-title:hover{
     background-color: white;
-    color:rgb(173, 65, 155);
+    transform:scale(1.1);
 }
-.sidebar a:hover{
+/* .sidebar a:hover{
     text-decoration: none;
     color: rgb(173, 65, 155);
-    /* color: ; */
-}
+    color: ;
+} */
 /*Other clg content*/
 #otherclg-event, #myclg-event{
     background-color: aquamarine;
