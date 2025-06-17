@@ -9,7 +9,7 @@ html, body{
     scroll-behavior: smooth;
     height: 100%;
 }
-.main-container{
+#main-container{
     display:flex;
     flex-direction: column;
     /* height: 100vh; */
