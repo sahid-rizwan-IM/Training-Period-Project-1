@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <script src="https://kit.fontawesome.com/1271c77683.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/static/css/style-college.css">
 </head>
+
 <body>
     <!-- header section-->
     <div class="main-container">
@@ -26,49 +28,66 @@
     <!--Hero section-->
     <main id="dash-main">
         <!--side menu bar-->
-            <sidemenu class="sidebar">
-                <div class="sidebar-title">
-                    <a href="#otherclg-event">Other College Events</a>
-                </div>
-                <div class="sidebar-title">
-                    <!-- My Event -->
-                    <a href="#MyCollege-Events">My Events</a>
-                </div>
-                <div class="sidebar-title">
-                    <a href="#achievements">Achievements</a>
-                </div>
-                <div class="sidebar-title">
-                    <a href="#ranks">Rank Holders</a>
-                </div>
-                <div class="sidebar-title">
-                    <a href="#approving">Approve Students</a>
-                </div>
-            </sidemenu>
-            <!-- <div class="Sidemenucontents"></div> -->
+        <sidemenu class="sidebar">
+            <div class="sidebar-title">
+                <a href="#otherclg-event">Other College Events</a>
+            </div>
+            <div class="sidebar-title">
+                <!-- My Event -->
+                <a href="#MyCollege-Events">My Events</a>
+            </div>
+            <div class="sidebar-title">
+                <a href="#achievements">Achievements</a>
+            </div>
+            <div class="sidebar-title">
+                <a href="#ranks">Rank Holders</a>
+            </div>
+            <div class="sidebar-title">
+                <a href="#approving">Approve Students</a>
+            </div>
+        </sidemenu>
+        <!-- <div class="Sidemenucontents"></div> -->
         <!--Other college events display-->
-            <div id="otherclg-event">
-                <!-- <h3 style="flex-direction: column;">//OTHER COLLEGE EVENTS//</h3> -->
-                <div class="otherclg-content">
-                    <div class="event-header">
-                        <img src="/images/clg-logo.jpg" alt="college logo">
-                        <div>
-                            <h4>College Name</h5>
-                            <h5>Location</h6>
-                        </div>
-                    </div>
+        <div id="otherclg-event">
+            <!-- <h3 style="flex-direction: column;">//OTHER COLLEGE EVENTS//</h3> -->
+            <!-- <div class="otherclg-content">
+                <div class="event-header">
+                    <img src="/images/avc-logo.jpg" alt="college logo">
                     <div>
-                        <h3 class="event-name">EVENT NAME</h3>
-                        <div class="imp-buttons">
-                            <label for="desc-popup-toggle" class="button">Description</label>
-                            <label for="register-popup" class="button">Register</button>
+                        <h4>College Name</h6>
+                            <h5>Location</h5>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="event-name">EVENT NAME</h3>
+                    <div class="imp-buttons">
+                        <label for="desc-popup-toggle" class="button">Description</label>
+                        <label for="register-popup" class="button">Register</button>
                         </div>
                     </div>
                 </div>
                 <div class="otherclg-content">
                     <div class="event-header">
-                        <img src="/images/clg-logo.jpg" alt="college logo">
+                        <img src="/images/cresent-logo.png" alt="college logo">
                         <div>
-                            <h4>College Name</h5>
+                            <h4>College Name</h6>
+                            <h5>Location</h5>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="event-name">EVENT NAME</h3>
+                        <div class="imp-buttons">
+                            <label for="desc-popup-toggle" class="button">Description</label>
+                        <label for="register-popup" class="button">Register</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="otherclg-content">
+                    <div class="event-header">
+                        <img src="/images/avc-logo.jpg" alt="college logo">
+                        <div>
+                            <h4>College Name</h6>
                             <h5>Location</h6>
                         </div>
                     </div>
@@ -77,112 +96,96 @@
                         <h3 class="event-name">EVENT NAME</h3>
                         <div class="imp-buttons">
                             <label for="desc-popup-toggle" class="button">Description</label>
-                            <label for="register-popup" class="button">Register</button>
+                        <label for="register-popup" class="button">Register</button>
                         </div>
                     </div>
-                </div>
-                <div class="otherclg-content">
-                    <div class="event-header">
-                        <img src="/images/clg-logo.jpg" alt="college logo">
-                        <div>
-                            <h4>College Name</h5>
-                            <h5>Location</h6>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h3 class="event-name">EVENT NAME</h3>
-                        <div class="imp-buttons">
-                            <label for="desc-popup-toggle" class="button">Description</label>
-                            <label for="register-popup" class="button">Register</button>
-                        </div>
-                    </div>
-                </div>
+                </div> -->
+        </div>
+        <!--Other college Event Description pop up-->
+        <input type="checkbox" id="desc-popup-toggle" hidden>
+        <div class="desc-popup">
+            <label for="desc-popup-toggle" class="close-btn">&times;</label>
+            <div class="popup-content">
+                <h2>College Name</h2>
+                <h3>Event Name</h3>
+                <h4>Date</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is the full event description, with all necessary details, rules, dates, and contacts for the event.</p>
             </div>
-            <!--Other college Event Description pop up-->
-            <input type="checkbox" id="desc-popup-toggle" hidden>
-            <div class="desc-popup">
-                <label for="desc-popup-toggle" class="close-btn">&times;</label>
-                <div class="popup-content">
-                    <h2>College Name</h2>
-                    <h3>Event Name</h3>
-                    <h4>Date</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is the full event description, with all necessary details, rules, dates, and contacts for the event.</p>
-                </div>
-            </div>
-            <!--Event Register form pop up-->
-             <input type="checkbox" id="register-popup" hidden>
-            <div class="desc-popup">
-                <label for="register-popup" class="close-btn">&times;</label>
-                <div class="popup-content">
-                    <h2 style="text-align: center">Event Name</h2>
-                    <form action="#" method="POST">
+        </div>
+        <!--Event Register form pop up-->
+        <input type="checkbox" id="register-popup" hidden>
+        <div class="desc-popup">
+            <label for="register-popup" class="close-btn">&times;</label>
+            <div class="popup-content">
+                <h2 style="text-align: center">Event Name</h2>
+                <form action="#" method="POST">
                     <div class="form-group">
                         <label for="clg-code">College Code:<span class="required-star">*</span></label>
-                        <input type="text" pattern="\d{4}" title="Enter exactly 4 digits" id="clg-code" name="clg-code" required>
-                        <small id="clg-code-req" hidden>Required Field</small>
+                        <input type="text" pattern="\d{4}" title="Enter exactly 4 digits" id="clg-code" name="clg-code">
+                        <small id=" clg-code-req " hidden>Required Field</small>
                     </div>
-                    <div class="form-group">
-                        <label for="clg-name">College Name:<span class="required-star">*</span></label>
-                        <input type="text" id="clg-name" name="clg-name" minlength="3" required>
-                        <small id="clg-name-req" hidden>Required Field</small>
+                    <div class="form-group ">
+                        <label for="clg-name ">College Name:<span class="required-star ">*</span></label>
+                        <input type="text " id="clg-name " name="clg-name " minlength="3 " required>
+                        <small id="clg-name-req " hidden>Required Field</small>
                     </div>
-                    <div class="form-group">
-                        <label for="name">Full Name:<span class="required-star">*</span></label>
-                        <input type="text" id="name" name="name" minlength="3" required>
-                        <small id="full-name-req" hidden>Required Field</small>
+                    <div class="form-group ">
+                        <label for="name ">Full Name:<span class="required-star ">*</span></label>
+                        <input type="text " id="name " name="name " minlength="3 " required>
+                        <small id="full-name-req " hidden>Required Field</small>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email ID:<span class="required-star">*</span></label>
-                        <input type="email" id="email" name="email" required>
-                        <small id="email-req" hidden>Required Field</small>
+                    <div class="form-group ">
+                        <label for="email ">Email ID:<span class="required-star ">*</span></label>
+                        <input type="email " id="email " name="email " required>
+                        <small id="email-req " hidden>Required Field</small>
                     </div>
-                    <div class="form-group">
-                        <label for="dept">Department:<span class="required-star">*</span></label>
-                        <input type="text" id="dept" name="dept" minlength="2" required>
-                        <small id="dept-req" hidden>Required Field</small>
+                    <div class="form-group ">
+                        <label for="dept ">Department:<span class="required-star ">*</span></label>
+                        <input type="text " id="dept " name="dept " minlength="2 " required>
+                        <small id="dept-req " hidden>Required Field</small>
                     </div>
-                    <div class="form-group">
-                        <label for="year">Year:</label>
-                        <select id="year" name="year">
-                        <option value="1st">1st Year</option>
-                        <option value="2nd">2nd Year</option>
-                        <option value="3rd">3rd Year</option>
-                        <option value="4th">4th Year</option>
+                    <div class="form-group ">
+                        <label for="year ">Year:</label>
+                        <select id="year " name="year ">
+                        <option value="1st ">1st Year</option>
+                        <option value="2nd ">2nd Year</option>
+                        <option value="3rd ">3rd Year</option>
+                        <option value="4th ">4th Year</option>
                         </select>
                     </div>
-                    <button type="submit" class="submit-btn">Submit</button>
-                    </form>
-                </div>
+                    <button type="submit " class="submit-btn ">Submit</button>
+                </form>
             </div>
+        </div>
 
-            
+
     </main>
     <!--My College Event Display-->
-             <h3>//MY COLLEGE EVENTS//</h3>
-            <div id="MyCollege-Events">
-                <div id="myclg-event">
-                <!-- <h3 style="flex-direction: column;">//OTHER COLLEGE EVENTS//</h3> -->
-                <div class="myclg-content">
-                    
-                    <div>
-                        <h3 class="event-name">EVENT NAME</h3>
-                        <p>description</p>
-                        <div class="imp-buttons">
-                            <button class="button">View Registered students</button>
-                        </div>
+    <h3>//MY COLLEGE EVENTS//</h3>
+    <div id="MyCollege-Events ">
+        <div id="myclg-event ">
+            <!-- <h3 style="flex-direction: column; ">//OTHER COLLEGE EVENTS//</h3> -->
+            <div class="myclg-content ">
+
+                <div>
+                    <h3 class="event-name ">EVENT NAME</h3>
+                    <p>description</p>
+                    <div class="imp-buttons ">
+                        <button class="button ">View Registered students</button>
                     </div>
-    
                 </div>
+
             </div>
+        </div>
 
-   
 
-    <!--Footer-->
-    <footer>
-        <p style="margin-left:5px">PROJECT ON TRAINING PERIOD | INNOVATION MINDS &copy; 2025</p>
-    </footer>
 
-    <script src="/static/script/college-admin.js"></script>
+        <!--Footer-->
+        <footer>
+            <p style="margin-left:5px ">PROJECT ON TRAINING PERIOD | INNOVATION MINDS &copy; 2025</p>
+        </footer>
+
+        <script src="/static/script/college-admin.js "></script>
 </body>
+
 </html>
