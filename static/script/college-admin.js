@@ -1,27 +1,31 @@
-// const clgCode = document.getElementById("cld-code");
-// // alert(codeRequired);
-// if (clgCode === null) {
-//     const codeRequired = document.getElementById("clg-code-req");
-//     document.body.innerHTML
-// }
-
+//Other college event content box
 const otherclgEvents = [{
         logo: "/images/avc-logo.jpg",
-        collegeName: "A.V.C College of Engineering",
+        collegeName: "A.V.C. College of Engineering",
         location: "Mayiladuthurai, Tamil Nadu",
-        eventName: "National Conference"
+        eventName: "National Conference",
+        date: "25th june 2025"
     },
     {
         logo: "/images/cresent-logo.png",
         collegeName: "Crescent Institute of Science & Technology ",
         location: "Chennai, Tamil Nadu",
-        eventName: "Innovative Hackathon'25"
+        eventName: "Innovative Hackathon'25",
+        date: "20th june 2025"
     },
     {
         logo: "/images/avc-logo.jpg",
-        collegeName: "A.V.C College of Engineering",
+        collegeName: "A.V.C. College of Engineering",
         location: "Mayiladuthurai, Tamil Nadu",
-        eventName: "Workshop on AI & ML"
+        eventName: "Workshop on AI & ML",
+        date: "20th june 2025"
+    },
+    {
+        logo: "/images/as-salam-logo.jpg",
+        collegeName: "AS-SALAM College of Engineering and Technology",
+        location: "Aduthurai, Tamil Nadu",
+        eventName: "InfoTech Paper Presentatin'25",
+        date: "7th july 2025"
     }
 ]
 
@@ -48,3 +52,19 @@ otherclgEvents.forEach(event => {
     `;
     otherclgContainer.innerHTML += eventHTML;
 });
+
+//Desciption part
+const Description = document.querySelector(".desc-popup");
+
+otherclgEvents.forEach(eventDes => {
+    const eventDesc = `
+        <label for="desc-popup-toggle" class="close-btn">&times;</label>
+            <div class="popup-content">
+                <h2>${eventDes.collegeName}</h2>
+                <h3>${eventDes.eventName}</h3>
+                <h4>${eventDes.date}</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is the full event description, with all necessary details, rules, dates, and contacts for the event.</p>
+            </div>
+    `;
+    Description.innerHTML += eventDesc;
+})
