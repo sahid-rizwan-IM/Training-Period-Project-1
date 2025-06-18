@@ -264,6 +264,9 @@ footer{
     border: 1px solid #aaa;
     border-radius: 5px;
 }
+.required-star{
+    color: red;
+}
 
 /* Submit button */
 .submit-btn {

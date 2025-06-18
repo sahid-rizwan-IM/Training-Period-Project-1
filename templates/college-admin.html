@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College-Admin Dashboard</title>
     <script src="https://kit.fontawesome.com/1271c77683.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/static/style-college.css">
+    <link rel="stylesheet" href="/static/css/style-college.css">
 </head>
 <body>
     <!-- header section-->
@@ -19,7 +19,7 @@
                     <li><a class="nav-link" href="/templates/home.html">Home</a></li>
                     <li><a class="nav-link" href="#">Profile<i style="padding:5px" class="fa-regular fa-user"></i></a></li>
                 </ul>
-                <button class="logout"><a style="color:rgb(221, 188, 123)" href="#">Logout<i style="padding:5px" class="fa-solid fa-arrow-right-from-bracket"></i></a></button>
+                <button class="logout"><a style="color:#e9d0b6" href="#">Logout<i style="padding:5px" class="fa-solid fa-arrow-right-from-bracket"></i></a></button>
             </nav>
         </header>
     </div>
@@ -56,7 +56,6 @@
                             <h5>Location</h6>
                         </div>
                     </div>
-                    
                     <div>
                         <h3 class="event-name">EVENT NAME</h3>
                         <div class="imp-buttons">
@@ -116,27 +115,32 @@
             <div class="desc-popup">
                 <label for="register-popup" class="close-btn">&times;</label>
                 <div class="popup-content">
-                    <h2>Event Name</h2>
-                    <form action="/submit-registration" method="POST">
+                    <h2 style="text-align: center">Event Name</h2>
+                    <form action="#" method="POST">
                     <div class="form-group">
-                        <label for="clg-code">College Code:</label>
-                        <input type="number" id="clg-code" name="clg-code" required>
+                        <label for="clg-code">College Code:<span class="required-star">*</span></label>
+                        <input type="text" pattern="\d{4}" title="Enter exactly 4 digits" id="clg-code" name="clg-code" required>
+                        <small id="clg-code-req" hidden>Required Field</small>
                     </div>
                     <div class="form-group">
-                        <label for="clg-name">College Name:</label>
-                        <input type="text" id="clg-name" name="clgname" required>
+                        <label for="clg-name">College Name:<span class="required-star">*</span></label>
+                        <input type="text" id="clg-name" name="clg-name" minlength="3" required>
+                        <small id="clg-name-req" hidden>Required Field</small>
                     </div>
                     <div class="form-group">
-                        <label for="name">Full Name:</label>
-                        <input type="text" id="name" name="name" required>
+                        <label for="name">Full Name:<span class="required-star">*</span></label>
+                        <input type="text" id="name" name="name" minlength="3" required>
+                        <small id="full-name-req" hidden>Required Field</small>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email ID:</label>
+                        <label for="email">Email ID:<span class="required-star">*</span></label>
                         <input type="email" id="email" name="email" required>
+                        <small id="email-req" hidden>Required Field</small>
                     </div>
                     <div class="form-group">
-                        <label for="dept">Department:</label>
-                        <input type="text" id="dept" name="dept">
+                        <label for="dept">Department:<span class="required-star">*</span></label>
+                        <input type="text" id="dept" name="dept" minlength="2" required>
+                        <small id="dept-req" hidden>Required Field</small>
                     </div>
                     <div class="form-group">
                         <label for="year">Year:</label>
@@ -165,7 +169,6 @@
                         <h3 class="event-name">EVENT NAME</h3>
                         <p>description</p>
                         <div class="imp-buttons">
-                            <button class="button">Description</button>
                             <button class="button">View Registered students</button>
                         </div>
                     </div>
@@ -179,5 +182,7 @@
     <footer>
         <p style="margin-left:5px">PROJECT ON TRAINING PERIOD | INNOVATION MINDS &copy; 2025</p>
     </footer>
+
+    <script src="/static/script/college-admin.js"></script>
 </body>
 </html>
