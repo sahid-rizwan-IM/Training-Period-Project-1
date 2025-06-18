@@ -121,16 +121,6 @@ i .profile {
     /* padding: 20px; */
 }
 
-
-/* .sidebar ul{
-    text-decoration: none;
-}
-.sidebar ul{
-    background-color: #f8f3f3;
-    margin: 10px;
-    padding: 20px;
-} */
-
 .sidebar-title {
     background-color: #e9d0b6;
     border: .5px solid rgb(252, 250, 250);
@@ -173,10 +163,7 @@ i .profile {
     margin: 20px 10px 10px 15px;
     background-image: url(/images/win\ cele.jpg);
     background-size: 2200px;
-    /* backdrop-filter: 1px; */
     border: 1px solid black;
-    /* border-radius: 15px; */
-    /* box-shadow: 5px 5px 5px #aaa; */
 }
 
 .event-header div {

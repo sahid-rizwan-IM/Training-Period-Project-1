@@ -4,7 +4,8 @@ const otherclgEvents = [{
         collegeName: "A.V.C. College of Engineering",
         location: "Mayiladuthurai, Tamil Nadu",
         eventName: "National Conference",
-        date: "25th june 2025"
+        date: "25th june 2025",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
     },
     {
         logo: "/images/cresent-logo.png",
@@ -63,8 +64,21 @@ otherclgEvents.forEach(eventDes => {
                 <h2>${eventDes.collegeName}</h2>
                 <h3>${eventDes.eventName}</h3>
                 <h4>${eventDes.date}</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is the full event description, with all necessary details, rules, dates, and contacts for the event.</p>
+                <p>${eventDes.description}</p>
             </div>
     `;
     Description.innerHTML += eventDesc;
 })
+
+//clg code input
+document.getElementById("reg-form").addEventListener("submit", function(event) {
+    const collegeCode = document.getElementById("clg-code");
+    const alertmsg = document.getElementById("clg-code-req");
+
+    if (collegeCode.value.trim() === "") {
+        event.preventDefault();
+        alertmsg.hidden = false;
+    } else {
+        alertmsg.hidden = true;
+    }
+});
