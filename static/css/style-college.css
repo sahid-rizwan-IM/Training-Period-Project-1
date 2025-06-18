@@ -1,51 +1,60 @@
-html, body{
+html,
+body {
     margin: 0px;
     padding: 0px;
     scroll-behavior: smooth;
     height: 100%;
 }
-#main-container{
-    display:flex;
+
+#main-container {
+    display: flex;
     flex-direction: column;
     /* height: 100vh; */
 }
-.header{
+
+.header {
     display: flex;
     justify-content: center;
     background-color: #e9d0b6;
     position: fixed;
     /* top:0;
     left:0; */
-    z-index:1;
+    z-index: 1;
     color: #343148FF;
     width: 100%;
 }
-.header h2{
-    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+
+.header h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-nav{
+
+nav {
     margin-left: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-nav ul li{
+
+nav ul li {
     display: inline-block;
     list-style: none;
     margin: 10px 10px;
 }
-nav ul li a{
+
+nav ul li a {
     color: #343148FF;
     text-decoration: none;
     position: relative;
 }
-nav a{
+
+nav a {
     text-decoration: none;
-    color:#343148FF;
+    color: #343148FF;
     font-weight: 600;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-.nav-link::after{
+
+.nav-link::after {
     content: '';
     width: 0px;
     height: 3px;
@@ -55,12 +64,13 @@ nav a{
     bottom: -8px;
     transition: 0.5s;
 }
-.nav-link:hover::after{
+
+.nav-link:hover::after {
     width: 100%;
-    box-shadow: 2px 0px 2px #343148FF , 2px 2px 25px #343148FF,
-    2px 2px 50px #343148FF;
+    box-shadow: 2px 0px 2px #343148FF, 2px 2px 25px #343148FF, 2px 2px 50px #343148FF;
 }
-.logout{
+
+.logout {
     color: #e9d0b6;
     border: none;
     border-radius: 6px;
@@ -69,44 +79,49 @@ nav a{
     font-size: 14px;
     background-color: #343148FF;
 }
-.logout:hover{
-    opacity:0.6;
+
+.logout:hover {
+    opacity: 0.6;
     color: white;
     box-shadow: 2px 5px 5px white;
 }
 
-.logout i{
+.logout i {
     padding-left: 10px;
 }
 
-i .profile{
+i .profile {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-#dash-main{
+#dash-main {
     display: flex;
     height: 100vh;
-    top:0;
+    top: 0;
 }
 
+
 /*SIDE MENU*/
-.sidebar{
-    margin-top:78px;
+
+.sidebar {
+    margin-top: 78px;
     /* height:60vh; */
     color: antiquewhite;
     background-color: #ffffff;
-    flex:0.4;
+    flex: 0.4;
     /* text-align: center; */
-    position:sticky;
-
+    position: sticky;
 }
-.sidebar a{
+
+.sidebar a {
     text-decoration: none;
     color: #343148FF;
     margin-top: 10px;
-    display:block;
+    display: block;
     /* padding: 20px; */
 }
+
+
 /* .sidebar ul{
     text-decoration: none;
 }
@@ -115,70 +130,85 @@ i .profile{
     margin: 10px;
     padding: 20px;
 } */
-.sidebar-title{
+
+.sidebar-title {
     background-color: #e9d0b6;
     border: .5px solid rgb(252, 250, 250);
     padding: 20px;
     font-size: 16px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 600;
     text-align: center;
     box-shadow: 2px 4px 5px rgb(38, 38, 38);
     transition: all 0.5 ease;
 }
-.sidebar-title:hover{
+
+.sidebar-title:hover {
     background-color: white;
-    transform:scale(1.1);
+    transform: scale(1.1);
 }
+
+
 /* .sidebar a:hover{
     text-decoration: none;
     color: rgb(173, 65, 155);
     color: ;
 } */
+
+
 /*Other clg content*/
-#otherclg-event, #myclg-event{
+
+#otherclg-event,
+#myclg-event {
     background-color: aquamarine;
     flex: 2;
     margin-top: 78px;
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* gap: 10px; */
+    /* justify-content: space-around;
+     */
     /* flex-wrap: wrap;
     /* justify-content: center; */
 }
 
-.otherclg-content, .myclg-content{
-    width: 30%;
-    height: 40%;
+.otherclg-content,
+.myclg-content {
+    width: 22rem;
+    height: 10rem;
     background-color: rgb(223, 220, 223);
     margin: 20px 10px 10px 25px;
     border: 1px solid black;
     /* border-radius: 20px; */
 }
 
-.event-header div{
+.event-header div {
     display: inline-block;
 }
 
-.event-header h5, h4{
-    margin: 0px;
+.event-header h6,
+h4 {
+    margin: 2px 0 0 0;
 }
-.event-header img{
-    padding: 5px 2px 0px 3px ;
+
+.event-header img {
+    padding: 5px 2px 0px 3px;
     border-radius: 50%;
-    width:30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
 }
-.event-name{
+
+.event-name {
     margin: 40px 3px 10px 3px;
 }
 
-.imp-buttons{
+.imp-buttons {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.button{
+.button {
     border: none;
     border-radius: 5px;
     background-color: pink;
@@ -189,64 +219,72 @@ i .profile{
 
 
 /*footer*/
-footer{
+
+footer {
     width: 100%;
     text-align: center;
     font-weight: 300;
     margin-top: 50px;
     padding: 10px 0px;
-    color:antiquewhite;
+    color: antiquewhite;
     background: rgb(38, 38, 38);
 }
+
+
 /*Other College Event descripion pop up*/
+
 .desc-popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(73, 73, 73, 0.95);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  color: #343148FF;
-  padding: 40px;
-  animation: popup 0.3s ease-in-out;
-  box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(73, 73, 73, 0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    color: #343148FF;
+    padding: 40px;
+    animation: popup 0.3s ease-in-out;
+    box-sizing: border-box;
 }
+
 
 /* Show popup when checkbox is checked */
-#desc-popup-toggle:checked + .desc-popup {
-  display: flex;
+
+#desc-popup-toggle:checked+.desc-popup {
+    display: flex;
 }
 
-#register-popup:checked + .desc-popup {
-  display: flex;
+#register-popup:checked+.desc-popup {
+    display: flex;
 }
 
 .popup-content {
-  background: rgb(221, 190, 129);
-  padding: 30px;
-  border-radius: 12px;
-  max-width: 700px;
-  width: 100%;
-  border: 2px solid #343148FF;
-  text-align: left;
-  box-shadow: 10px 0 20px rgb(53, 53, 53);
-  /* transition: all .2; */
+    background: rgb(221, 190, 129);
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 700px;
+    width: 100%;
+    border: 2px solid #343148FF;
+    text-align: left;
+    box-shadow: 10px 0 20px rgb(53, 53, 53);
+    /* transition: all .2; */
 }
 
 .close-btn {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 36px;
-  cursor: pointer;
-  color: #fff;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 36px;
+    cursor: pointer;
+    color: #fff;
 }
 
+
 /* Form styling */
+
 .form-group {
     margin-bottom: 15px;
 }
@@ -264,11 +302,14 @@ footer{
     border: 1px solid #aaa;
     border-radius: 5px;
 }
-.required-star{
+
+.required-star {
     color: red;
 }
 
+
 /* Submit button */
+
 .submit-btn {
     background: #3b82f6;
     color: white;
@@ -277,6 +318,7 @@ footer{
     border-radius: 6px;
     cursor: pointer;
 }
+
 .register-form-box {
     background: white;
     padding: 2rem;
@@ -286,6 +328,7 @@ footer{
     position: relative;
     animation: popup 0.3s ease-in-out;
 }
+
 @keyframes popup {
     from {
         transform: scale(0.8);
