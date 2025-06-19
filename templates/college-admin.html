@@ -67,42 +67,45 @@
             <label for="register-popup" class="close-btn">&times;</label>
             <div class="popup-content">
                 <h2 style="text-align: center">Event Name</h2>
-                <form id="reg-form" action="#" method="POST">
+                <form id="reg-form">
                     <div class="form-group">
                         <label for="clg-code">College Code:<span class="required-star">*</span></label>
-                        <input type="text" pattern="\d{4}" title="Enter exactly 4 digits" id="clg-code" name="clg-code" required>
-                        <small id="clg-code-req" style="color: red;" hidden>Required Field</small>
+                        <input type="text" id="clg-code" name="clg-code">
+                        <small id="clg-code-req" class="hidden"></small>
                     </div>
                     <div class="form-group ">
-                        <label for="clg-name ">College Name:<span class="required-star ">*</span></label>
-                        <input type="text " id="clg-name " name="clg-name " minlength="3 " required>
-                        <small id="clg-name-req " hidden>Required Field</small>
+                        <label for="clg-name">College Name:<span class="required-star">*</span></label>
+                        <input type="text" id="clg-name" name="clg-name">
+                        <small id="clg-name-req" class="hidden"></small>
                     </div>
-                    <div class="form-group ">
-                        <label for="name ">Full Name:<span class="required-star ">*</span></label>
-                        <input type="text " id="name " name="name " minlength="3 " required>
-                        <small id="full-name-req " hidden>Required Field</small>
+                    <div class="form-group">
+                        <label for="name">Full Name:<span class="required-star">*</span></label>
+                        <input type="text" id="name" name="name">
+                        <small id="full-name-req" class="hidden"></small>
                     </div>
-                    <div class="form-group ">
-                        <label for="email ">Email ID:<span class="required-star ">*</span></label>
-                        <input type="email " id="email " name="email " required>
-                        <small id="email-req " hidden>Required Field</small>
+                    <div class="form-group">
+                        <label for="email">Email ID:<span class="required-star">*</span></label>
+                        <input type="email" id="email" name="email">
+                        <small id="email-req" class="hidden"></small>
                     </div>
-                    <div class="form-group ">
-                        <label for="dept">Department:<span class="required-star ">*</span></label>
-                        <input type="text" id="dept " name="dept " minlength="2 " required>
-                        <small id="dept-req" hidden>Required Field</small>
+                    <div class="form-group">
+                        <label for="dept">Department:<span class="required-star">*</span></label>
+                        <input type="text" id="dept" name="dept">
+                        <small id="dept-req" class="hidden"></small>
                     </div>
-                    <div class="form-group ">
-                        <label for="year ">Year:</label>
-                        <select id="year " name="year ">
-                        <option value="1st ">1st Year</option>
-                        <option value="2nd ">2nd Year</option>
-                        <option value="3rd ">3rd Year</option>
-                        <option value="4th ">4th Year</option>
+                    <div class="form-group">
+                        <label for="year">Year:</label>
+                        <select id="year" name="year">
+                            <option value="">Select</option>
+                            <option value="1st">1st Year</option>
+                            <option value="2nd">2nd Year</option>
+                            <option value="3rd">3rd Year</option>
+                            <option value="4th">4th Year</option>
                         </select>
+                        <small id="year-req" class="hidden"></small>
                     </div>
-                    <button type="submit " id="submit-btn">Submit</button>
+                    <small id="submitAlertmsg" class="hidden"></small>
+                    <button type="submit " id="submit-btn" >Submit</button>
                 </form>
             </div>
         </div>

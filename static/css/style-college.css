@@ -296,15 +296,16 @@ footer {
     border-radius: 5px;
 }
 
-.required-star {
-    color: red;
+.required-star, .hidden{
+    color: rgb(201, 25, 25);
+}
+#submitAlertmsg{
+    display:block;
 }
 
-
 /* Submit button */
-
-.submit-btn {
-    background: #3b82f6;
+#submit-btn{
+    background: #0d2c5e;
     color: white;
     padding: 10px 20px;
     border: none;
