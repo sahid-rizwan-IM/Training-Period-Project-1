@@ -112,7 +112,7 @@ i .profile {
     background-color: #ffffff;
     flex: 0.3;
     /* text-align: center; */
-    position: sticky;
+    position: fixed;
 }
 
 .sidebar a {

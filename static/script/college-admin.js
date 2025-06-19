@@ -144,9 +144,9 @@ function validatefullName(){
 
 const emailInput = document.getElementById("email");
 const emailAlertmsg = document.getElementById("email-req");
-const emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  //must handle
 function validateEmail(){
-    const email = emailInput.value.trim();
+    const email = emailInput.value.trim();  
     if(email==""){
         emailAlertmsg.textContent = "Email is required";
         return false;
