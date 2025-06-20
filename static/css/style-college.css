@@ -99,6 +99,7 @@ i .profile {
     display: flex;
     height: 100vh;
     top: 0;
+    background: white;
 }
 
 
@@ -112,7 +113,7 @@ i .profile {
     background-color: #ffffff;
     flex: 0.3;
     /* text-align: center; */
-    position: fixed;
+    /* position: fixed; */
 }
 
 .sidebar a {
@@ -132,7 +133,7 @@ i .profile {
     font-weight: 600;
     text-align: center;
     box-shadow: 2px 4px 5px rgb(38, 38, 38);
-    transition: all 0.5 ease;
+    transition: all 0.2s ease;
 }
 
 .sidebar-title:hover {
@@ -147,6 +148,7 @@ i .profile {
 #myclg-event {
     /* background-color: rgb(197, 198, 207); */
     flex: 2;
+    /* margin-left: 190px; */
     margin-top: 78px;
     display: grid;
     background-image: url(/images/win\ cele.jpg);
@@ -178,7 +180,7 @@ i .profile {
     border-radius: 5px;
     border: 1px solid black;
     box-shadow: 2px 0px 2px rgb(11, 11, 12), 2px 2px 25px rgb(13, 12, 14), 2px 2px 12px rgb(17, 16, 16);
-    transition: all 0.3 ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .otherclg-content:hover{
