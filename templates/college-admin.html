@@ -129,6 +129,43 @@
 
             </div>
         </div>
+        <button id="create-button">Create Event</button>
+        <!--Event creation form-->
+        <div>
+            <div class="create-evet-popup">
+                <label for="create-popup" class="close-btn">&times;</label>
+                <div class="popup-content">
+                    <h2 style="text-align: center">Event Name</h2>
+                    <form id="reg-form">
+                        <div class="form-group">
+                            <label for="new-event">Event Name:<span class="required-star">*</span></label>
+                            <input type="text" id="new-event" name="new-event">
+                            <small id="new-event-req" class="hidden"></small>
+                        </div>
+                        <div class="form-group ">
+                            <label for="event-date">Event date:<span class="required-star">*</span></label>
+                            <input type="text" id="event-date" name="event-date">
+                            <small id="event-date-req" class="hidden"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-event-description">Description:<span class="required-star">*</span></label>
+                            <input type="text" id="new-event-description" name="new-event-description">
+                            <small id="new-event-description-req" class="hidden"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Upload Image:</label>
+                            <input type="file" id="image" name="image">
+                            <!-- <small id="email-req" class="hidden"></small> -->
+                        </div>
+                        
+                        <small id="submitAlertmsg" class="hidden"></small>
+                        <button type="submit " id="submit-btn" >Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 
 
 

@@ -1,5 +1,6 @@
 //Other college event content box
 const otherclgEvents = [{
+        // id: "clg1",
         logo: "/images/avc-logo.jpg",
         collegeName: "A.V.C. College of Engineering",
         location: "Mayiladuthurai, Tamil Nadu",
@@ -12,21 +13,24 @@ const otherclgEvents = [{
         collegeName: "Crescent Institute of Science & Technology ",
         location: "Chennai, Tamil Nadu",
         eventName: "Innovative Hackathon'25",
-        date: "20th june 2025"
+        date: "20th june 2025",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
     },
     {
         logo: "/images/avc-logo.jpg",
         collegeName: "A.V.C. College of Engineering",
         location: "Mayiladuthurai, Tamil Nadu",
         eventName: "Workshop on AI & ML",
-        date: "20th june 2025"
+        date: "20th june 2025",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
     },
     {
         logo: "/images/as-salam-logo.jpg",
         collegeName: "AS-SALAM College of Engineering and Technology",
         location: "Aduthurai, Tamil Nadu",
         eventName: "InfoTech Paper Presentatin'25",
-        date: "7th july 2025"
+        date: "7th july 2025",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
     }
 ]
 
@@ -144,7 +148,7 @@ function validatefullName(){
 
 const emailInput = document.getElementById("email");
 const emailAlertmsg = document.getElementById("email-req");
-const emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  //must handle
+const emailFormat = /^[a-z0-9.]+@[a-z]+\.[a-z]{2,}$/;  //must handle
 function validateEmail(){
     const email = emailInput.value.trim();  
     if(email==""){
@@ -192,19 +196,25 @@ const form = document.getElementById("reg-form");
 form.addEventListener("submit", function(e){
     e.preventDefault();
     const isValid =
-      validatecollegeCode() &&
-      validatecollegeName() &&
-      validatefullName() &&
-      validateEmail() &&
-      validateDepartment();
+            (validatecollegeCode() &&
+            validatecollegeName() &&
+            validatefullName() &&
+            validateEmail() &&
+            validateDepartment());
     if (isValid) {
-      message.textContent = "Registered successfully!";
-      message.style.color = "green";
-      form.reset();
+        alert("You have registered for the event successfully!")
+        message.textContent = "Registered successfully!";
+        message.style.color = "green";
+        form.reset();
      
-    //   [collegecodeAlertmsg, collegenameAlertmsg, fullnameAlertmsg, emailAlertmsg, deptnameAlertmsg].forEach( el => el.textContent = "");
+    // [collegecodeAlertmsg, collegenameAlertmsg, fullnameAlertmsg, emailAlertmsg, deptnameAlertmsg].forEach( el => el.textContent = "");
     } else {
-      message.textContent = "Please enter Valid details.";
-      message.style.color = "red";
+        validatecollegeCode();
+        validatecollegeName();
+        validatefullName();
+        validateEmail();
+        validateDepartment();
+        alert("Please, enter the valid and required details");
+        // message.textContent = "Please enter Valid details.";
     }
 });

@@ -146,7 +146,6 @@ i .profile {
 
 #otherclg-event,
 #myclg-event {
-    /* background-color: rgb(197, 198, 207); */
     flex: 2;
     /* margin-left: 190px; */
     margin-top: 78px;
@@ -355,4 +354,22 @@ footer {
         transform: scale(1);
         opacity: 1;
     }
+}
+
+/*Creating event button*/
+#create-button{
+    border:none;
+    right: 10px;
+    border-radius: 60%;
+    background-color: #0d2c5e;
+    color: white;
+    margin:20px;
+    padding: 25px;
+    cursor:pointer;
+    position: sticky;
+    box-shadow: 5px 5px 5px black;
+    transition: all 0.5s ease;
+}
+#create-button:hover{
+    transform: translateX(4px);
 }
