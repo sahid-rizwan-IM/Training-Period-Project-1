@@ -33,7 +33,6 @@
                 <a href="#otherclg-event">Other College Events</a>
             </div>
             <div class="sidebar-title">
-                <!-- My Event -->
                 <a href="#MyCollege-Events">My Events</a>
             </div>
             <div class="sidebar-title">
@@ -48,26 +47,22 @@
         </sidemenu>
         <!--Other college events display-->
         <div id="otherclg-event">
-            <!--Contents will appear through JavaScript-->
+            <!--EVENT CARD Contents will appear through JavaScript-->
         </div>
         <!--Other college Event Description pop up-->
-        <input type="checkbox" id="desc-popup-toggle" hidden>
         <div class="desc-popup">
-            <!-- <label for="desc-popup-toggle" class="close-btn">&times;</label>
-            <div class="popup-content">
-                <h2>College Name</h2>
-                <h3>Event Name</h3>
-                <h4>Date</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is the full event description, with all necessary details, rules, dates, and contacts for the event.</p>
-            </div> -->
+            <!-- EACH DESCRIPTION CARD DISPLAYED THROUGH JS-->
         </div>
         <!--Event Register form pop up-->
         <input type="checkbox" id="register-popup" hidden>
-        <div class="desc-popup">
-            <label for="register-popup" class="close-btn">&times;</label>
+        <div class="event-reg-popup">
             <div class="popup-content">
-                <h2 style="text-align: center">Event Name</h2>
+                <div id="reg-card-details">
+                    <h3 id="regCollegeName" style="text-align: center">College Name</h3>
+                    <h2 id="regEventName" style="text-align: center">Event Name</h2>
+                </div>
                 <form id="reg-form">
+                    <label for="register-popup" class="close-btn">&times;</label>
                     <div class="form-group">
                         <label for="clg-code">College Code:<span class="required-star">*</span></label>
                         <input type="text" id="clg-code" name="clg-code">
@@ -116,9 +111,7 @@
     <h3>//MY COLLEGE EVENTS//</h3>
     <div id="MyCollege-Events ">
         <div id="myclg-event ">
-            <!-- <h3 style="flex-direction: column; ">//OTHER COLLEGE EVENTS//</h3> -->
             <div class="myclg-content ">
-
                 <div>
                     <h3 class="event-name ">EVENT NAME</h3>
                     <p>description</p>
@@ -126,7 +119,6 @@
                         <button class="button ">View Registered students</button>
                     </div>
                 </div>
-
             </div>
         </div>
         <button id="create-button">Create Event</button>
@@ -144,7 +136,7 @@
                         </div>
                         <div class="form-group ">
                             <label for="event-date">Event date:<span class="required-star">*</span></label>
-                            <input type="text" id="event-date" name="event-date">
+                            <input type="date" id="event-date" name="event-date">
                             <small id="event-date-req" class="hidden"></small>
                         </div>
                         <div class="form-group">
