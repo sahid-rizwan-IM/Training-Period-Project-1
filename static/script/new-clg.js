@@ -53,7 +53,7 @@ otherclgEvents.forEach(event => {
                 <div class="imp-buttons">
                     <!--description button that calls evedesc with prticular evet details-->
                     <button class="button" onclick="otherClgEventDescPopup(\`${event.collegeName}\`, \`${event.eventName}\`, \`${event.date}\`, \`${event.description}\`)">Description</button>
-                    <label for="register-popup" class="button" onclick= "registrationFormDynamicDetials(\`${event.collegeName}\`, \`${event.eventName}\`)">Register</label>
+                    <button class="button" onclick="eventRegistrationForm(\`${event.collegeName}\`, \`${event.eventName}\`)">Register</button>
                 </div>
             </div>
         </div>
@@ -83,57 +83,26 @@ function closeDescPopup() {
     document.querySelector(".desc-popup").style.display = "none";
     document.querySelector(".event-reg-popup").style.display = "none";
 }
-function registrationFormDynamicDetials(collegeName, eventName){
-    const registerationCardDetails = document.getElementById("reg-card-details")
-    const regDetails = `
-        <h3 id="regCollegeName" style="text-align: center">${collegeName}</h3>
-        <h2 id="regEventName" style="text-align: center">Register for Event - ${eventName}</h2>
-    `;
 
-        registerationCardDetails.innerHTML = regDetails;
-        // registerationCardDetails.style.display = "block";
+//REGISTRATION FORM FOR EVENT
+function eventRegistrationForm(collegeName, eventName) {
+    console.log("register button clicked");
+    const registerForm = document.getElementsByClassName("event-reg-popup")
+    console.log(registerForm);
+
+    const collegeNameRegistered = document.querySelector("#regCollegeName");
+    const eventNameRegistered = document.querySelector("#regEventName");
+
+    collegeNameRegistered.innerHTML = `${collegeName}`;
+    console.log(collegeNameRegistered);
+    eventNameRegistered.textContent = `${eventName}`;
+    console.log(eventNameRegistered);
+    
 }
 
-// eventNameRegistered.forEach(event => {
-//     eventNameRegistered.textContent = `${event.eventName}`;
-// }
-// document.addEventListener("DOMContentLoaded", function () {
-//     initCollegeCodeValidation();
-//     initCollegeNameValidation();
-//     initFullNameValidation();
-//     initEmailValidation();
-//     initDepartmentValidation();
-//     initFormSubmitHandler();
-// });
+
+
 //FORM VALIDATION
-
-// function initCollegeCodeValidation() {
-//     const collegeCode = document.getElementById("clg-code");
-//     const collegecodeAlertmsg = document.getElementById("clg-code-req");
- 
-//     collegeCode.addEventListener("DOMContentLoaded", function () {
-//         const code = collegeCode.value.trim();
-//         if (code === "") {
-//             collegecodeAlertmsg.textContent = "Enter the College Code";
-//             collegecodeAlertmsg.style.display= flex;
-//             return false;
-
-//         } else if (isNaN(code)) {
-//             collegecodeAlertmsg.textContent = "Kindly, use Numbers";
-//             return false;
-
-//         } else if (code.length !== 4) {
-//             collegecodeAlertmsg.textContent = "Only 4 digits are allowed";
-//             return false;
-
-//         } else {
-//             collegecodeAlertmsg.textContent = "";
-//             return false;
-
-//         }
-//     });
-//     return;
-// }
 const collegeCode = document.getElementById("clg-code");
 const collegecodeAlertmsg = document.getElementById("clg-code-req");
 function validatecollegeCode(){
@@ -158,30 +127,6 @@ function validatecollegeCode(){
 }
 
 
-// function initCollegeNameValidation(){
-//     const collegeName = document.getElementById("clg-name");
-//     const collegenameAlertmsg = document.getElementById("clg-name-req");
-//     collegeName.addEventListener("input", function () {
-//         const clgName = collegeName.value.trim();
-//         if(clgName==""){
-//             collegenameAlertmsg.textContent = "Enter the College Name";
-//             return false;
-//         }
-//         else if(clgName.length<3){
-//             collegenameAlertmsg.textContent = "Minimum 3 characters Needed";
-//             return false;
-//         }
-//         else if(clgName.length>60){
-//             collegenameAlertmsg.textContent = "Maximum 60 characters are allowed";
-//             return false;
-//         }
-//         else{
-//             collegenameAlertmsg.textContent = "";
-//             return true;
-//         }
-//     });
-//     return true;
-// }
 const collegeName = document.getElementById("clg-name");
 const collegenameAlertmsg = document.getElementById("clg-name-req");
 function validatecollegeName(){
@@ -202,26 +147,7 @@ function validatecollegeName(){
         return true;
     }
 }
-// function initFullNameValidation(){
-//     const fullnameInput = document.getElementById("name");
-//     const fullnameAlertmsg = document.getElementById("full-name-req");
-//     fullnameInput.addEventListener('input', function() {
-//         const fullName = fullnameInput.value.trim();
-//         if(fullName==""){
-//             fullnameAlertmsg.textContent = "Enter the full name";
-//             return false;
-//         }
-//         else if(fullName.length<3){
-//             fullnameAlertmsg.textContent = "Enter a valid name, minimum 3 characters needed";
-//             return false;
-//         }
-//         else{
-//             fullnameAlertmsg.textContent = "";
-//             return true;
-//         }
-//     });
-//     return true;
-// }
+
 const fullnameInput = document.getElementById("name");
 const fullnameAlertmsg = document.getElementById("full-name-req");
 function validatefullName(){
@@ -238,26 +164,6 @@ function validatefullName(){
         return true;
     }
 }
-
-// function initEmailValidation(){
-//     const emailInput = document.getElementById("email");
-//     const emailAlertmsg = document.getElementById("email-req");
-//     const emailFormat = /^[a-z0-9.]+@[a-z]+\.[a-z]{2,}$/;
-//     emailInput.addEventListener("input", function() {
-//         const email = emailInput.value.trim();  
-//         if(email==""){
-//             emailAlertmsg.textContent = "Email is required";
-//             return false;
-//         }else if(!emailFormat.test(email)){
-//             emailAlertmsg.textContent = "Enter a valid email";
-//             return false;
-//         }else{
-//             emailAlertmsg.textContent = "";
-//             return true;
-//         }
-//     });
-//     return true;
-// }
 
 
 const emailInput = document.getElementById("email");
@@ -277,29 +183,6 @@ function validateEmail(){
     }
 }
 
-// function initDepartmentValidation(){
-//     const departmentName = document.getElementById("dept");
-//     const deptnameAlertmsg = document.getElementById("dept-req");
-//     departmentName.addEventListener("input", function() {
-//         const deptName = departmentName.value.trim();
-//         if(deptName==""){
-//             deptnameAlertmsg.textContent = "Department is required";
-//         }
-//         else if(deptName.length<2){
-//             deptnameAlertmsg.textContent = "Minimum 2 characters Needed";
-//             return false;
-//         }
-//         else if(deptName.length>30){
-//             deptnameAlertmsg.textContent = "Maximum 30 characters are allowed";
-//             return false;
-//         }
-//         else{
-//             deptnameAlertmsg.textContent = "";
-//             return true;
-//         }
-//     });
-//     return true;
-// }
 
 const departmentName = document.getElementById("dept");
 const deptnameAlertmsg = document.getElementById("dept-req");
@@ -330,52 +213,13 @@ fullnameInput.addEventListener("input",validatefullName);
 emailInput.addEventListener("input",validateEmail);
 departmentName.addEventListener("input",validateDepartment);
 
-// function initFormSubmitHandler(){
-//     const message = document.getElementById("submitAlertmsg");
-//     const form = document.getElementById("reg-form");
-
-//     form.addEventListener("submit", function(e){
-//         e.preventDefault();
-//         // debugger
-//         const isValid =
-//                 initCollegeCodeValidation() &&
-//                 initCollegeNameValidation() &&
-//                 initFullNameValidation() &&
-//                 initEmailValidation() &&
-//                 initDepartmentValidation();
-//         if (isValid) {
-//             alert("You have registered for the event successfully!")
-//             message.textContent = "Registered successfully!";
-//             message.style.color = "green";
-//             form.reset();
-//         } 
-//         else {
-//             initCollegeCodeValidation();
-//             initCollegeNameValidation();
-//             initFullNameValidation();
-//             initEmailValidation();
-//             initDepartmentValidation();
-//             alert("Please, enter the valid and required details");
-//         }
-//     });
-//     return true;
-// }
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     initCollegeCodeValidation();
-//     initCollegeNameValidation();
-//     initFullNameValidation();
-//     initEmailValidation();
-//     initDepartmentValidation();
-//     initFormSubmitHandler();
-// });
 const message = document.getElementById("submitAlertmsg");
 const form = document.getElementById("reg-form");
 
 form.addEventListener("submit", function(e){
     console.log("strting part");
-    e.preventDefault();
-    // debugger
+    // e.preventDefault();
+    debugger
     const isValid =
             validatecollegeCode() &&
             validatecollegeName() &&
