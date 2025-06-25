@@ -260,6 +260,9 @@ footer {
   align-items: center;
   z-index: 999;
 }
+.event-reg-popup{
+    margin: 20px 0px;
+}
 
 .popup-content {
   background: #e9d0b6;
@@ -308,6 +311,10 @@ footer {
 
 
 /* Show popup when checkbox is checked */
+
+#register-popup:checked+.event-reg-popup {
+    display: flex;
+}
 
 /* .desc-popup {
     display: flex;
