@@ -220,9 +220,11 @@ h4 {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+
 }
 
-.button {
+.descButton, .regButton {
     border: none;
     border-radius: 5px;
     background-color: pink;
@@ -230,6 +232,9 @@ h4 {
     margin: 20px 10px 10px 10px;
     cursor: pointer;
     color: #0d2c5e;
+    font-size: 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
 }
 
 
@@ -260,11 +265,11 @@ footer {
   align-items: center;
   z-index: 999;
 }
-.event-reg-popup{
+/* .event-reg-popup{
     margin: 20px 0px;
-}
+} */
 
-.popup-content {
+.popup-content, .form-popup-content{
   background: #e9d0b6;
   padding: 30px;
   border-radius: 10px;
@@ -292,22 +297,6 @@ footer {
   font-size: 28px;
   cursor: pointer;
 }
-/* .desc-popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(73, 73, 73, 0.95);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-    color: #343148FF;
-    padding: 40px;
-    animation: popup 0.3s ease-in-out;
-    box-sizing: border-box;
-} */
 
 
 /* Show popup when checkbox is checked */
@@ -315,35 +304,6 @@ footer {
 #register-popup:checked+.event-reg-popup {
     display: flex;
 }
-
-/* .desc-popup {
-    display: flex;
-}
-
-.desc-popup {
-    display: flex;
-} */
-
-/* .popup-content {
-    background: rgb(221, 190, 129);
-    padding: 30px;
-    border-radius: 12px;
-    max-width: 700px;
-    width: 100%;
-    border: 2px solid #343148FF;
-    text-align: left;
-    box-shadow: 10px 0 20px rgb(53, 53, 53);
-    transition: all .2;
-}
-
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 36px;
-    cursor: pointer;
-    color: #fff;
-} */
 
 
 /* Form styling */
@@ -383,7 +343,7 @@ footer {
     cursor: pointer;
 }
 
-.register-form-box {
+/* .register-form-box {
     background: white;
     padding: 2rem;
     border-radius: 10px;
@@ -402,7 +362,7 @@ footer {
         transform: scale(1);
         opacity: 1;
     }
-}
+} */
 
 /*Creating event button*/
 #create-button{

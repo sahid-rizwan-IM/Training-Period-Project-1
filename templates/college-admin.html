@@ -56,13 +56,10 @@
         <!--Event Register form pop up-->
         <input type="checkbox" id="register-popup" hidden>
         <div class="event-reg-popup">
-            <div class="popup-content">
+            <div class="form-popup-content">
                 <div id="reg-card-details">
-                    <h3 id="regCollegeName" style="text-align: center">College Name</h3>
-                    <h2 id="regEventName" style="text-align: center">Event Name</h2>
                 </div>
                 <form id="reg-form">
-                    <label for="register-popup" class="close-btn">&times;</label>
                     <div class="form-group">
                         <label for="clg-code">College Code:<span class="required-star">*</span></label>
                         <input type="text" id="clg-code" name="clg-code">
@@ -121,10 +118,10 @@
                 </div>
             </div>
         </div>
-        <button id="create-button">Create Event</button>
+        <button id="create-button" onclick="">Create Event</button>
         <!--Event creation form-->
-        <div>
-            <div class="create-evet-popup">
+        <div hidden>
+            <div class="create-event-popup" hidden>
                 <label for="create-popup" class="close-btn">&times;</label>
                 <div class="popup-content">
                     <h2 style="text-align: center">Event Name</h2>
@@ -141,11 +138,11 @@
                         </div>
                         <div class="form-group">
                             <label for="new-event-description">Description:<span class="required-star">*</span></label>
-                            <input type="text" id="new-event-description" name="new-event-description">
+                            <input type="textarea" row=3 id="new-event-description" name="new-event-description">
                             <small id="new-event-description-req" class="hidden"></small>
                         </div>
                         <div class="form-group">
-                            <label for="image">Upload Image:</label>
+                            <label for="image">Upload file: <small style= "font-style: italic">optional</small></label>
                             <input type="file" id="image" name="image">
                             <!-- <small id="email-req" class="hidden"></small> -->
                         </div>
