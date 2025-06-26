@@ -26,27 +26,20 @@
         </header>
     </div>
     <!--Hero section-->
+    
     <main id="dash-main">
         <!--side menu bar-->
-        <sidemenu class="sidebar">
-            <div class="sidebar-title">
-                <a href="#otherclg-event">Other College Events</a>
-            </div>
-            <div class="sidebar-title">
-                <a href="#MyCollege-Events">My Events</a>
-            </div>
-            <div class="sidebar-title">
-                <a href="#achievements">Achievements</a>
-            </div>
-            <div class="sidebar-title">
-                <a href="#ranks">Rank Holders</a>
-            </div>
-            <div class="sidebar-title">
-                <a href="#approving">Approve Students</a>
-            </div>
-        </sidemenu>
+        <aside class="sidebar">
+            <ul>
+                <li class="sidebar-link active" onclick="activePage('otherclg-event',this)"><a href="#otherclg-event" class="">Other College Events</a></li>
+                <li class="sidebar-link" onclick="activePage('MyCollege-Events',this)"><a href="#MyCollege-Events" >My Events</a></li>
+                <li class="sidebar-link" onclick="activePage('achievements',this)"><a href="#achievements" >Achievements</a></li>
+                <li class="sidebar-link" onclick="activePage('ranks',this)"><a href="#ranks" >Rank Holders</a></li>
+                <li class="sidebar-link" onclick="activePage('approving',this)"><a href="#approving" >Approve Students</a></li>               
+            </ul>
+        </aside>
         <!--Other college events display-->
-        <div id="otherclg-event">
+        <div id="otherclg-event" class="section">
             <!--EVENT CARD Contents will appear through JavaScript-->
         </div>
         <!--Other college Event Description pop up-->
@@ -58,6 +51,7 @@
         <div class="event-reg-popup">
             <div class="form-popup-content">
                 <div id="reg-card-details">
+                    <!-- card details here which is dynamic (clg and event name) -->
                 </div>
                 <form id="reg-form">
                     <div class="form-group">
@@ -102,30 +96,29 @@
             </div>
         </div>
 
-
-    </main>
-    <!--My College Event Display-->
-    <h3>//MY COLLEGE EVENTS//</h3>
-    <div id="MyCollege-Events ">
-        <div id="myclg-event ">
-            <div class="myclg-content ">
-                <div>
-                    <h3 class="event-name ">EVENT NAME</h3>
-                    <p>description</p>
-                    <div class="imp-buttons ">
-                        <button class="button ">View Registered students</button>
+        <div id="MyCollege-Events" class="section hidden-page-content">
+            <div id="myclg-event">
+                <div class="myclg-content ">
+                    <div>
+                        <h3 class="event-name ">EVENT NAME</h3>
+                        <p>description</p>
+                        <div class="imp-buttons ">
+                            <button class="button ">View Registered students</button>
+                        </div>
                     </div>
                 </div>
+            
+                <div>
+                    <button id="create-button" onclick="opencreateform()">Create Event</button>
+                </div>
             </div>
-        </div>
-        <button id="create-button" onclick="">Create Event</button>
-        <!--Event creation form-->
-        <div hidden>
-            <div class="create-event-popup" hidden>
-                <label for="create-popup" class="close-btn">&times;</label>
-                <div class="popup-content">
-                    <h2 style="text-align: center">Event Name</h2>
-                    <form id="reg-form">
+            <!--Event creation form-->
+            <!-- <div id=create-event-form class="hidden1"> -->
+            <div id="create-event-popup">   
+                <div class="create-event-popup-content">
+                    <label for="create-popup" class="close-btn" onclick="closePopup()">&times;</label>
+                    <h2 style="text-align: center">Create a new event</h2>
+                    <form id="create-form">
                         <div class="form-group">
                             <label for="new-event">Event Name:<span class="required-star">*</span></label>
                             <input type="text" id="new-event" name="new-event">
@@ -138,12 +131,12 @@
                         </div>
                         <div class="form-group">
                             <label for="new-event-description">Description:<span class="required-star">*</span></label>
-                            <input type="textarea" row=3 id="new-event-description" name="new-event-description">
+                            <textarea type="text" rows="3" cols="100" id="new-event-description" name="new-event-description"></textarea>
                             <small id="new-event-description-req" class="hidden"></small>
                         </div>
                         <div class="form-group">
-                            <label for="image">Upload file: <small style= "font-style: italic">optional</small></label>
-                            <input type="file" id="image" name="image">
+                            <label for="file">Upload file: <small style= "font-style: italic">optional</small></label>
+                            <input type="file" id="file" name="file">
                             <!-- <small id="email-req" class="hidden"></small> -->
                         </div>
                         
@@ -151,17 +144,24 @@
                         <button type="submit " id="submit-btn" >Submit</button>
                     </form>
                 </div>
-            </div>
+            </div>   
         </div>
-    </div>
+
+        <div id="achievements" class="section hidden-page-content">Achievements Content</div>
+        <div id="ranks" class="section hidden-page-content">Rank Holders Content</div>
+        <div id="approving" class="section hidden-page-content">Approve Students Content</div>
+    </main>
+    <!--My College Event Display-->
+    <!-- <h3>//MY COLLEGE EVENTS//</h3> -->
+    
     
 
 
 
         <!--Footer-->
-        <footer>
-            <p style="margin-left:5px ">PROJECT ON TRAINING PERIOD | INNOVATION MINDS &copy; 2025</p>
-        </footer>
+    <!-- <footer>
+        <p style="margin-left:5px ">PROJECT ON TRAINING PERIOD | INNOVATION MINDS &copy; 2025</p>
+    </footer> -->
 
         <script src="/static/script/college-admin.js "></script>
 </body>

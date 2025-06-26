@@ -34,7 +34,115 @@ const otherclgEvents = [{
         eventName: "InfoTech Paper Presentatin'25",
         date: "7th july 2025",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
-    }
+    },
+    {
+        id: "clg1",
+        logo: "/images/avc-logo.jpg",
+        collegeName: "A.V.C. College of Engineering",
+        location: "Mayiladuthurai, Tamil Nadu",
+        eventName: "National Conference",
+        date: "25th june 2025",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event.Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event.Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event.Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event.Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
+    },
+    {
+        id: "clg2",
+        logo: "/images/cresent-logo.png",
+        collegeName: "Crescent Institute of Science & Technology ",
+        location: "Chennai, Tamil Nadu",
+        eventName: "Innovative Hackathon'25",
+        date: "20th june 2025",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
+    },
+    {
+        id: "clg3",
+        logo: "/images/avc-logo.jpg",
+        collegeName: "A.V.C. College of Engineering",
+        location: "Mayiladuthurai, Tamil Nadu",
+        eventName: "Workshop on AI & ML",
+        date: "20th june 2025",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
+    },
+    {
+        id: "clg4",
+        logo: "/images/as-salam-logo.jpg",
+        collegeName: "AS-SALAM College of Engineering and Technology",
+        location: "Aduthurai, Tamil Nadu",
+        eventName: "InfoTech Paper Presentatin'25",
+        date: "7th july 2025",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
+    },
+    {
+        id: "clg2",
+        logo: "/images/cresent-logo.png",
+        collegeName: "Crescent Institute of Science & Technology ",
+        location: "Chennai, Tamil Nadu",
+        eventName: "Innovative Hackathon'25",
+        date: "20th june 2025",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
+    },
+    {
+        id: "clg3",
+        logo: "/images/avc-logo.jpg",
+        collegeName: "A.V.C. College of Engineering",
+        location: "Mayiladuthurai, Tamil Nadu",
+        eventName: "Workshop on AI & ML",
+        date: "20th june 2025",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
+    },
+    {
+        id: "clg2",
+        logo: "/images/cresent-logo.png",
+        collegeName: "Crescent Institute of Science & Technology ",
+        location: "Chennai, Tamil Nadu",
+        eventName: "Innovative Hackathon'25",
+        date: "20th june 2025",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
+    },
+    {
+        id: "clg3",
+        logo: "/images/avc-logo.jpg",
+        collegeName: "A.V.C. College of Engineering",
+        location: "Mayiladuthurai, Tamil Nadu",
+        eventName: "Workshop on AI & ML",
+        date: "20th june 2025",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
+    },
+    {
+        id: "clg2",
+        logo: "/images/cresent-logo.png",
+        collegeName: "Crescent Institute of Science & Technology ",
+        location: "Chennai, Tamil Nadu",
+        eventName: "Innovative Hackathon'25",
+        date: "20th june 2025",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
+    },
+    {
+        id: "clg3",
+        logo: "/images/avc-logo.jpg",
+        collegeName: "A.V.C. College of Engineering",
+        location: "Mayiladuthurai, Tamil Nadu",
+        eventName: "Workshop on AI & ML",
+        date: "20th june 2025",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
+    },,
+    {
+        id: "clg2",
+        logo: "/images/cresent-logo.png",
+        collegeName: "Crescent Institute of Science & Technology ",
+        location: "Chennai, Tamil Nadu",
+        eventName: "Innovative Hackathon'25",
+        date: "20th june 2025",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
+    },
+    {
+        id: "clg3",
+        logo: "/images/avc-logo.jpg",
+        collegeName: "A.V.C. College of Engineering",
+        location: "Mayiladuthurai, Tamil Nadu",
+        eventName: "Workshop on AI & ML",
+        date: "20th june 2025",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
+    },
 ]
 
 const otherclgContainer = document.getElementById("otherclg-event");
@@ -68,7 +176,7 @@ function otherClgEventDescPopup(collegeName, eventName, date, description) {
     const descPopup = document.querySelector(".desc-popup");
     const descPopupContent = `
         <div class="popup-content">
-            <span class="close-btn" onclick="closeDescPopup()">&times;</span>
+            <span class="close-btn" onclick="closePopup()">&times;</span>
             <h2>${collegeName}</h2>
             <h3>${eventName}</h3>
             <h4>${date}</h4>
@@ -79,19 +187,21 @@ function otherClgEventDescPopup(collegeName, eventName, date, description) {
     descPopup.style.display = "flex";
 }
 
-function closeDescPopup(){
+function closePopup(){
     document.querySelector(".desc-popup").style.display = "none";
     document.querySelector(".event-reg-popup").style.display = "none";
+    document.querySelector("#create-event-popup").style.display = "none";
     const form = document.getElementById("reg-form");
     form.reset();
     const alertMsgs = document.querySelectorAll("small");
     alertMsgs.forEach(msg => msg.textContent = "");
 }
+
 function registrationFormDynamicDetials(collegeName, eventName){
     document.querySelector(".event-reg-popup").style.display = "flex";
     const registerationCardDetails = document.getElementById("reg-card-details")
     const regDetails = `
-        <label for="register-popup" class="close-btn" onclick="closeDescPopup()">&times;</label>
+        <label for="register-popup" class="close-btn" onclick="closePopup()">&times;</label>
         <h3 id="regCollegeName" style="text-align: center">${collegeName}</h3>
         <h2 id="regEventName" style="text-align: center">Register for Event - ${eventName}</h2>
     `;
@@ -102,11 +212,11 @@ function registrationFormDynamicDetials(collegeName, eventName){
 }
 
 //registered list here
-let registeredStudents = [
-    {
-        //will be stored dynamically
-    }
-]
+// let registeredStudents = [
+//     {
+//         //will be stored dynamically
+//     }
+// ]
 
 
 
@@ -155,7 +265,7 @@ function validatecollegeName(){
     }
 }
 
-const fullnameInput = document.getElementById("fullnameInput");
+const fullnameInput = document.getElementById("name");
 const fullnameAlertmsg = document.getElementById("full-name-req");
 function validatefullName(){
     const fullName = fullnameInput.value.trim();
@@ -226,7 +336,7 @@ const form = document.getElementById("reg-form");
 form.addEventListener("submit", function(e){
     console.log("strting part");
     e.preventDefault();
-    // debugger
+    debugger
     const isValid =
             validatecollegeCode() &&
             validatecollegeName() &&
@@ -238,7 +348,7 @@ form.addEventListener("submit", function(e){
         message.textContent = "Registered successfully!";
         message.style.color = "green";
         form.reset();
-        closeDescPopup();
+        closePopup();
         const alertMsgs = document.querySelectorAll("small");
         alertMsgs.forEach(msg => msg.textContent = "");
     } 
@@ -252,3 +362,28 @@ form.addEventListener("submit", function(e){
     }
     
 });
+
+
+function opencreateform(){
+    const createEventForm = document.getElementById("create-event-popup");
+    createEventForm.style.display = "block";
+}
+
+function activePage(pageId, clickedId){
+    document.querySelectorAll('.section').forEach(section => {
+        section.classList.add('hidden-page-content');
+    });
+
+    // Show the selected section
+    const pageId1 = document.getElementById(pageId);
+    pageId1.classList.remove('hidden-page-content');
+    pageId1.style.flex = 2;
+
+    // Remove active class from all links
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+        link.classList.remove('active');
+    });
+
+    // Add active to the clicked link
+    clickedId.classList.add('active');
+}

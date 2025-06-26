@@ -22,6 +22,7 @@ body {
     z-index: 10;
     color: #343148FF;
     width: 100%;
+
 }
 
 
@@ -97,85 +98,145 @@ i .profile {
 
 #dash-main {
     display: flex;
-    height: 100vh;
+    /* height: 100%; */
     top: 0;
     background: white;
+    position: relative;
 }
 
 
-/*SIDE MENU*/
+/* SIDE MENU
+aside .sidebar{
+    display:inline;
+    margin-top: 90px;
+} */
 
 .sidebar {
-    z-index: 4;
+    z-index: 10;
     margin-top: 78px;
     /* height:60vh; */
-    color: antiquewhite;
+    position: fixed;
+    top:0;
+    left:0;
+    /* color: antiquewhite; */
     background-color: #ffffff;
-    flex: 0.3;
+    /* flex: 1; */
     /* text-align: center; */
     /* position: fixed; */
+    box-shadow: 2px 4px 5px rgb(193, 126, 222);
 }
 
 .sidebar a {
     text-decoration: none;
     color: #343148FF;
-    margin-top: 10px;
-    display: block;
+    /* margin-top: 10px; */
+    /* display: block; */
     /* padding: 20px; */
 }
 
-.sidebar-title {
-    background-color: #e9d0b6;
-    border: .5px solid rgb(252, 250, 250);
-    padding: 20px;
+.sidebar ul {
+    /* padding: 20px; */
     font-size: 16px;
+    margin: 0px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: 600;
+    font-weight: 500;
+    /* padding: 6px 2px; */
     text-align: center;
-    box-shadow: 2px 4px 5px rgb(38, 38, 38);
+    padding: 0px;
+    /* box-shadow: 2px 4px 5px rgb(38, 38, 38); */
+    transition: all 0.2s ease;
+}
+.sidebar ul li{
+    list-style-type: none;
+    /* margin: 2px; */
+    padding: 25px 3px;
+    border: 0.5px solid rgb(254, 253, 253);
+    background-color: #e7c8a6;
     transition: all 0.2s ease;
 }
 
-.sidebar-title:hover {
-    background-color: white;
-    transform: scale(1.1);
+.sidebar ul li:hover{
+    background-color: #343148FF;
+    box-shadow: 2px 4px 5px rgb(41, 40, 42);
+    /* transform: scale(1.06); */
+}
+.sidebar a{
+    color: rgb(251, 248, 248);
+    /* background-color: #0d2c5e; */
+    /* background: linear-gradient(rgb(52, 72, 184),rgb(65, 59, 50));
+    background-clip: text;
+    -webkit-text-fill-color: transparent; */
 }
 
+.section{
+    display:block;
+}
+.section.hidden-page-content{
+    display: none;
+}
 
+.sidebar-link.active{
+    color: rgb(239, 222, 145);
+    background-color: #343148FF;
+    font-weight: bold;
+    transform: scale(1.1);
+    z-index: 1000;
+    /* border: 1px solid rgb(182, 52, 150); */
+    /* box-shadow: 2px 0px 2px #343148FF, 2px 2px 25px #343148FF, 2px 2px 50px #343148FF; */
+
+    /* border-left: 4px solid #F3AA60FF; */
+}
+
+/* .sidebar-link.active a{
+    color: white;
+} */
+
+/* .sidebar a.active1{
+    color: #0c0c0c;
+;
+} */
 /*Other clg content*/
 
-#otherclg-event,
-#myclg-event {
+#otherclg-event {
     flex: 2;
     /* margin-left: 190px; */
     margin-top: 78px;
+    margin-left: 10.9%;
     display: grid;
     background-image: url(/images/win\ cele.jpg);
-    background-size: cover;
+    background-size: 2500px;
     grid-template-columns: repeat(3, 1fr);
+    /* scro; */
 }
 
-#otherclg-event::after{
+#MyCollege-Events, #achievements, #ranks, #approving{
+    background-image: url(/images/win\ cele.jpg);
+    background-size: 2500px;
+    margin-top: 78px;
+}
+
+#otherclg-event::before{
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+    top: 0px;
+    left: 10.9%;
+    width: 88.7%;
     height: 100%;
     background-color: rgba(9, 9, 9, 0.45);
     z-index: 0;
 }
+#myclg-event{
+    z-index: 5;
+}
 
 .otherclg-content,
-.myclg-content {
+.myclg-content{
     /* width: 25rem; */
-    max-height: 13rem;
+    max-height: 100vh;
     background-color: rgb(240, 240, 240);
     color: rgb(72, 67, 99);
-    z-index: 4;
+    z-index: 7;
     margin: 20px 10px 10px 15px;
-    /* background-image: url(/images/win\ cele.jpg);
-    background-size: 2200px; */
     border-radius: 5px;
     border: 1px solid black;
     box-shadow: 2px 0px 2px rgb(11, 11, 12), 2px 2px 25px rgb(13, 12, 14), 2px 2px 12px rgb(17, 16, 16);
@@ -224,7 +285,7 @@ h4 {
 
 }
 
-.descButton, .regButton {
+.descButton, .regButton, .button {
     border: none;
     border-radius: 5px;
     background-color: pink;
@@ -242,6 +303,9 @@ h4 {
 
 footer {
     width: 100%;
+    position: absolute;
+    bottom: 0;
+    left:0;
     text-align: center;
     font-weight: 300;
     margin-top: 50px;
@@ -253,7 +317,7 @@ footer {
 
 /*Other College Event descripion pop up*/
 
-.desc-popup, .event-reg-popup {
+.desc-popup, .event-reg-popup, #create-event-popup {
   position: fixed;
   top: 0; 
   left: 0;
@@ -269,7 +333,7 @@ footer {
     margin: 20px 0px;
 } */
 
-.popup-content, .form-popup-content{
+.popup-content, .form-popup-content, .create-event-popup-content{
   background: #e9d0b6;
   padding: 30px;
   border-radius: 10px;
@@ -333,6 +397,10 @@ footer {
     display:block;
 }
 
+.hidden-page-content{
+    display: none;
+}
+
 /* Submit button */
 #submit-btn{
     background: #0d2c5e;
@@ -341,6 +409,8 @@ footer {
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    left: 30px;
+    margin-left:80%;
 }
 
 /* .register-form-box {
@@ -381,3 +451,5 @@ footer {
 #create-button:hover{
     transform: translateX(4px);
 }
+
+
