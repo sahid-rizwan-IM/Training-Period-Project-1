@@ -97,52 +97,7 @@ const otherclgEvents = [{
         eventName: "Innovative Hackathon'25",
         date: "20th june 2025",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
-    },
-    {
-        id: "clg3",
-        logo: "/images/avc-logo.jpg",
-        collegeName: "A.V.C. College of Engineering",
-        location: "Mayiladuthurai, Tamil Nadu",
-        eventName: "Workshop on AI & ML",
-        date: "20th june 2025",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
-    },
-    {
-        id: "clg2",
-        logo: "/images/cresent-logo.png",
-        collegeName: "Crescent Institute of Science & Technology ",
-        location: "Chennai, Tamil Nadu",
-        eventName: "Innovative Hackathon'25",
-        date: "20th june 2025",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
-    },
-    {
-        id: "clg3",
-        logo: "/images/avc-logo.jpg",
-        collegeName: "A.V.C. College of Engineering",
-        location: "Mayiladuthurai, Tamil Nadu",
-        eventName: "Workshop on AI & ML",
-        date: "20th june 2025",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
-    },,
-    {
-        id: "clg2",
-        logo: "/images/cresent-logo.png",
-        collegeName: "Crescent Institute of Science & Technology ",
-        location: "Chennai, Tamil Nadu",
-        eventName: "Innovative Hackathon'25",
-        date: "20th june 2025",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
-    },
-    {
-        id: "clg3",
-        logo: "/images/avc-logo.jpg",
-        collegeName: "A.V.C. College of Engineering",
-        location: "Mayiladuthurai, Tamil Nadu",
-        eventName: "Workshop on AI & ML",
-        date: "20th june 2025",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
-    },
+    }
 ]
 
 const otherclgContainer = document.getElementById("otherclg-event");
@@ -169,8 +124,6 @@ otherclgEvents.forEach(event => {
     otherclgContainer.innerHTML += eventHTML;
 });
 
-
-
 //Desciption display part
 function otherClgEventDescPopup(collegeName, eventName, date, description) {
     const descPopup = document.querySelector(".desc-popup");
@@ -193,8 +146,11 @@ function closePopup(){
     document.querySelector("#create-event-popup").style.display = "none";
     const form = document.getElementById("reg-form");
     form.reset();
+    const createEventForm = document.getElementById("create-form");
+    createEventForm.reset();
     const alertMsgs = document.querySelectorAll("small");
     alertMsgs.forEach(msg => msg.textContent = "");
+
 }
 
 function registrationFormDynamicDetials(collegeName, eventName){
@@ -250,6 +206,7 @@ function validatecollegeName(){
     const clgName = collegeName.value.trim();
     if(clgName==""){
         collegenameAlertmsg.textContent = "Enter the College Name";
+        return false;
     }
     else if(clgName.length<3){
         collegenameAlertmsg.textContent = "Minimum 3 characters Needed";
@@ -320,6 +277,17 @@ function validateDepartment(){
     }
 }
 
+const yearSelection = document.getElementById("year")
+const yearSelectionAlertmsg = document.getElementById("year-req")
+function validateYearSelection(){
+    if(yearSelection.value == ''){
+        yearSelectionAlertmsg.textContent = "Select your year";
+    }
+    else{
+        yearSelectionAlertmsg.textContent = "";
+    }
+}
+
 
 
 collegeCode.addEventListener("input",validatecollegeCode);
@@ -327,12 +295,12 @@ collegeName.addEventListener("input",validatecollegeName);
 fullnameInput.addEventListener("input",validatefullName);
 emailInput.addEventListener("input",validateEmail);
 departmentName.addEventListener("input",validateDepartment);
+yearSelection.addEventListener("change", validateYearSelection);
 
 
 
 const message = document.getElementById("submitAlertmsg");
 const form = document.getElementById("reg-form");
-
 form.addEventListener("submit", function(e){
     console.log("strting part");
     e.preventDefault();
@@ -342,7 +310,9 @@ form.addEventListener("submit", function(e){
             validatecollegeName() &&
             validatefullName() &&
             validateEmail() &&
-            validateDepartment();
+            validateDepartment()&&
+            validateYearSelection();
+
     if (isValid) {
         alert("You have registered for the event successfully!")
         message.textContent = "Registered successfully!";
@@ -358,6 +328,7 @@ form.addEventListener("submit", function(e){
         validatefullName();
         validateEmail();
         validateDepartment();
+        validateYearSelection();
         alert("Please, enter the valid and required details");
     }
     
@@ -372,12 +343,13 @@ function opencreateform(){
 function activePage(pageId, clickedId){
     document.querySelectorAll('.section').forEach(section => {
         section.classList.add('hidden-page-content');
+        // section.innerHTML = "";
     });
 
     // Show the selected section
     const pageId1 = document.getElementById(pageId);
     pageId1.classList.remove('hidden-page-content');
-    pageId1.style.flex = 2;
+    // pageId1.style.flex = 2;
 
     // Remove active class from all links
     document.querySelectorAll('.sidebar-link').forEach(link => {
@@ -387,3 +359,148 @@ function activePage(pageId, clickedId){
     // Add active to the clicked link
     clickedId.classList.add('active');
 }
+
+//Create EVENT Form Validation
+const eventNameInput = document.getElementById("new-event");
+const eventNameAlertmsg = document.getElementById("new-event-name-req");
+function validateEventName(){
+    if(eventNameInput.value.trim() === ""){
+        eventNameAlertmsg.textContent = "Event Name Required";
+        return false;
+    }
+    else if(eventNameInput.value.length<10){
+        eventNameAlertmsg.textContent = "Minimum 10 characters needed";
+        return false;
+    }
+    else if(eventNameInput.value.length>50){
+        eventNameAlertmsg.textContent = "Maximum 50 characters allowed";
+        return false;
+    }
+    else{
+        eventNameAlertmsg.textContent = "";
+        return true;
+    }
+}
+
+const eventTypeSelection = document.getElementById("event-type");
+const eventTypeAlertmsg = document.getElementById("event-type-req");
+function validateEventType(){
+    if(eventTypeSelection.value.trim() === ""){
+        eventTypeAlertmsg.textContent = "Select any event type";
+        return false;
+    }
+    else{
+        eventTypeAlertmsg.textContent = "";
+        return true;
+    }
+}
+
+const eventDescInput = document.getElementById("new-event-description");
+const eventDescAlertmsg = document.getElementById("event-description-req");
+function validateEventDescription(){
+    if(eventDescInput.value.trim() === ""){
+        eventDescAlertmsg.textContent = "Event Description Required";
+        return false;
+    }
+    else if(eventDescInput.value.length<20){
+        eventDescAlertmsg.textContent = "Minimum 20 characters needed";
+        return false;
+    }
+    else if(eventDescInput.value.length>500){
+        eventDescAlertmsg.textContent = "Maximum 500 characters allowed";
+        return false;
+    }
+    else{
+        eventDescAlertmsg.textContent = "";
+        return true;
+    }
+}
+
+const eventDateChoose = document.getElementById("event-date");
+const eventDateAlertmsg = document.getElementById("event-date-req");
+function validateEventDate(){
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const currentMonth = String(today.getMonth() + 1).padStart(2, `0`);
+    const presentDate = String(today.getDate()).padStart(2, `0`);
+    const minDate = `${currentYear}-${currentMonth}-${presentDate}`;
+    eventDateChoose.min = minDate;
+    // const today = new Date().toISOString().split("T")[0];
+    // eventDateChoose.min = today;
+    if (eventDateChoose.value===""){
+        eventDateAlertmsg.textContent = "Choose a date here!";
+        return false;
+    }
+    else{
+        eventDateAlertmsg.textContent = " ";
+        return true;
+    }
+}
+
+eventNameInput.addEventListener("input",validateEventName);
+eventTypeSelection.addEventListener("change",validateEventType);
+eventDescInput.addEventListener("input",validateEventDescription);
+eventDateChoose.addEventListener("click",validateEventDate);
+eventDateChoose.addEventListener("change",validateEventDate);
+
+const eventFile = document.getElementById("file");
+
+
+const createEventMessage = document.getElementById("createAlertmsg");
+const createEventForm = document.getElementById("create-form");
+createEventForm.addEventListener("submit", function(e){
+    console.log("strting part");
+    e.preventDefault();
+    debugger
+    const isValid =
+            validateEventName()&&
+            validateEventType()&&
+            validateEventDescription()&&
+            validateEventDate();
+
+    if (isValid) {
+        alert("You have created a event successfully!");
+        createEventMessage.textContent = "Registered successfully!";
+        createEventMessage.style.color = "green";
+        createEventForm.reset();
+        closePopup();
+        const alertMsgs = document.querySelectorAll("small");
+        alertMsgs.forEach(msg => msg.textContent = "");
+        
+        const newmyClgEvents ={
+            eventName: eventNameInput.value.trim(), 
+                eventType: eventTypeSelection.value, 
+                eventDate: eventDateChoose.value, 
+                eventDescription: eventDescInput.value.trim(), 
+                eventFile: eventFile
+        };
+        const newEvents = JSON.parse(localStorage.getItem('newmyClgEvents')) || [];
+
+        newEvents.push(newmyClgEvents);
+        localStorage.setItem('newmyClgEvents',JSON.stringify(newEvents));
+
+        const myClgEvent = document.querySelector(".myclg-content");
+        newmyClgEvents.forEach(myEvents => {
+            const ownEvents = `
+                <div>
+                    <h3 class="event-name ">${myEvents.eventName}</h3>
+                    <h5>${myEvents.eventType} | ${myEvents.eventDate}</h5>
+                    <p>${myEvents.eventDescription}</p>
+                    <div class="imp-buttons ">
+                        <button class="button ">View Registered students</button>
+                    </div>
+                </div>
+            `;
+            myClgEvent.innerHTML += ownEvents;
+        });
+    } 
+    else {
+        validateEventName();
+        validateEventType();
+        validateEventDescription();
+        validateEventDate();
+        alert("Please, enter the valid and required details");
+    }
+    
+});
+

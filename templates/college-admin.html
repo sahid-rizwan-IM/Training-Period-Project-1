@@ -31,7 +31,12 @@
         <!--side menu bar-->
         <aside class="sidebar">
             <ul>
-                <li class="sidebar-link active" onclick="activePage('otherclg-event',this)"><a href="#otherclg-event" class="">Other College Events</a></li>
+                <!-- <li><a class="sidebar-link active" href="#otherclg-event" onclick="activePage('otherclg-event', this)">Other College Events</a></li>
+                <li><a class="sidebar-link" href="#MyCollege-Events" onclick="activePage('MyCollege-Events', this)">My Events</a></li>
+                <li><a class="sidebar-link" href="#achievements" onclick="activePage('achievements', this)">Achievements</a></li>
+                <li><a class="sidebar-link" href="#ranks" onclick="activePage('ranks', this)">Rank Holders</a></li>
+                <li><a class="sidebar-link" href="#approving" onclick="activePage('approving', this)">Approve Students</a></li> -->
+                <li class="sidebar-link active" onclick="activePage('otherclg-event',this)"><a href="#otherclg-event">Other College Events</a></li>
                 <li class="sidebar-link" onclick="activePage('MyCollege-Events',this)"><a href="#MyCollege-Events" >My Events</a></li>
                 <li class="sidebar-link" onclick="activePage('achievements',this)"><a href="#achievements" >Achievements</a></li>
                 <li class="sidebar-link" onclick="activePage('ranks',this)"><a href="#ranks" >Rank Holders</a></li>
@@ -98,14 +103,8 @@
 
         <div id="MyCollege-Events" class="section hidden-page-content">
             <div id="myclg-event">
-                <div class="myclg-content ">
-                    <div>
-                        <h3 class="event-name ">EVENT NAME</h3>
-                        <p>description</p>
-                        <div class="imp-buttons ">
-                            <button class="button ">View Registered students</button>
-                        </div>
-                    </div>
+                <div class="myclg-content">
+                    
                 </div>
             
                 <div>
@@ -122,7 +121,16 @@
                         <div class="form-group">
                             <label for="new-event">Event Name:<span class="required-star">*</span></label>
                             <input type="text" id="new-event" name="new-event">
-                            <small id="new-event-req" class="hidden"></small>
+                            <small id="new-event-name-req" class="hidden"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="event-type">Event Type:</label>
+                            <select id="event-type" name="event-type">
+                                <option value="">Select</option>
+                                <option value="intra">Intra Event</option>
+                                <option value="inter">Inter Event</option>
+                            </select>
+                            <small id="event-type-req" class="hidden"></small>
                         </div>
                         <div class="form-group ">
                             <label for="event-date">Event date:<span class="required-star">*</span></label>
@@ -132,7 +140,7 @@
                         <div class="form-group">
                             <label for="new-event-description">Description:<span class="required-star">*</span></label>
                             <textarea type="text" rows="3" cols="100" id="new-event-description" name="new-event-description"></textarea>
-                            <small id="new-event-description-req" class="hidden"></small>
+                            <small id="event-description-req" class="hidden"></small>
                         </div>
                         <div class="form-group">
                             <label for="file">Upload file: <small style= "font-style: italic">optional</small></label>
@@ -140,8 +148,8 @@
                             <!-- <small id="email-req" class="hidden"></small> -->
                         </div>
                         
-                        <small id="submitAlertmsg" class="hidden"></small>
-                        <button type="submit " id="submit-btn" >Submit</button>
+                        <small id="createAlertmsg" class="hidden"></small>
+                        <button type="submit" id="create-btn" >Create</button>
                     </form>
                 </div>
             </div>   

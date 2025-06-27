@@ -199,6 +199,7 @@ aside .sidebar{
 
 #otherclg-event {
     flex: 2;
+    /* display: none; */
     /* margin-left: 190px; */
     margin-top: 78px;
     margin-left: 10.9%;
@@ -383,9 +384,9 @@ footer {
 }
 
 .form-group input,
-.form-group select {
+.form-group select, .form-group textarea{
     width: 100%;
-    padding: 8px;
+    padding: 7px;
     border: 1px solid #aaa;
     border-radius: 5px;
 }
@@ -393,7 +394,7 @@ footer {
 .required-star, .hidden{
     color: rgb(201, 25, 25);
 }
-#submitAlertmsg{
+#submitAlertmsg, #createAlertmsg{
     display:block;
 }
 
@@ -402,7 +403,7 @@ footer {
 }
 
 /* Submit button */
-#submit-btn{
+#submit-btn, #create-btn{
     background: #0d2c5e;
     color: white;
     padding: 10px 20px;
