@@ -216,7 +216,7 @@ aside .sidebar{
     margin-top: 78px;
 }
 
-#otherclg-event::before{
+/* #otherclg-event::before{
     content: '';
     position: absolute;
     top: 0px;
@@ -225,7 +225,7 @@ aside .sidebar{
     height: 100%;
     background-color: rgba(9, 9, 9, 0.45);
     z-index: 0;
-}
+} */
 #myclg-event{
     z-index: 5;
 }

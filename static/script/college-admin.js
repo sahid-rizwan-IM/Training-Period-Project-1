@@ -346,12 +346,10 @@ function activePage(pageId, clickedId){
         // section.innerHTML = "";
     });
 
-    // Show the selected section
     const pageId1 = document.getElementById(pageId);
     pageId1.classList.remove('hidden-page-content');
     // pageId1.style.flex = 2;
 
-    // Remove active class from all links
     document.querySelectorAll('.sidebar-link').forEach(link => {
         link.classList.remove('active');
     });
@@ -364,15 +362,16 @@ function activePage(pageId, clickedId){
 const eventNameInput = document.getElementById("new-event");
 const eventNameAlertmsg = document.getElementById("new-event-name-req");
 function validateEventName(){
-    if(eventNameInput.value.trim() === ""){
+    const myEventName = eventNameInput.value.trim();
+    if(myEventName == ""){
         eventNameAlertmsg.textContent = "Event Name Required";
         return false;
     }
-    else if(eventNameInput.value.length<10){
+    else if(myEventName.length<10){
         eventNameAlertmsg.textContent = "Minimum 10 characters needed";
         return false;
     }
-    else if(eventNameInput.value.length>50){
+    else if(myEventName.length>50){
         eventNameAlertmsg.textContent = "Maximum 50 characters allowed";
         return false;
     }
@@ -385,7 +384,8 @@ function validateEventName(){
 const eventTypeSelection = document.getElementById("event-type");
 const eventTypeAlertmsg = document.getElementById("event-type-req");
 function validateEventType(){
-    if(eventTypeSelection.value.trim() === ""){
+    // const myEventType = eventTypeSelection.value.trim();
+    if(eventTypeSelection.value == ""){
         eventTypeAlertmsg.textContent = "Select any event type";
         return false;
     }
@@ -398,15 +398,15 @@ function validateEventType(){
 const eventDescInput = document.getElementById("new-event-description");
 const eventDescAlertmsg = document.getElementById("event-description-req");
 function validateEventDescription(){
-    if(eventDescInput.value.trim() === ""){
+    if(eventDescInput.value.trim() == ""){
         eventDescAlertmsg.textContent = "Event Description Required";
         return false;
     }
-    else if(eventDescInput.value.length<20){
+    else if(eventDescInput.value.trim().length<30){
         eventDescAlertmsg.textContent = "Minimum 20 characters needed";
         return false;
     }
-    else if(eventDescInput.value.length>500){
+    else if(eventDescInput.value.trim().length>700){
         eventDescAlertmsg.textContent = "Maximum 500 characters allowed";
         return false;
     }
@@ -425,8 +425,6 @@ function validateEventDate(){
     const presentDate = String(today.getDate()).padStart(2, `0`);
     const minDate = `${currentYear}-${currentMonth}-${presentDate}`;
     eventDateChoose.min = minDate;
-    // const today = new Date().toISOString().split("T")[0];
-    // eventDateChoose.min = today;
     if (eventDateChoose.value===""){
         eventDateAlertmsg.textContent = "Choose a date here!";
         return false;
@@ -466,25 +464,29 @@ createEventForm.addEventListener("submit", function(e){
         closePopup();
         const alertMsgs = document.querySelectorAll("small");
         alertMsgs.forEach(msg => msg.textContent = "");
-        
-        const newmyClgEvents ={
-            eventName: eventNameInput.value.trim(), 
+
+        const newEvents =[
+            {
+                eventName: document.getElementById("new-event").value, 
                 eventType: eventTypeSelection.value, 
-                eventDate: eventDateChoose.value, 
+                eventDate: eventDateChoose.value,
                 eventDescription: eventDescInput.value.trim(), 
                 eventFile: eventFile
-        };
-        const newEvents = JSON.parse(localStorage.getItem('newmyClgEvents')) || [];
+            }
+        ];
+        console.log(newEvents);
+        const storedEvents = JSON.parse(localStorage.getItem('newmyClgEvents')) || [];
 
-        newEvents.push(newmyClgEvents);
-        localStorage.setItem('newmyClgEvents',JSON.stringify(newEvents));
+        storedEvents.push(newEvents);
+        localStorage.setItem('newmyClgEvents',JSON.stringify(storedEvents));
+        debugger
 
         const myClgEvent = document.querySelector(".myclg-content");
-        newmyClgEvents.forEach(myEvents => {
+        storedEvents.forEach(myEvents => {
             const ownEvents = `
                 <div>
                     <h3 class="event-name ">${myEvents.eventName}</h3>
-                    <h5>${myEvents.eventType} | ${myEvents.eventDate}</h5>
+                    <h4>${myEvents.eventType} | ${myEvents.eventDate}</h4>
                     <p>${myEvents.eventDescription}</p>
                     <div class="imp-buttons ">
                         <button class="button ">View Registered students</button>
@@ -493,6 +495,7 @@ createEventForm.addEventListener("submit", function(e){
             `;
             myClgEvent.innerHTML += ownEvents;
         });
+        
     } 
     else {
         validateEventName();
@@ -504,3 +507,9 @@ createEventForm.addEventListener("submit", function(e){
     
 });
 
+
+
+function clearEvents() {
+    localStorage.removeItem("newmyClgEvents");
+    alert("All events cleared!");
+}
