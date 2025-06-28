@@ -155,21 +155,9 @@ nav a:hover::after{
     background-color: rgba(252, 248, 248, 0.4);
     padding: 10px 30px 0px 20px;
     border-radius: 8px;
-    /* background-image: url(/images/—Pngtree—black\ network\ with\ dots\ on_1160867.png); */
-    /* background-size: 9990px;
-    position: relative; */
     transition: all 0.5s;
 }
-/* .roles::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* background-color: rgba(9, 9, 9, 0.4); */
-    /* z-index: 0; */
-/* } */
+
 .roles:hover{
     transform: scale(1.04);
 }
