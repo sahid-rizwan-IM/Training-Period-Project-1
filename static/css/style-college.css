@@ -105,33 +105,20 @@ i .profile {
 }
 
 
-/* SIDE MENU
-aside .sidebar{
-    display:inline;
-    margin-top: 90px;
-} */
-
 .sidebar {
     z-index: 10;
     margin-top: 78px;
-    /* height:60vh; */
+    /* height:100vh; */
     position: fixed;
     top:0;
     left:0;
-    /* color: antiquewhite; */
     background-color: #ffffff;
-    /* flex: 1; */
-    /* text-align: center; */
-    /* position: fixed; */
     box-shadow: 2px 4px 5px rgb(193, 126, 222);
 }
 
 .sidebar a {
     text-decoration: none;
     color: #343148FF;
-    /* margin-top: 10px; */
-    /* display: block; */
-    /* padding: 20px; */
 }
 
 .sidebar ul {
@@ -162,10 +149,6 @@ aside .sidebar{
 }
 .sidebar a{
     color: rgb(251, 248, 248);
-    /* background-color: #0d2c5e; */
-    /* background: linear-gradient(rgb(52, 72, 184),rgb(65, 59, 50));
-    background-clip: text;
-    -webkit-text-fill-color: transparent; */
 }
 
 .section{
@@ -182,22 +165,12 @@ aside .sidebar{
     transform: scale(1.1);
     z-index: 1000;
     /* border: 1px solid rgb(182, 52, 150); */
-    /* box-shadow: 2px 0px 2px #343148FF, 2px 2px 25px #343148FF, 2px 2px 50px #343148FF; */
+    box-shadow: 2px 0px 2px #343148FF, 2px 2px 25px #343148FF;
 
     /* border-left: 4px solid #F3AA60FF; */
 }
 
-/* .sidebar-link.active a{
-    color: white;
-} */
-
-/* .sidebar a.active1{
-    color: #0c0c0c;
-;
-} */
-/*Other clg content*/
-
-#otherclg-event {
+#otherclg-event{
     flex: 2;
     /* display: none; */
     /* margin-left: 190px; */
@@ -209,14 +182,28 @@ aside .sidebar{
     grid-template-columns: repeat(3, 1fr);
     /* scro; */
 }
+ #MyCollege-Events{
+    flex: 2;
+    /* display: none; */
+    /* margin-left: 190px; */
+    margin-top: 78px;
+    margin-left: 10.9%;
+    display: grid;
+    /* grid-template-columns: repeat(2, 4fr); */
+    background-image: url(/images/win\ cele.jpg);
+    background-size: 2500px;
+ }
 
-#MyCollege-Events, #achievements, #ranks, #approving{
+
+#achievements, #ranks, #approving{
     background-image: url(/images/win\ cele.jpg);
     background-size: 2500px;
     margin-top: 78px;
+    flex: 2;
+    margin-left: 10.9%;
 }
 
-/* #otherclg-event::before{
+#otherclg-event::before, #MyCollege-Events::before{
     content: '';
     position: absolute;
     top: 0px;
@@ -225,13 +212,12 @@ aside .sidebar{
     height: 100%;
     background-color: rgba(9, 9, 9, 0.45);
     z-index: 0;
-} */
+}
 #myclg-event{
     z-index: 5;
 }
 
-.otherclg-content,
-.myclg-content{
+.otherclg-content{
     /* width: 25rem; */
     max-height: 100vh;
     background-color: rgb(240, 240, 240);
@@ -239,12 +225,34 @@ aside .sidebar{
     z-index: 7;
     margin: 20px 10px 10px 15px;
     border-radius: 5px;
+    display:grid;
     border: 1px solid black;
     box-shadow: 2px 0px 2px rgb(11, 11, 12), 2px 2px 25px rgb(13, 12, 14), 2px 2px 12px rgb(17, 16, 16);
     transition: all 0.3s ease-in-out;
 }
-
-.otherclg-content:hover{
+.myclg-content{
+       /* margin: 10px; */
+    max-height: 100vh;
+    color: rgb(72, 67, 99);
+    z-index: 7;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* gap: 40px; */
+    /* justify-content: space-evenly; */
+}
+.each-my-events{
+    background-color: rgb(240, 240, 240);
+    margin: 10px;
+    border: 1px solid black;
+    margin: 20px 10px 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 0px 2px rgb(11, 11, 12), 2px 2px 25px rgb(13, 12, 14), 2px 2px 12px rgb(17, 16, 16);
+}
+.each-my-events h2, h4, p{
+    padding-left:10px;
+}
+.otherclg-content:hover, .each-my-events:hover{
     transform: scale(0.95);
 }
 
@@ -318,7 +326,7 @@ footer {
 
 /*Other College Event descripion pop up*/
 
-.desc-popup, .event-reg-popup, #create-event-popup {
+.desc-popup, .event-reg-popup, #create-event-popup, #viewRegStudents-popup {
   position: fixed;
   top: 0; 
   left: 0;
@@ -326,24 +334,20 @@ footer {
   height: 100%;
   background-color: rgba(0,0,0,0.6);
   display: none;
-  justify-content: center;
-  align-items: center;
+  justify-content: center !important;
+  align-items: center !important;
   z-index: 999;
 }
-/* .event-reg-popup{
-    margin: 20px 0px;
-} */
 
-.popup-content, .form-popup-content, .create-event-popup-content{
+.popup-content, .form-popup-content, .create-event-popup-content, .registered-popup-content{
   background: #e9d0b6;
   padding: 30px;
   border-radius: 10px;
-  max-height: 800px;
+  max-height: 1000px;
   max-width: 800px;
   animation: slideDown 0.3s ease-in-out;
   position: relative;
 }
-
 @keyframes slideDown {
     from { 
         transform: translateY(-50px); 
@@ -354,6 +358,21 @@ footer {
         opacity: 1; 
     }
 }
+.create-event-popup-content, .registered-popup-content{
+    justify-content: center;
+    align-content: center;
+}
+
+.pop-title{
+    text-align: center;
+}
+
+.registered-table tr th, td{
+    border:1px solid black;
+    padding: 5px;
+    margin: 5px;
+}
+
 
 .close-btn {
   position: absolute;
@@ -399,7 +418,7 @@ footer {
 }
 
 .hidden-page-content{
-    display: none;
+    display: none !important;
 }
 
 /* Submit button */
