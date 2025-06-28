@@ -141,15 +141,21 @@ function otherClgEventDescPopup(collegeName, eventName, date, description) {
 }
 
 function closePopup(){
+    // to close description popup
     document.querySelector(".desc-popup").style.display = "none";
-    document.querySelector(".event-reg-popup").style.display = "none";
-    document.querySelector("#create-event-popup").style.display = "none";
+    // to close register form popup
+    document.querySelector(".event-reg-popup").style.display = "none";  
     const form = document.getElementById("reg-form");
     form.reset();
+    // to close create form popup
+    document.querySelector("#create-event-popup").style.display = "none";
     const createEventForm = document.getElementById("create-form");
     createEventForm.reset();
+    // to clear all the alert msg in both forms
     const alertMsgs = document.querySelectorAll("small");
     alertMsgs.forEach(msg => msg.textContent = "");
+    // to close view registered students popup
+    document.querySelector("#viewRegStudents-popup").style.display = "none";
 
 }
 
@@ -158,8 +164,8 @@ function registrationFormDynamicDetials(collegeName, eventName){
     const registerationCardDetails = document.getElementById("reg-card-details")
     const regDetails = `
         <label for="register-popup" class="close-btn" onclick="closePopup()">&times;</label>
-        <h3 id="regCollegeName" style="text-align: center">${collegeName}</h3>
-        <h2 id="regEventName" style="text-align: center">Register for Event - ${eventName}</h2>
+        <h3 id="regCollegeName" class="pop-title">${collegeName}</h3>
+        <h2 id="regEventName" class="pop-title">Register for Event - ${eventName}</h2>
     `;
 
         registerationCardDetails.innerHTML = regDetails;
@@ -338,6 +344,11 @@ form.addEventListener("submit", function(e){
 function opencreateform(){
     const createEventForm = document.getElementById("create-event-popup");
     createEventForm.style.display = "block";
+    
+}
+function toViewRegisteredStudents(){
+    const registeredStudents = document.getElementById("viewRegStudents-popup");
+    registeredStudents.style.display = "block";
 }
 
 function activePage(pageId, clickedId){
@@ -465,7 +476,51 @@ createEventForm.addEventListener("submit", function(e){
         const alertMsgs = document.querySelectorAll("small");
         alertMsgs.forEach(msg => msg.textContent = "");
 
-        const newEvents =[
+        // const newEvents =[
+        //     {
+        //         eventName: document.getElementById("new-event").value, 
+        //         eventType: eventTypeSelection.value, 
+        //         eventDate: eventDateChoose.value,
+        //         eventDescription: eventDescInput.value.trim(), 
+        //         eventFile: eventFile
+        //     }
+        // ];
+        // console.log(newEvents);
+        // const storedEvents = JSON.parse(localStorage.getItem('newmyClgEvents')) || [];
+
+        // storedEvents.push(newEvents);
+        // localStorage.setItem('newmyClgEvents',JSON.stringify(storedEvents));
+        // debugger
+
+        // const myClgEvent = document.querySelector(".myclg-content");
+        // storedEvents.forEach(myEvents => {
+        //     const ownEvents = `
+        //         <div class="each-my-events">
+        //             <div>
+        //             <h3 class="event-name ">${myEvents.eventName}</h3>
+        //             <h4>${myEvents.eventType} | ${myEvents.eventDate}</h4>
+        //             <p>${myEvents.eventDescription}</p>
+        //             </div>
+        //         </div>
+        //             <div class="imp-buttons ">
+        //                 <button class="button ">View Registered students</button>
+        //             </div>
+        //     `;
+        //     myClgEvent.innerHTML += ownEvents;
+        // });
+        
+    } 
+    else {
+        validateEventName();
+        validateEventType();
+        validateEventDescription();
+        validateEventDate();
+        alert("Please, enter the valid and required details");
+    }
+    
+});
+
+let newEvents =[
             {
                 eventName: document.getElementById("new-event").value, 
                 eventType: eventTypeSelection.value, 
@@ -484,30 +539,19 @@ createEventForm.addEventListener("submit", function(e){
         const myClgEvent = document.querySelector(".myclg-content");
         storedEvents.forEach(myEvents => {
             const ownEvents = `
-                <div>
-                    <h3 class="event-name ">${myEvents.eventName}</h3>
+                <div class="each-my-events">
+                    <div>
+                    <h2 class="event-name ">${myEvents.eventName}</h2>
                     <h4>${myEvents.eventType} | ${myEvents.eventDate}</h4>
                     <p>${myEvents.eventDescription}</p>
+                    </div>
                     <div class="imp-buttons ">
-                        <button class="button ">View Registered students</button>
+                        <button class="button" onclick="toViewRegisteredStudents()">View Registered students</button>
                     </div>
                 </div>
             `;
             myClgEvent.innerHTML += ownEvents;
         });
-        
-    } 
-    else {
-        validateEventName();
-        validateEventType();
-        validateEventDescription();
-        validateEventDate();
-        alert("Please, enter the valid and required details");
-    }
-    
-});
-
-
 
 function clearEvents() {
     localStorage.removeItem("newmyClgEvents");
