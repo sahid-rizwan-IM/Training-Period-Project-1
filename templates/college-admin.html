@@ -117,7 +117,7 @@
             <div id="create-event-popup">   
                 <div class="create-event-popup-content">
                     <label for="create-popup" class="close-btn" onclick="closePopup()">&times;</label>
-                    <h2 style="text-align: center">Create a new event</h2>
+                    <h2 class="pop-title">Create a new event</h2>
                     <form id="create-form">
                         <div class="form-group">
                             <label for="new-event">Event Name:<span class="required-star">*</span></label>
@@ -125,7 +125,7 @@
                             <small id="new-event-name-req" class="hidden"></small>
                         </div>
                         <div class="form-group">
-                            <label for="event-type">Event Type:</label>
+                            <label for="event-type">Event Type:<span class="required-star">*</span></label>
                             <select id="event-type" name="event-type">
                                 <option value="">Select</option>
                                 <option value="intra">Intra Event</option>
@@ -153,8 +153,40 @@
                         <button type="submit" id="create-btn" >Create</button>
                     </form>
                 </div>
-            </div>   
+            </div>  
+            <div id="viewRegStudents-popup">
+                <div class="registered-popup-content">
+                    <label for="viewRegStudents-popup" class="close-btn" onclick="closePopup()">&times;</label>
+                    <h4 class="pop-title">Registered students</h4>
+                    <h2 class="pop-title">For the event - EVENT NAME</h2>
+                    <table class="registered-table">
+                        <tr>
+                            <th>Full Name</th>
+                            <th>College code</th>
+                            <th>college Name</th>
+                            <th>Department</th>
+                            <th>Year</th>
+                        </tr>
+                        <tr>
+                            <td>Sahid</td>
+                            <td>8203</td>
+                            <td>A.V.C. College of Engineering</td>
+                            <td>Information Technology</td>
+                            <td>4th year</td>
+                        </tr>
+                        <tr>
+                            <td>Kayal Vizhi</td>
+                            <td>8203</td>
+                            <td>A.V.C. College of Engineering</td>
+                            <td>Information Technology</td>
+                            <td>4th year</td>
+                        </tr>
+                    </table>
+                </div>
+            </div> 
         </div>
+
+        
 
         <div id="achievements" class="section hidden-page-content">Achievements Content</div>
         <div id="ranks" class="section hidden-page-content">Rank Holders Content</div>
