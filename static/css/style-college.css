@@ -98,7 +98,7 @@ i .profile {
 
 #dash-main {
     display: flex;
-    /* height: 100%; */
+    /* height: 100vh; */
     top: 0;
     background: white;
     position: relative;
@@ -122,15 +122,12 @@ i .profile {
 }
 
 .sidebar ul {
-    /* padding: 20px; */
     font-size: 16px;
     margin: 0px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 500;
-    /* padding: 6px 2px; */
     text-align: center;
     padding: 0px;
-    /* box-shadow: 2px 4px 5px rgb(38, 38, 38); */
     transition: all 0.2s ease;
 }
 .sidebar ul li{
@@ -164,10 +161,7 @@ i .profile {
     font-weight: bold;
     transform: scale(1.1);
     z-index: 1000;
-    /* border: 1px solid rgb(182, 52, 150); */
-    box-shadow: 2px 0px 2px #343148FF, 2px 2px 25px #343148FF;
-
-    /* border-left: 4px solid #F3AA60FF; */
+    box-shadow: 2px 0px 2px #343148FF, 2px 2px 25px #343148FF, 2px 2px 25px #343148FF;
 }
 
 #otherclg-event{
@@ -359,8 +353,8 @@ footer {
     }
 }
 .create-event-popup-content, .registered-popup-content{
-    justify-content: center;
-    align-content: center;
+    justify-self: center;
+
 }
 
 .pop-title{
