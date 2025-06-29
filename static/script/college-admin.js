@@ -199,7 +199,6 @@ function validatecollegeCode(){
             collegecodeAlertmsg.textContent = "only 4 digit is allowed";
             return false;
         }
-        
         else{
             collegecodeAlertmsg.textContent = "";
             return true;
@@ -265,6 +264,7 @@ function validateEmail(){
 const departmentName = document.getElementById("dept");
 const deptnameAlertmsg = document.getElementById("dept-req");
 function validateDepartment(){
+
     const deptName = departmentName.value.trim();
     if(deptName==""){
         deptnameAlertmsg.textContent = "Department is required";
@@ -288,9 +288,11 @@ const yearSelectionAlertmsg = document.getElementById("year-req")
 function validateYearSelection(){
     if(yearSelection.value == ''){
         yearSelectionAlertmsg.textContent = "Select your year";
+        return false;
     }
     else{
         yearSelectionAlertmsg.textContent = "";
+        return true;
     }
 }
 
@@ -320,11 +322,13 @@ form.addEventListener("submit", function(e){
             validateYearSelection();
 
     if (isValid) {
-        alert("You have registered for the event successfully!")
+        alert("You have registered for the event successfully!");
         message.textContent = "Registered successfully!";
         message.style.color = "green";
         form.reset();
-        closePopup();
+        setTimeout(()=>{
+            closePopup();
+        },1000);
         const alertMsgs = document.querySelectorAll("small");
         alertMsgs.forEach(msg => msg.textContent = "");
     } 

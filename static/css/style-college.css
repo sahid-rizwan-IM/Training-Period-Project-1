@@ -364,6 +364,7 @@ footer {
 .registered-table tr th, td{
     border:1px solid black;
     padding: 5px;
+    text-align: center;
     margin: 5px;
 }
 
@@ -425,6 +426,9 @@ footer {
     cursor: pointer;
     left: 30px;
     margin-left:80%;
+}
+#submitAlertmsg{
+    margin-left:60%;
 }
 
 /* .register-form-box {
