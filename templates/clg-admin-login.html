@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College-Admin</title>
+    <link rel="stylesheet" href="/static/css/style-clg-login.css">
+</head>
+<body>
+    <!-- header section-->
+    <div class="main-container">
+        <header class="header">
+            <div>
+                <h2>Multi College Event Platform</h2>
+            </div>
+            <nav>
+                <ul id="sidemenu">
+                    <li><a class="nav-link" href="/templates/home.html">Home</a></li>
+                </ul>
+                <button class="logout"><a style="color:#e9d0b6" href="#instruction">Reminding Points</a></button>
+            </nav>
+        </header>
+    </div>
+    <div id="main-content">
+        <div id="loginFormContent">
+            <h1>Login</h1>
+            <form id="loginForm">
+                <input type="text" id="admin-clg-code" name="admin-clg-code" placeholder="Enter Collegecode">
+                <small id="admin-clg-code-req" class="login-hidden">required</small>
+
+                <input type="email" id="admin-email" name="admin-email" placeholder="Enter Email">
+                <small id="admin-email-req" class="login-hidden">required</small>
+
+                <input type="password" id="admin-pass" name="admin-pass" placeholder="Passcode">
+                <small id="admin-pass-req" class="login-hidden">required</small>
+
+                <button id="login-btn"><a href="/templates/college-admin.html">Sign in</a></button>
+
+                <p>New to this? <a href="#" class="changeForm" onclick="openSignUpForm()">Sign Up Here</a></p>
+            </form>
+        </div>
+
+        <div id="signupFormContent" class="hidden-form">
+            <h1>Register</h1>
+            <form id="signupForm">
+                <input type="text" id="admin-reg-clg-code" name="admin-reg-clg-code" placeholder="Enter Collegecode">
+                <small id="admin-reg-clg-code-req" class="signup-hidden">required</small>
+
+                <input type="text" id="admin-reg-clg-name" name="admin-reg-clg-name" placeholder="Enter Collegename">
+                <small id="admin-reg-clg-name-req" class="signup-hidden">required</small>
+
+                <input type="email" id="admin-reg-email" name="admin-reg-email" placeholder="Enter Email">
+                <small id="admin-reg-email-req" class="signup-hidden">required</small>
+
+                <input type="file" id="logo-image" name="logo-image" class="file-input">
+                <small id="logo-image-req" class="signup-hidden">required</small>
+
+                <input type="password" id="admin-reg-pass" name="admin-reg-pass" placeholder="Passcode">
+                <small id="admin-reg-pass-req" class="signup-hidden">required</small>
+
+                <input type="password" id="admin-reg-confirm-pass" name="admin-reg-confirm-pass" placeholder="Confirm Passcode">
+                <small id="admin-reg-confirm-pass-req" class="signup-hidden">required</small>
+
+                <button id="signup-btn"> Sign Up </button>
+
+                <p>You have an account already? <a href="#" onclick="openLoginForm()">Login Here</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="/static/script/clg-login.js"></script>
+</body>
+</html>
