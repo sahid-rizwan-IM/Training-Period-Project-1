@@ -17,28 +17,40 @@
                 <ul id="sidemenu">
                     <li><a class="nav-link" href="/templates/home.html">Home</a></li>
                 </ul>
-                <button class="logout"><a style="color:#e9d0b6" href="#instruction">Reminding Points</a></button>
+                <button class="remind-btn"><a style="color:#e9d0b6" onclick="openAdminRemindPonits()">Reminding Points</a></button>
             </nav>
         </header>
     </div>
+
     <div id="main-content">
         <div id="loginFormContent">
             <h1>Login</h1>
             <form id="loginForm">
                 <input type="text" id="admin-clg-code" name="admin-clg-code" placeholder="Enter Collegecode">
-                <small id="admin-clg-code-req" class="login-hidden">required</small>
+                <small id="admin-clg-code-req" class="login-hidden"></small>
 
                 <input type="email" id="admin-email" name="admin-email" placeholder="Enter Email">
-                <small id="admin-email-req" class="login-hidden">required</small>
+                <small id="admin-email-req" class="login-hidden"></small>
 
                 <input type="password" id="admin-pass" name="admin-pass" placeholder="Passcode">
-                <small id="admin-pass-req" class="login-hidden">required</small>
+                <small id="admin-pass-req" class="login-hidden"></small>
 
                 <button id="login-btn"><a href="/templates/college-admin.html">Sign in</a></button>
 
-                <p>New to this? <a href="#" class="changeForm" onclick="openSignUpForm()">Sign Up Here</a></p>
+                <p>New to this? <a href="#" class="changeForm" >Sign Up Here</a></p>
             </form>
         </div>
+        <div id="overlay">
+            <div id="reminding-points">
+                <label class="closePopup" onclick="closePopup()">&times;</label>
+                <li>Register(if new) or login to admin dashboard</li>
+                <li>Post inter and intra college events</li>
+                <li>View other college events and profiles</li>
+                <li>Enhance your college profile</li>
+                <li>Approve student registrations</li>
+            </div>
+        </div>
+        
 
         <div id="signupFormContent" class="hidden-form">
             <h1>Register</h1>
