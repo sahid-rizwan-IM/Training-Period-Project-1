@@ -13,6 +13,15 @@ function openLoginForm(){
     signupForm.classList.add("hidden-form");
     maincontent.style.height = "100vh";
 }
+document.getElementById("login-btn").addEventListener("click", function() {
+    window.location.href = "/templates/college-admin.html";
+});
+
+// document.getElementById("signup-btn").addEventListener("click", function() {
+//     window.location.href = "#loginFormContent";
+//     window.location.href = "/templates/clg-admin-login.html";
+
+// });
 
 const adminRemindPoints = document.getElementById("reminding-points");
 function openAdminRemindPonits(){
@@ -85,3 +94,47 @@ adminLoginForm.addEventListener("submit", function(e) {
         alert("Enter the valid and required fields!");
     }
 });
+
+//ADMIN SIGN UP FORM VALIDATION
+const admincollegeName = document.getElementById("admin-reg-clg-name");
+const admincollegenameAlertmsg = document.getElementById("admin-reg-clg-name-req");
+function validatecollegeName(){
+    const clgName = admincollegeName.value.trim();
+    if(clgName==""){
+        admincollegenameAlertmsg.textContent = "Enter the College Name";
+        return false;
+    }
+    else if(clgName.length<3){
+        admincollegenameAlertmsg.textContent = "Minimum 3 characters Needed";
+        return false;
+    }
+    else if(clgName.length>60){
+        admincollegenameAlertmsg.textContent = "Maximum 60 characters are allowed";
+        return false;
+    }
+    else{
+        admincollegenameAlertmsg.textContent = "";
+        return true;
+    }
+}
+
+const adminPasscode = document.getElementById("admin-reg-pass");
+const adminPasscodeAlertmsg = document.getElementById("admin-reg-pass-req");
+function validateAdminPasscode(){
+    const isValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{8,12}$/.test(password) &&
+                    !/\s/.test(password) && 
+                    (password.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g) || []).length <= 1;
+    if(adminPasscode = ""){
+        adminPasscodeAlertmsg.textContent = "Passcode is required";
+        return false;
+    }
+    else if(!isValid.test(adminPasscode)){
+        adminPasscodeAlertmsg.textContent = "Satisfy the required conditions";
+        return false;
+    }
+    else{
+        adminPasscodeAlertmsg.textContent = "";
+        return true;
+    }
+}
+

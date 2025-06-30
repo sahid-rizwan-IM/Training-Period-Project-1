@@ -483,8 +483,6 @@ createEventForm.addEventListener("submit", function(e){
             eventDescription: $("#new-event-description").val(),
             eventFile: eventFile
         };
-         // or $("#file")[0].files[0];
-        // console.log(newEvents);
 
         const storedEvents = JSON.parse(localStorage.getItem('newmyClgEvents')) || [];
 
@@ -537,7 +535,7 @@ function displayStoredEvents(){
                     <h3>${myEvents.eventType} | ${myEvents.eventDate}</h3>
                     <p>${myEvents.eventDescription}</p>
                 </div>
-                <div class="imp-buttons ">
+                <div class="imp-buttons">
                     <button class="button" onclick="toViewRegisteredStudents()">View Registered students</button>
                 </div>
             </div>

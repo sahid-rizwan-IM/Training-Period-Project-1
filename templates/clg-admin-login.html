@@ -26,16 +26,16 @@
         <div id="loginFormContent">
             <h1>Login</h1>
             <form id="loginForm">
-                <input type="text" id="admin-clg-code" name="admin-clg-code" placeholder="Enter Collegecode">
+                <input type="text" id="admin-clg-code" name="admin-clg-code" placeholder="Collegecode">
                 <small id="admin-clg-code-req" class="login-hidden"></small>
 
-                <input type="email" id="admin-email" name="admin-email" placeholder="Enter Email">
+                <input type="email" id="admin-email" name="admin-email" placeholder="Email">
                 <small id="admin-email-req" class="login-hidden"></small>
 
                 <input type="password" id="admin-pass" name="admin-pass" placeholder="Passcode">
                 <small id="admin-pass-req" class="login-hidden"></small>
 
-                <button id="login-btn" onclick="windows.location.href('/templates/college-admin.html')">Sign in</button>
+                <button id="login-btn">Sign in</button>
 
                 <p>New to this? <a href="#" class="changeForm" onclick="openSignUpForm()" >Sign Up Here</a></p>
             </form>
@@ -55,14 +55,14 @@
         <div id="signupFormContent" class="hidden-form">
             <h1>Register</h1>
             <form id="signupForm">
-                <input type="text" id="admin-reg-clg-code" name="admin-reg-clg-code" placeholder="Enter Collegecode">
-                <small id="admin-reg-clg-code-req" class="signup-hidden"></small>
+                <input type="text" id="admi-clg-code" name="admin-clg-code" placeholder="Collegecode">
+                <small id="admin-clg-code-req" class="signup-hidden"></small>
 
-                <input type="text" id="admin-reg-clg-name" name="admin-reg-clg-name" placeholder="Enter Collegename">
+                <input type="text" id="admin-reg-clg-name" name="admin-reg-clg-name" placeholder="Collegename">
                 <small id="admin-reg-clg-name-req" class="signup-hidden"></small>
 
-                <input type="email" id="admin-reg-email" name="admin-reg-email" placeholder="Enter Email">
-                <small id="admin-reg-email-req" class="signup-hidden"></small>
+                <input type="email" id="admin-email" name="admin-email" placeholder="Email">
+                <small id="admim-email-req" class="signup-hidden"></small>
 
                 <input type="file" id="logo-image" name="logo-image" class="file-input">
                 <small id="logo-image-req" class="signup-hidden"></small>
@@ -75,7 +75,7 @@
 
                 <button id="signup-btn"> Sign Up </button>
 
-                <p>You have an account already? <a href="#" onclick="openLoginForm()">Login Here</a></p>
+                <p>You have an account already? <a href="#" class="changeForm" onclick="openLoginForm()">Login Here</a></p>
             </form>
         </div>
     </div>
