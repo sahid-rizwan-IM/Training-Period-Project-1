@@ -35,9 +35,9 @@
                 <input type="password" id="admin-pass" name="admin-pass" placeholder="Passcode">
                 <small id="admin-pass-req" class="login-hidden"></small>
 
-                <button id="login-btn"><a href="/templates/college-admin.html">Sign in</a></button>
+                <button id="login-btn" onclick="windows.location.href('/templates/college-admin.html')">Sign in</button>
 
-                <p>New to this? <a href="#" class="changeForm" >Sign Up Here</a></p>
+                <p>New to this? <a href="#" class="changeForm" onclick="openSignUpForm()" >Sign Up Here</a></p>
             </form>
         </div>
         <div id="overlay">
@@ -56,22 +56,22 @@
             <h1>Register</h1>
             <form id="signupForm">
                 <input type="text" id="admin-reg-clg-code" name="admin-reg-clg-code" placeholder="Enter Collegecode">
-                <small id="admin-reg-clg-code-req" class="signup-hidden">required</small>
+                <small id="admin-reg-clg-code-req" class="signup-hidden"></small>
 
                 <input type="text" id="admin-reg-clg-name" name="admin-reg-clg-name" placeholder="Enter Collegename">
-                <small id="admin-reg-clg-name-req" class="signup-hidden">required</small>
+                <small id="admin-reg-clg-name-req" class="signup-hidden"></small>
 
                 <input type="email" id="admin-reg-email" name="admin-reg-email" placeholder="Enter Email">
-                <small id="admin-reg-email-req" class="signup-hidden">required</small>
+                <small id="admin-reg-email-req" class="signup-hidden"></small>
 
                 <input type="file" id="logo-image" name="logo-image" class="file-input">
-                <small id="logo-image-req" class="signup-hidden">required</small>
+                <small id="logo-image-req" class="signup-hidden"></small>
 
                 <input type="password" id="admin-reg-pass" name="admin-reg-pass" placeholder="Passcode">
-                <small id="admin-reg-pass-req" class="signup-hidden">required</small>
+                <small id="admin-reg-pass-req" class="signup-hidden"></small>
 
                 <input type="password" id="admin-reg-confirm-pass" name="admin-reg-confirm-pass" placeholder="Confirm Passcode">
-                <small id="admin-reg-confirm-pass-req" class="signup-hidden">required</small>
+                <small id="admin-reg-confirm-pass-req" class="signup-hidden"></small>
 
                 <button id="signup-btn"> Sign Up </button>
 

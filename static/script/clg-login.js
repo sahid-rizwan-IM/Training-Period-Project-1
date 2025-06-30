@@ -77,7 +77,6 @@ adminLoginForm.addEventListener("submit", function(e) {
     
     if(isValid){
         alert("Login Successfull!");
-
         adminLoginForm.reset();
     }
     else{
