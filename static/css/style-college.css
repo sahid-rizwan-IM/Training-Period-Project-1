@@ -224,7 +224,7 @@ i .profile {
 }
 .myclg-content{
        /* margin: 10px; */
-    max-height: 100vh;
+    max-height: auto;
     color: rgb(72, 67, 99);
     z-index: 7;
     display:grid;
@@ -233,6 +233,7 @@ i .profile {
     /* justify-content: space-evenly; */
 }
 .each-my-events{
+    /* width: 150px; */
     background-color: rgb(240, 240, 240);
     margin: 10px;
     border: 1px solid black;
@@ -243,6 +244,8 @@ i .profile {
 }
 .each-my-events h2, h4, p{
     padding-left:10px;
+    text-wrap: wrap;
+    display:flex;
 }
 .otherclg-content:hover, .each-my-events:hover{
     transform: scale(0.95);
@@ -352,7 +355,10 @@ footer {
 }
 .create-event-popup-content, .registered-popup-content{
     justify-self: center;
+}
 
+.create-event-popup-content{
+    max-width: 500px;
 }
 
 .pop-title{
@@ -410,6 +416,7 @@ footer {
     display:block;
 }
 
+
 .hidden-page-content{
     display: none !important;
 }
@@ -428,27 +435,9 @@ footer {
 #submitAlertmsg{
     margin-left:60%;
 }
-
-/* .register-form-box {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 400px;
-    position: relative;
-    animation: popup 0.3s ease-in-out;
+#createAlertmsg{
+    margin-left:68%;
 }
-
-@keyframes popup {
-    from {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-} */
 
 /*Creating event button*/
 #create-button{

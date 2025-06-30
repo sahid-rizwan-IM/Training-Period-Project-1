@@ -98,7 +98,7 @@ const otherclgEvents = [{
         date: "20th june 2025",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
     }
-]
+];
 
 const otherclgContainer = document.getElementById("otherclg-event");
 otherclgEvents.forEach(event => {
@@ -322,9 +322,11 @@ form.addEventListener("submit", function(e){
             validateYearSelection();
 
     if (isValid) {
+        debugger
         alert("You have registered for the event successfully!");
         message.textContent = "Registered successfully!";
         message.style.color = "green";
+        debugger
         form.reset();
         setTimeout(()=>{
             closePopup();
@@ -472,47 +474,47 @@ createEventForm.addEventListener("submit", function(e){
             validateEventDate();
 
     if (isValid) {
-        alert("You have created a event successfully!");
-        createEventMessage.textContent = "Registered successfully!";
-        createEventMessage.style.color = "green";
-        createEventForm.reset();
-        closePopup();
-        const alertMsgs = document.querySelectorAll("small");
-        alertMsgs.forEach(msg => msg.textContent = "");
 
-        // const newEvents =[
-        //     {
-        //         eventName: document.getElementById("new-event").value, 
-        //         eventType: eventTypeSelection.value, 
-        //         eventDate: eventDateChoose.value,
-        //         eventDescription: eventDescInput.value.trim(), 
-        //         eventFile: eventFile
-        //     }
-        // ];
+        let eventFile = document.getElementById("file").files[0];
+        let newEvents = {
+            eventName: $("#new-event").val(),
+            eventType: $("#event-type").val(),
+            eventDate: $("#event-date").val(),
+            eventDescription: $("#new-event-description").val(),
+            eventFile: eventFile
+        };
+         // or $("#file")[0].files[0];
         // console.log(newEvents);
-        // const storedEvents = JSON.parse(localStorage.getItem('newmyClgEvents')) || [];
 
-        // storedEvents.push(newEvents);
-        // localStorage.setItem('newmyClgEvents',JSON.stringify(storedEvents));
+        const storedEvents = JSON.parse(localStorage.getItem('newmyClgEvents')) || [];
+
+        storedEvents.push(newEvents);
+        localStorage.setItem('newmyClgEvents',JSON.stringify(storedEvents));
         // debugger
 
-        // const myClgEvent = document.querySelector(".myclg-content");
-        // storedEvents.forEach(myEvents => {
-        //     const ownEvents = `
-        //         <div class="each-my-events">
-        //             <div>
-        //             <h3 class="event-name ">${myEvents.eventName}</h3>
-        //             <h4>${myEvents.eventType} | ${myEvents.eventDate}</h4>
-        //             <p>${myEvents.eventDescription}</p>
-        //             </div>
-        //         </div>
-        //             <div class="imp-buttons ">
-        //                 <button class="button ">View Registered students</button>
-        //             </div>
-        //     `;
-        //     myClgEvent.innerHTML += ownEvents;
-        // });
-        
+        alert("You have created a event successfully!");
+        createEventMessage.textContent = "Created Event Successfully!";
+        createEventMessage.style.color = "green";
+        createEventForm.reset();
+        setTimeout(() => {
+            closePopup();
+        }, 1000);
+
+        const myClgEvent = document.querySelector(".myclg-content");
+        const ownEvents = `
+                <div class="each-my-events">
+                    <div>
+                        <h2 class="event-name ">${newEvents.eventName}</h2>
+                        <h3>${newEvents.eventType} | ${newEvents.eventDate}</h3>
+                        <p>${newEvents.eventDescription}</p>
+                    </div>
+                    <div class="imp-buttons ">
+                        <button class="button" onclick="toViewRegisteredStudents()">View Registered students</button>
+                    </div>
+                </div>
+                    
+            `;
+        myClgEvent.innerHTML += ownEvents;  
     } 
     else {
         validateEventName();
@@ -524,38 +526,27 @@ createEventForm.addEventListener("submit", function(e){
     
 });
 
-let newEvents =[
-            {
-                eventName: document.getElementById("new-event").value, 
-                eventType: eventTypeSelection.value, 
-                eventDate: eventDateChoose.value,
-                eventDescription: eventDescInput.value.trim(), 
-                eventFile: eventFile
-            }
-        ];
-        console.log(newEvents);
-        const storedEvents = JSON.parse(localStorage.getItem('newmyClgEvents')) || [];
-
-        storedEvents.push(newEvents);
-        localStorage.setItem('newmyClgEvents',JSON.stringify(storedEvents));
-        debugger
-
-        const myClgEvent = document.querySelector(".myclg-content");
-        storedEvents.forEach(myEvents => {
-            const ownEvents = `
-                <div class="each-my-events">
-                    <div>
+function displayStoredEvents(){
+    const storedEvents = JSON.parse(localStorage.getItem('newmyClgEvents')) || [];
+    const myClgEvent = document.querySelector(".myclg-content");
+    storedEvents.forEach(myEvents => {
+        const ownEvents = `
+            <div class="each-my-events">
+                <div>
                     <h2 class="event-name ">${myEvents.eventName}</h2>
-                    <h4>${myEvents.eventType} | ${myEvents.eventDate}</h4>
+                    <h3>${myEvents.eventType} | ${myEvents.eventDate}</h3>
                     <p>${myEvents.eventDescription}</p>
-                    </div>
-                    <div class="imp-buttons ">
-                        <button class="button" onclick="toViewRegisteredStudents()">View Registered students</button>
-                    </div>
                 </div>
-            `;
-            myClgEvent.innerHTML += ownEvents;
-        });
+                <div class="imp-buttons ">
+                    <button class="button" onclick="toViewRegisteredStudents()">View Registered students</button>
+                </div>
+            </div>
+                
+        `;
+        myClgEvent.innerHTML += ownEvents;
+    }); 
+}
+window.onload = displayStoredEvents();
 
 function clearEvents() {
     localStorage.removeItem("newmyClgEvents");
