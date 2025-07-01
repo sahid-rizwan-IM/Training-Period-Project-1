@@ -178,8 +178,6 @@ i .profile {
 }
  #MyCollege-Events{
     flex: 2;
-    /* display: none; */
-    /* margin-left: 190px; */
     margin-top: 78px;
     margin-left: 10.9%;
     display: grid;
@@ -196,15 +194,15 @@ i .profile {
     margin-top: 78px;
     flex: 2;
     /* z-index: 15; */
-    margin-left: 9.5rem;
+    margin-left: 10.05rem;
 }
 
-#otherclg-event::before, #MyCollege-Events::before, #achievements::before{
+#otherclg-event::before, #MyCollege-Events::before, #achievements::before, #ranks::before{
     content: '';
     position: absolute;
     top: 0px;
-    left: 10.2%;
-    width: 89.8%;
+    left: 10.6%;
+    width: 89.3%;
     height: 100%;
     background-color: rgba(9, 9, 9, 0.45);
     z-index: 0;
@@ -278,8 +276,8 @@ i .profile {
     border-radius: 3px;
 }
 .achieveCardDetils h2,h3,p, a{
-    padding-left: 5px;
-    margin:3px 0px;
+    padding-left: 9px;
+    margin:10px 0px;
 }
 .otherclg-content:hover, .each-my-events:hover, .each-achieve:hover{
     transform: scale(0.95);
@@ -321,7 +319,7 @@ h4 {
     justify-content: center;
 }
 
-.descButton, .regButton, .button, .viewCertBtn {
+.descButton, .regButton, .button, .viewCertBtn{
     border: none;
     border-radius: 5px;
     background-color: pink;
@@ -336,7 +334,9 @@ h4 {
 
 /*Other College Event descripion pop up*/
 
-.desc-popup, .event-reg-popup, #create-event-popup, #viewRegStudents-popup, #create-achieve-popup {
+.desc-popup, .event-reg-popup, 
+#create-event-popup, #viewRegStudents-popup, 
+#create-achieve-popup, #create-rankholders-popup {
   position: fixed;
   top: 0; 
   left: 0;
@@ -349,9 +349,12 @@ h4 {
   z-index: 999;
 }
 
-.popup-content, .form-popup-content, .create-event-popup-content, .registered-popup-content, .create-achieve-popup-content{
+.popup-content, .form-popup-content, 
+.create-event-popup-content, .registered-popup-content, 
+.create-achieve-popup-content, .create-rankholders-popup-content{
   background: #e9d0b6;
   padding: 30px;
+  position: relative;
   border-radius: 10px;
   max-height: 1000px;
   max-width: 800px;
@@ -368,12 +371,14 @@ h4 {
         opacity: 1; 
     }
 }
-.create-event-popup-content, .registered-popup-content, .create-achieve-popup-content{
+.registered-popup-content{
     justify-self: center;
 }
 
-.create-event-popup-content, .create-achieve-popup-content{
-    max-width: 500px;
+.create-event-popup-content, .create-achieve-popup-content, 
+.create-rankholders-popup-content{
+    width: 500px;
+    justify-self: center;
 }
 
 .pop-title{
@@ -438,7 +443,8 @@ h4 {
 }
 
 /* Submit button, create event btn, create achievement btn in popup form*/
-#submit-btn, #create-btn, #create-achieve-btn{
+#submit-btn, #create-btn, #create-achieve-btn,
+#create-rankholder-btn{
     background: #0d2c5e;
     color: white;
     padding: 10px 20px;
@@ -456,7 +462,7 @@ h4 {
 }
 
 /*Creating event button*/
-#create-button, #create-achieve-button{
+#create-button, #create-achieve-button, #create-rankholders-button{
     border:none;
     right: 10px;
     border-radius: 50%;
@@ -475,8 +481,13 @@ h4 {
     transition: all 0.5s ease;
     /* animation: clickRotate 0.4s ease forwards; */
 }
-#create-button:hover, #create-achieve-button:hover{
+#create-button:hover, #create-achieve-button:hover, #create-rankholders-button:hover{
     transform: scale(1.2);
+}
+
+.clear-btn{
+    position: relative;
+    z-index:6;
 }
 /* 
 @keyframes clickRotate {
