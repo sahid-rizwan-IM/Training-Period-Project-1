@@ -169,8 +169,10 @@ i .profile {
     margin-top: 78px;
     margin-left: 10.9%;
     display: grid;
+    height: auto;
     background-image: url(/images/win\ cele.jpg);
     background-size: 2500px;
+    /* background: linear-gradient(rgb(20, 29, 51),rgb(56, 23, 38)); */
     grid-template-columns: repeat(3, 1fr);
     /* scro; */
 }
@@ -190,23 +192,25 @@ i .profile {
 #achievements, #ranks, #approving{
     background-image: url(/images/win\ cele.jpg);
     background-size: 2500px;
+    /* background: linear-gradient(rgb(20, 29, 51),rgb(56, 23, 38)); */
     margin-top: 78px;
     flex: 2;
-    margin-left: 10.9%;
+    /* z-index: 15; */
+    margin-left: 9.5rem;
 }
 
-#otherclg-event::before, #MyCollege-Events::before{
+#otherclg-event::before, #MyCollege-Events::before, #achievements::before{
     content: '';
     position: absolute;
     top: 0px;
-    left: 10.9%;
-    width: 88.7%;
+    left: 10.2%;
+    width: 89.8%;
     height: 100%;
     background-color: rgba(9, 9, 9, 0.45);
     z-index: 0;
 }
-#myclg-event{
-    z-index: 5;
+#myclg-event, #myclgAchieves{
+    z-index: 7 !important;
 }
 
 .otherclg-content{
@@ -226,11 +230,20 @@ i .profile {
        /* margin: 10px; */
     max-height: auto;
     color: rgb(72, 67, 99);
-    z-index: 7;
+    z-index: 10;
     display:grid;
     grid-template-columns: repeat(2, 1fr);
+    
     /* gap: 40px; */
     /* justify-content: space-evenly; */
+}
+.achievementsContent{
+    height: auto;
+    /* padding-left: 6rem; */
+    color: rgb(72, 67, 99);
+    z-index: 10;
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
 }
 .each-my-events{
     /* width: 150px; */
@@ -247,7 +260,28 @@ i .profile {
     text-wrap: wrap;
     display:flex;
 }
-.otherclg-content:hover, .each-my-events:hover{
+.each-achieve{
+    /* width: 150px; */
+    background-color: rgb(240, 240, 240);
+    height: 25rem;
+    width: 19rem;
+    border: 1px solid black;
+    margin: 20px 10px 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 0px 2px rgb(11, 11, 12), 2px 2px 25px rgb(13, 12, 14), 2px 2px 12px rgb(17, 16, 16);
+}
+.each-achieve{
+    z-index: 5;
+}
+.achieve-card-image{
+    border-radius: 3px;
+}
+.achieveCardDetils h2,h3,p, a{
+    padding-left: 5px;
+    margin:3px 0px;
+}
+.otherclg-content:hover, .each-my-events:hover, .each-achieve:hover{
     transform: scale(0.95);
 }
 
@@ -285,11 +319,9 @@ h4 {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
-
 }
 
-.descButton, .regButton, .button {
+.descButton, .regButton, .button, .viewCertBtn {
     border: none;
     border-radius: 5px;
     background-color: pink;
@@ -302,26 +334,9 @@ h4 {
 
 }
 
-
-/*footer*/
-
-footer {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left:0;
-    text-align: center;
-    font-weight: 300;
-    margin-top: 50px;
-    padding: 10px 0px;
-    color: antiquewhite;
-    background: rgb(38, 38, 38);
-}
-
-
 /*Other College Event descripion pop up*/
 
-.desc-popup, .event-reg-popup, #create-event-popup, #viewRegStudents-popup {
+.desc-popup, .event-reg-popup, #create-event-popup, #viewRegStudents-popup, #create-achieve-popup {
   position: fixed;
   top: 0; 
   left: 0;
@@ -334,7 +349,7 @@ footer {
   z-index: 999;
 }
 
-.popup-content, .form-popup-content, .create-event-popup-content, .registered-popup-content{
+.popup-content, .form-popup-content, .create-event-popup-content, .registered-popup-content, .create-achieve-popup-content{
   background: #e9d0b6;
   padding: 30px;
   border-radius: 10px;
@@ -344,7 +359,7 @@ footer {
   position: relative;
 }
 @keyframes slideDown {
-    from { 
+    from {
         transform: translateY(-50px); 
         opacity: 0; 
     }
@@ -353,11 +368,11 @@ footer {
         opacity: 1; 
     }
 }
-.create-event-popup-content, .registered-popup-content{
+.create-event-popup-content, .registered-popup-content, .create-achieve-popup-content{
     justify-self: center;
 }
 
-.create-event-popup-content{
+.create-event-popup-content, .create-achieve-popup-content{
     max-width: 500px;
 }
 
@@ -372,7 +387,6 @@ footer {
     margin: 5px;
 }
 
-
 .close-btn {
   position: absolute;
   top: 10px;
@@ -381,16 +395,12 @@ footer {
   cursor: pointer;
 }
 
-
 /* Show popup when checkbox is checked */
-
 #register-popup:checked+.event-reg-popup {
     display: flex;
 }
 
-
 /* Form styling */
-
 .form-group {
     margin-bottom: 15px;
 }
@@ -409,20 +419,26 @@ footer {
     border-radius: 5px;
 }
 
+/* .form-group select option{
+    border: 1px solid #0d2c5e;
+} */
+
 .required-star, .hidden{
     color: rgb(201, 25, 25);
 }
 #submitAlertmsg, #createAlertmsg{
     display:block;
 }
-
+.other-type-hidden{
+    display: none;
+}
 
 .hidden-page-content{
     display: none !important;
 }
 
-/* Submit button */
-#submit-btn, #create-btn{
+/* Submit button, create event btn, create achievement btn in popup form*/
+#submit-btn, #create-btn, #create-achieve-btn{
     background: #0d2c5e;
     color: white;
     padding: 10px 20px;
@@ -440,21 +456,65 @@ footer {
 }
 
 /*Creating event button*/
-#create-button{
+#create-button, #create-achieve-button{
     border:none;
     right: 10px;
-    border-radius: 60%;
+    border-radius: 50%;
     background-color: #0d2c5e;
     color: white;
     margin:20px;
+    font-size: larger;
+    font-weight: bolder;
     padding: 25px;
     cursor:pointer;
-    position: sticky;
+    position: fixed;
+    z-index: 12;
+    top: 30rem;
+    right: 6rem;
     box-shadow: 5px 5px 5px black;
     transition: all 0.5s ease;
+    /* animation: clickRotate 0.4s ease forwards; */
 }
-#create-button:hover{
-    transform: translateX(4px);
+#create-button:hover, #create-achieve-button:hover{
+    transform: scale(1.2);
+}
+/* 
+@keyframes clickRotate {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    100% {
+        transform: rotate(360deg) scale(1.1);
+    }
+} */
+
+/* #create-button:hover {
+    transform: scale(1.15) rotate(3deg);
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.5);
 }
 
+@keyframes rotateIn {
+    from {
+        transform: rotate(360deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+} */
 
+/*footer*/
+
+footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    text-align: center;
+    font-weight: 300;
+    margin-top: 50px;
+    padding: 10px 0px;
+    color: antiquewhite;
+    background: rgb(38, 38, 38);
+}
