@@ -108,7 +108,7 @@
                 </div>
             
                 <div>
-                    <button id="create-button" onclick="opencreateform()">+</button>
+                    <button id="create-button" title="Create New Event" onclick="openCreateForm()">+</button>
                     <button onclick="clearEvents()">Clear All Events</button>
                 </div>
             </div>
@@ -144,7 +144,7 @@
                             <small id="event-description-req" class="hidden"></small>
                         </div>
                         <div class="form-group">
-                            <label for="file">Upload file: <small style= "font-style: italic">optional</small></label>
+                            <label for="file">Upload file: </label>
                             <input type="file" id="file" name="file">
                             <!-- <small id="email-req" class="hidden"></small> -->
                         </div>
@@ -223,7 +223,77 @@
 
         
 
-        <div id="achievements" class="section hidden-page-content">Achievements Content</div>
+        <div id="achievements" class="section hidden-page-content">
+            <div id="myclgAchieves">
+                <div class="achievementsContent">
+                    <!-- WILL BE TAKEN DYNAMICALLY -->
+                </div>
+            
+                <div>
+                    <button id="create-achieve-button" title="Create New Achievement" onclick="openCreateAchieveForm()">+</button>
+                    <button onclick="clearEvents()">Clear All Achievements</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Create achievement popup -->
+        <div id="create-achieve-popup">   
+                <div class="create-achieve-popup-content">
+                    <label for="create-achieve-popup" class="close-btn" onclick="closePopup()">&times;</label>
+                    <h2 class="pop-title">Create an Achievement</h2>
+                    <form id="create-achieve-form">
+                        <div class="form-group">
+                            <label for="new-achieve">Achievement Title:<span class="required-star">*</span></label>
+                            <input type="text" id="new-achieve" name="new-achieve">
+                            <small id="new-achieve-req" class="hidden"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="achieve-type">Achievement Type:<span class="required-star">*</span></label>
+                            <select id="achieve-type" name="achieve-type">
+                                <option value="">Select</option>
+                                <option value="Academic">Academic</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Culturals">Culturals</option>
+                                <option value="Research/Conference">Research/Conference</option>
+                                <option value="Technical">Technical</option>
+                                <option value="others">Others</option>
+                            </select>
+                            <small id="achieve-type-req" class="hidden"></small>
+                        </div>
+                         <div class="form-group otherTextBox other-type-hidden">
+                            <label for="other-achieve-type">other:<span class="required-star">*</span></label>
+                            <input type="text" id="other-achieve-type" name="other-achieve-type">
+                            <small id="other-achieve-type-req" class="hidden"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="achieve-issued-date">Issued Date:<span class="required-star">*</span></label>
+                            <input type="date" id="achieve-issued-date" name="achieve-issued-date">
+                            <small id="achieve-issued-date-req" class="hidden"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-event-description">Detailed Description:<span class="required-star">*</span></label>
+                            <textarea type="text" rows="3" cols="100" id="achieve-description" name="achieve-description"></textarea>
+                            <small id="achieve-description-req" class="hidden"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="file">Upload Certificate/Proof:</label>
+                            <input type="file" id="proof-file" name="proof-file">
+                            <small id="proof-file" class="hidden"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="link">External Link: </label>
+                            <input type="url" id="link" name="link">
+                            <!-- <small id="link" class="hidden"></small> -->
+                        </div>
+                        
+                        <small id="createAchieveAlertmsg" class="hidden"></small>
+                        <button type="submit" id="create-achieve-btn" >Create</button>
+                    </form>
+                </div>
+            </div>  
+
+
         <div id="ranks" class="section hidden-page-content">Rank Holders Content</div>
         <div id="approving" class="section hidden-page-content">Approve Students Content</div>
     </main>
