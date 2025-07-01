@@ -231,70 +231,133 @@
             
                 <div>
                     <button id="create-achieve-button" title="Create New Achievement" onclick="openCreateAchieveForm()">+</button>
-                    <button onclick="clearEvents()">Clear All Achievements</button>
+                    <button class="clear-btn" onclick="clearEvents()">Clear All Achievements</button>
                 </div>
             </div>
         </div>
 
         <!-- Create achievement popup -->
         <div id="create-achieve-popup">   
-                <div class="create-achieve-popup-content">
-                    <label for="create-achieve-popup" class="close-btn" onclick="closePopup()">&times;</label>
-                    <h2 class="pop-title">Create an Achievement</h2>
-                    <form id="create-achieve-form">
-                        <div class="form-group">
-                            <label for="new-achieve">Achievement Title:<span class="required-star">*</span></label>
-                            <input type="text" id="new-achieve" name="new-achieve">
-                            <small id="new-achieve-req" class="hidden"></small>
-                        </div>
-                        <div class="form-group">
-                            <label for="achieve-type">Achievement Type:<span class="required-star">*</span></label>
-                            <select id="achieve-type" name="achieve-type">
-                                <option value="">Select</option>
-                                <option value="Academic">Academic</option>
-                                <option value="Sports">Sports</option>
-                                <option value="Culturals">Culturals</option>
-                                <option value="Research/Conference">Research/Conference</option>
-                                <option value="Technical">Technical</option>
-                                <option value="others">Others</option>
-                            </select>
-                            <small id="achieve-type-req" class="hidden"></small>
-                        </div>
-                         <div class="form-group otherTextBox other-type-hidden">
-                            <label for="other-achieve-type">other:<span class="required-star">*</span></label>
-                            <input type="text" id="other-achieve-type" name="other-achieve-type">
-                            <small id="other-achieve-type-req" class="hidden"></small>
-                        </div>
-                        <div class="form-group">
-                            <label for="achieve-issued-date">Issued Date:<span class="required-star">*</span></label>
-                            <input type="date" id="achieve-issued-date" name="achieve-issued-date">
-                            <small id="achieve-issued-date-req" class="hidden"></small>
-                        </div>
-                        <div class="form-group">
-                            <label for="new-event-description">Detailed Description:<span class="required-star">*</span></label>
-                            <textarea type="text" rows="3" cols="100" id="achieve-description" name="achieve-description"></textarea>
-                            <small id="achieve-description-req" class="hidden"></small>
-                        </div>
-                        <div class="form-group">
-                            <label for="file">Upload Certificate/Proof:</label>
-                            <input type="file" id="proof-file" name="proof-file">
-                            <small id="proof-file" class="hidden"></small>
-                        </div>
+            <div class="create-achieve-popup-content">
+                <label for="create-achieve-popup" class="close-btn" onclick="closePopup()">&times;</label>
+                <h2 class="pop-title">Create an Achievement</h2>
+                <form id="create-achieve-form">
+                    <div class="form-group">
+                        <label for="new-achieve">Achievement Title:<span class="required-star">*</span></label>
+                        <input type="text" id="new-achieve" name="new-achieve">
+                        <small id="new-achieve-req" class="hidden"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="achieve-type">Achievement Type:<span class="required-star">*</span></label>
+                        <select id="achieve-type" name="achieve-type">
+                            <option value="">Select</option>
+                            <option value="Academic">Academic</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Culturals">Culturals</option>
+                            <option value="Research/Conference">Research/Conference</option>
+                            <option value="Technical">Technical</option>
+                            <option value="others">Others</option>
+                        </select>
+                        <small id="achieve-type-req" class="hidden"></small>
+                    </div>
+                        <div class="form-group otherTextBox other-type-hidden">
+                        <label for="other-achieve-type">other:<span class="required-star">*</span></label>
+                        <input type="text" id="other-achieve-type" name="other-achieve-type">
+                        <small id="other-achieve-type-req" class="hidden"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="achieve-issued-date">Issued Date:<span class="required-star">*</span></label>
+                        <input type="date" id="achieve-issued-date" name="achieve-issued-date">
+                        <small id="achieve-issued-date-req" class="hidden"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="new-event-description">Detailed Description:<span class="required-star">*</span></label>
+                        <textarea type="text" rows="3" cols="100" id="achieve-description" name="achieve-description"></textarea>
+                        <small id="achieve-description-req" class="hidden"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="file">Upload Certificate/Proof:</label>
+                        <input type="file" id="proof-file" name="proof-file">
+                        <small id="proof-file" class="hidden"></small>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="link">External Link: </label>
-                            <input type="url" id="link" name="link">
-                            <!-- <small id="link" class="hidden"></small> -->
-                        </div>
-                        
-                        <small id="createAchieveAlertmsg" class="hidden"></small>
-                        <button type="submit" id="create-achieve-btn" >Create</button>
-                    </form>
+                    <div class="form-group">
+                        <label for="link">External Link: </label>
+                        <input type="url" id="link" name="link">
+                        <!-- <small id="link" class="hidden"></small> -->
+                    </div>
+                    
+                    <small id="createAchieveAlertmsg" class="hidden"></small>
+                    <button type="submit" id="create-achieve-btn" >Create</button>
+                </form>
+            </div>
+        </div>  
+
+
+        <div id="ranks" class="section hidden-page-content">
+            <div id="myClgRankHolders">
+                <div class="rankHoldersContent">
+                    <!-- WILL BE TAKEN DYNAMICALLY -->
                 </div>
-            </div>  
+            
+                <div>
+                    <button id="create-rankholders-button" title="Create New Rank Holder" onclick="openCreateRankHolderForm()">+</button>
+                    <button class="clear-btn" onclick="clearEvents()">Clear All Achievements</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="create-rankholders-popup">   
+            <div class="create-rankholders-popup-content">
+                <label for="create-rankholders-popup" class="close-btn" onclick="closePopup()">&times;</label>
+                <h2 class="pop-title">Add Rank Holders</h2>
+                <form id="create-rankholders-form">
+                    <div class="form-group">
+                        <label for="new-rankholder">Rank Holder Title:<span class="required-star">*</span></label>
+                        <input type="text" id="new-rankholder" name="new-rankholder">
+                        <small id="new-rankholder-req" class="hidden"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="student-name">Rank Holder Name:<span class="required-star">*</span></label>
+                        <input type="text" id="student-name" name="student-name">
+                        <small id="student-name-req" class="hidden"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="department-rk">Department:<span class="required-star">*</span></label>
+                        <select id="department-rk" name="department-rk">
+                            <option value="">Select</option>
+                            <option value="Computer Science and Engineering">CSE</option>
+                            <option value="Information Technology">IT</option>
+                            <option value="Electronics and Communication Engineering">ECE</option>
+                            <option value="Electrical and Electronics Engineering">EEE</option>
+                            <option value="Civil Engineering">Civil</option>
+                            <option value="Mechanical Engineering">Mech</option>
+                            <option value="Others">Others</option>
+                        </select>
+                        <small id="department-rk-req" class="hidden"></small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="rank-place">Rank Place:<span class="required-star">*</span></label>
+                        <input type="text" id="rank-place" name="rank-place">
+                        <small id="rank-place-req" class="hidden"></small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cgpa">CGPA:</label>
+                        <input type="text" id="cgpa" name="cgpa">
+                        <small id="cgpa-req" class="hidden"></small>
+                    </div>
+                    <button class="addAnotherRankHolder">Add Another</button>
+                    <small id="createRankHolderAlertmsg" class="hidden"></small>
+                    <button type="submit" id="create-rankholder-btn" >Create</button>
+                </form>
+            </div>
+        </div>  
 
 
-        <div id="ranks" class="section hidden-page-content">Rank Holders Content</div>
+
         <div id="approving" class="section hidden-page-content">Approve Students Content</div>
     </main>
     <!--My College Event Display-->
