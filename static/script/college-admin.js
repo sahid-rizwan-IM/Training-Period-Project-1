@@ -604,9 +604,35 @@ function validateAchievementType(){
     else if(achievementTypeSelection.value == "others"){
         const otherTextBox = $(".otherTextBox");
         otherTextBox.removeClass("other-type-hidden");
+        // achievementTypeSelection = $("#other-achieve-type").val().trim();
+        // return true;
     }
     else{
         achievementTypeAlertmsg.textContent = "";
+        const otherTextBox = $(".otherTextBox");
+        otherTextBox.addClass("other-type-hidden");
+        return true;
+    }
+}
+
+const otherdeptInput = document.getElementById("other-achieve-type");
+const otherdeptAlertmsg = document.getElementById("other-achieve-type-req");
+function validateOtherDept(){
+    const otherDept = otherdeptInput.value.trim();
+    if(otherDept == ""){
+        otherdeptAlertmsg.textContent = "Any Department is Required";
+        return false;
+    }
+    else if(otherDept.length<2){
+        otherdeptAlertmsg.textContent = "Minimum 2 characters needed";
+        return false;
+    }
+    else if(otherDept.length>20){
+        otherdeptAlertmsg.textContent = "Maximum 20 characters allowed";
+        return false;
+    }
+    else{
+        otherdeptAlertmsg.textContent = "";
         return true;
     }
 }
@@ -657,6 +683,7 @@ achievementTypeSelection.addEventListener("change",validateAchievementType);
 achieveDescInput.addEventListener("input",validateAchieveDescription);
 issuedDateChoose.addEventListener("click",validateAchieveIssuedDate);
 issuedDateChoose.addEventListener("change",validateAchieveIssuedDate);
+otherdeptInput.addEventListener("input", validateOtherDept);
 
 const createAchieveMessage = document.getElementById("createAchieveAlertmsg");
 const createAchieveForm = document.getElementById("create-achieve-form");
@@ -668,10 +695,10 @@ createAchieveForm.addEventListener("submit", function(e){
             validateAchievementTitle()&&
             validateAchievementType()&&
             validateAchieveDescription()&&
-            validateAchieveIssuedDate();
+            validateAchieveIssuedDate()&&
+            validateOtherDept();
 
     if (isValid) {
-
         // let achieveFile = document.getElementById("file").files[0];
         let newArchieves = {
             achieveTitle: $("#new-achieve").val().trim(),
@@ -718,6 +745,7 @@ createAchieveForm.addEventListener("submit", function(e){
         validateAchievementType();
         validateAchieveDescription();
         validateAchieveIssuedDate();
+        validateOtherDept();
         alert("Please, enter the valid and required details");
     }
     
@@ -728,18 +756,17 @@ function displayStoredAchievements(){
     storedAchieves.forEach(myachieves => {
         const ownAchieves = `
             <div class="each-achieve">
-                    <div class="achieveCardDetils">
-                        <img class="achieve-card-image" src="/images/achieve2.jpg" alt="" width="304px" height="180px">
-                        <h2>${myachieves.achieveTitle}</h2>
-                        <h3>${myachieves.achieveType} | ${myachieves.issuedDate}</h3>
-                        <p>${myachieves.achieveDescription}</p>
-                        <a href="${myachieves.achieveurl}">${myachieves.achieveurl}</a>
-                    </div>
-                    <div class="imp-buttons">
-                        <button class="viewCertBtn ">View Cerificate/Proof</button>
-                    </div>
+                <div class="achieveCardDetils">
+                    <img class="achieve-card-image" src="/images/achieve2.jpg" alt="" width="304px" height="180px">
+                    <h2>${myachieves.achieveTitle}</h2>
+                    <h3>${myachieves.achieveType} | ${myachieves.issuedDate}</h3>
+                    <p>${myachieves.achieveDescription}</p>
+                    <a href="${myachieves.achieveurl}">${myachieves.achieveurl}</a>
                 </div>
-                
+                <div class="imp-buttons">
+                    <button class="viewCertBtn">View Cerificate/Proof</button>
+                </div>
+            </div>     
         `;
     myClgAchieves.innerHTML += ownAchieves;
     });
@@ -749,24 +776,25 @@ window.onload = displayStoredAchievements();
 
 
 // RANK HOLDERS CREATE FORM VALIDATION
+debugger
 const rankTitleInput = $("#new-ranktitle");
 const rankTitleAlertmsg = $("#new-ranktitle-req");
 function validateRankTitle(){
     const rankTitle = rankTitleInput.val().trim();
     if(rankTitle == ""){
-        rankTitleAlertmsg.textContent = "Rank Title Required";
+        rankTitleAlertmsg.text("Rank Title Required");
         return false;
     }
     else if(rankTitle.length<10){
-        rankTitleAlertmsg.textContent = "Minimum 10 characters needed";
+        rankTitleAlertmsg.text("Minimum 10 characters needed");
         return false;
     }
     else if(rankTitle.length>100){
-        rankTitleAlertmsg.textContent = "Maximum 100 characters allowed";
+        rankTitleAlertmsg.text("Maximum 100 characters allowed");
         return false;
     }
     else{
-        rankTitleAlertmsg.textContent = "";
+        rankTitleAlertmsg.text("");
         return true;
     }
 }
@@ -776,29 +804,28 @@ const rankHolderNameAlertmsg = $("#rank-holder-name-req");
 function validateRankHolderName(){
     const rankHolderName = rankHolderNameInput.val().trim();
     if(rankHolderName == ""){
-        rankHolderNameAlertmsg.textContent = "Rank holder's name Required";
+        rankHolderNameAlertmsg.text("Rank holder's name Required");
         return false;
     }
     else if(rankHolderName.length<3){
-        rankHolderNameAlertmsg.textContent = "Minimum 3 characters needed";
+        rankHolderNameAlertmsg.text("Minimum 3 characters needed");
         return false;
     }
     else if(rankHolderName.length>50){
-        rankHolderNameAlertmsg.textContent = "Maximum 50 characters allowed";
+        rankHolderNameAlertmsg.text("Maximum 50 characters allowed");
         return false;
     }
     else{
-        rankHolderNameAlertmsg.textContent = "";
+        rankHolderNameAlertmsg.text("");
         return true;
     }
 }
 
 const rankHolderDepartment = $("#department-rk");
 const rankHolderDepartmentAlertmsg = $("#department-rk-req");
-
 function validateRHDepartment(){
     if(rankHolderDepartment.val() == ""){
-        rankHolderDepartmentAlertmsg.textContent = "Select any department";
+        rankHolderDepartmentAlertmsg.text("Select any department");
         return false;
     }
     else if(rankHolderDepartment.val() == "Others"){
@@ -806,7 +833,9 @@ function validateRHDepartment(){
         otherTextBox.removeClass("other-type-hidden");
     }
     else{
-        rankHolderDepartmentAlertmsg.textContent = "";
+        rankHolderDepartmentAlertmsg.text("");
+        const otherTextBox = $(".otherTextBox");
+        otherTextBox.addClass("other-type-hidden");
         return true;
     }
 }
@@ -814,21 +843,21 @@ function validateRHDepartment(){
 const rankHolderPlaceInput = $("#rank-place");
 const rankHolderPlaceAlertmsg = $("#rank-place-req");
 function validateRankPlace(){
-    const rankHolderPlace = rankHolderDepartment.val().trim();
+    const rankHolderPlace = rankHolderPlaceInput.val().trim();
     if( rankHolderPlace == ""){
-        rankHolderPlaceAlertmsg.textContent = "Rank holder's place is reuqired";
+        rankHolderPlaceAlertmsg.text("Rank holder's place is required");
         return false;
     }
     else if(rankHolderPlace.length<3){
-        rankHolderPlaceAlertmsg.textContent = "Minimum 3 characters needed";
+        rankHolderPlaceAlertmsg.text("Minimum 3 characters needed");
         return false;
     }
     else if(rankHolderPlace.length>15){
-        rankHolderPlaceAlertmsg.textContent = "Maximum 50 characters allowed";
+        rankHolderPlaceAlertmsg.text("Maximum 50 characters allowed");
         return false;
     }
     else{
-        rankHolderPlaceAlertmsg.textContent = "";
+        rankHolderPlaceAlertmsg.text("");
         return true;
     }
 }
@@ -838,25 +867,28 @@ const cgpaInputAlertmsg = $("#cgpa-req");
 function validateCGPA(){
         const cgpa = cgpaInput.val().trim();
         if(cgpa==""){
-            cgpaInputAlertmsg.textContent = "CGPA is required";
+            cgpaInputAlertmsg.text("CGPA is required");
             return false;
         }
         else if(isNaN(cgpa)){
-            cgpaInputAlertmsg.textContent = "Kindly, use Numbers";
+            cgpaInputAlertmsg.text("Kindly, use Numbers");
             return false;
         }
         else{
-            cgpaInputAlertmsg.textContent = "";
+            cgpaInputAlertmsg.text("");
             return true;
         }
 }
 
 
-rankTitleInput.addEventListener("input",validateRankTitle);
-rankHolderNameInput.addEventListener("input",validateRankHolderName);
-rankHolderDepartment.addEventListener("change",validateRHDepartment);
-rankHolderPlaceInput.addEventListener("input",validateRankPlace);
-cgpaInput.addEventListener("input",validateCGPA);
+rankTitleInput.on("input",validateRankTitle);
+rankHolderNameInput.on("input",validateRankHolderName);
+rankHolderDepartment.on("change",validateRHDepartment);
+rankHolderPlaceInput.on("input",validateRankPlace);
+cgpaInput.on("input",validateCGPA);
+// $("#new-ranktitle").change(()=>{
+//     validateRankTitle();
+// })
 
 const addRankHolderMessage = document.getElementById("createRankHolderAlertmsg");
 const addRankHolderForm = document.getElementById("create-rankholders-form");
