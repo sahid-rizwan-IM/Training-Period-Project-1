@@ -14,7 +14,7 @@ function openLoginForm(){
     maincontent.style.height = "100vh";
 }
 document.getElementById("login-btn").addEventListener("click", function() {
-    window.location.href = "/templates/college-admin.html";
+    window.location.href = "/Frontend/templates/college-admin.html";
 });
 
 // document.getElementById("signup-btn").addEventListener("click", function() {

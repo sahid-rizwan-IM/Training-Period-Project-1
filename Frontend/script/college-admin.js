@@ -1,7 +1,7 @@
 //Other college event content box
 const otherclgEvents = [{
         id: "clg1",
-        logo: "/images/avc-logo.jpg",
+        logo: "/Frontend/static/images/avc-logo.jpg",
         collegeName: "A.V.C. College of Engineering",
         location: "Mayiladuthurai, Tamil Nadu",
         eventName: "National Conference",
@@ -10,7 +10,7 @@ const otherclgEvents = [{
     },
     {
         id: "clg2",
-        logo: "/images/cresent-logo.png",
+        logo: "/Frontend/static/images/cresent-logo.png",
         collegeName: "Crescent Institute of Science & Technology ",
         location: "Chennai, Tamil Nadu",
         eventName: "Innovative Hackathon'25",
@@ -19,7 +19,7 @@ const otherclgEvents = [{
     },
     {
         id: "clg3",
-        logo: "/images/avc-logo.jpg",
+        logo: "/Frontend/static/images/avc-logo.jpg",
         collegeName: "A.V.C. College of Engineering",
         location: "Mayiladuthurai, Tamil Nadu",
         eventName: "Workshop on AI & ML",
@@ -28,7 +28,7 @@ const otherclgEvents = [{
     },
     {
         id: "clg4",
-        logo: "/images/as-salam-logo.jpg",
+        logo: "/Frontend/static/images/as-salam-logo.jpg",
         collegeName: "AS-SALAM College of Engineering and Technology",
         location: "Aduthurai, Tamil Nadu",
         eventName: "InfoTech Paper Presentatin'25",
@@ -37,7 +37,7 @@ const otherclgEvents = [{
     },
     {
         id: "clg1",
-        logo: "/images/avc-logo.jpg",
+        logo: "/Frontend/static/images/avc-logo.jpg",
         collegeName: "A.V.C. College of Engineering",
         location: "Mayiladuthurai, Tamil Nadu",
         eventName: "National Conference",
@@ -46,7 +46,7 @@ const otherclgEvents = [{
     },
     {
         id: "clg2",
-        logo: "/images/cresent-logo.png",
+        logo: "/Frontend/static/images/cresent-logo.png",
         collegeName: "Crescent Institute of Science & Technology ",
         location: "Chennai, Tamil Nadu",
         eventName: "Innovative Hackathon'25",
@@ -55,7 +55,7 @@ const otherclgEvents = [{
     },
     {
         id: "clg3",
-        logo: "/images/avc-logo.jpg",
+        logo: "/Frontend/static/images/avc-logo.jpg",
         collegeName: "A.V.C. College of Engineering",
         location: "Mayiladuthurai, Tamil Nadu",
         eventName: "Workshop on AI & ML",
@@ -64,7 +64,7 @@ const otherclgEvents = [{
     },
     {
         id: "clg4",
-        logo: "/images/as-salam-logo.jpg",
+        logo: "/Frontend/static/images/as-salam-logo.jpg",
         collegeName: "AS-SALAM College of Engineering and Technology",
         location: "Aduthurai, Tamil Nadu",
         eventName: "InfoTech Paper Presentatin'25",
@@ -73,7 +73,7 @@ const otherclgEvents = [{
     },
     {
         id: "clg2",
-        logo: "/images/cresent-logo.png",
+        logo: "/Frontend/static/images/cresent-logo.png",
         collegeName: "Crescent Institute of Science & Technology ",
         location: "Chennai, Tamil Nadu",
         eventName: "Innovative Hackathon'25",
@@ -82,7 +82,7 @@ const otherclgEvents = [{
     },
     {
         id: "clg3",
-        logo: "/images/avc-logo.jpg",
+        logo: "/Frontend/static/images/avc-logo.jpg",
         collegeName: "A.V.C. College of Engineering",
         location: "Mayiladuthurai, Tamil Nadu",
         eventName: "Workshop on AI & ML",
@@ -91,7 +91,7 @@ const otherclgEvents = [{
     },
     {
         id: "clg2",
-        logo: "/images/cresent-logo.png",
+        logo: "/Frontend/static/images/cresent-logo.png",
         collegeName: "Crescent Institute of Science & Technology ",
         location: "Chennai, Tamil Nadu",
         eventName: "Innovative Hackathon'25",
@@ -726,7 +726,7 @@ createAchieveForm.addEventListener("submit", function(e){
         const ownAchieves = `
                 <div class="each-achieve">
                         <div class="achieveCardDetils">
-                            <img class="achieve-card-image" src="/images/achieve2.jpg" alt="" width="304px" height="180px">
+                            <img class="achieve-card-image" src="/Frontend/static/images/achieve2.jpg" alt="image" width="304px" height="180px">
                             <h2>${newArchieves.achieveTitle}</h2>
                             <h3>${newArchieves.achieveType} | ${newArchieves.issuedDate}</h3>
                             <p>${newArchieves.achieveDescription}</p>
@@ -757,7 +757,7 @@ function displayStoredAchievements(){
         const ownAchieves = `
             <div class="each-achieve">
                 <div class="achieveCardDetils">
-                    <img class="achieve-card-image" src="/images/achieve2.jpg" alt="" width="304px" height="180px">
+                    <img class="achieve-card-image" src="/Frontend/static/images/achieve2.jpg" alt="" width="304px" height="180px">
                     <h2>${myachieves.achieveTitle}</h2>
                     <h3>${myachieves.achieveType} | ${myachieves.issuedDate}</h3>
                     <p>${myachieves.achieveDescription}</p>

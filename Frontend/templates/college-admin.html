@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College-Admin Dashboard</title>
     <script src="https://kit.fontawesome.com/1271c77683.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/static/css/style-college.css">
+    <link rel="stylesheet" href="/Frontend/static/css/style-college.css">
 </head>
 
 <body>
@@ -18,7 +18,7 @@
             </div>
             <nav>
                 <ul id="sidemenu">
-                    <li><a class="nav-link" href="/templates/home.html">Home</a></li>
+                    <li><a class="nav-link" href="/Frontend/templates/home.html">Home</a></li>
                     <li><a class="nav-link" href="#">Profile<i style="padding:5px" class="fa-regular fa-user"></i></a></li>
                 </ul>
                 <button class="logout"><a style="color:#e9d0b6" href="#">Logout<i style="padding:5px" class="fa-solid fa-arrow-right-from-bracket"></i></a></button>
@@ -278,7 +278,7 @@
                     <div class="form-group">
                         <label for="file">Upload Certificate/Proof:</label>
                         <input type="file" id="proof-file" name="proof-file">
-                        <small id="proof-file" class="hidden"></small>
+                        <small id="proof-file-req" class="hidden"></small>
                     </div>
 
                     <div class="form-group">
@@ -355,6 +355,11 @@
                         <input type="text" id="cgpa" name="cgpa">
                         <small id="cgpa-req" class="hidden"></small>
                     </div>
+                    <div class="form-group">
+                        <label for="file">Upload Photo:</label>
+                        <input type="file" id="photo-file" name="photo-file">
+                        <small id="photo-file-req" class="hidden"></small>
+                    </div>
                     <button class="addAnotherRankHolder">Add Another</button>
                     <small id="createRankHolderAlertmsg" class="hidden"></small>
                     <button type="submit" id="create-rankholder-btn" >Create</button>
@@ -374,7 +379,7 @@
         <p style="margin-left:5px ">PROJECT ON TRAINING PERIOD | INNOVATION MINDS &copy; 2025</p>
     </footer> -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="/static/script/college-admin.js "></script>
+    <script src="/Frontend/script/college-admin.js "></script>
 </body>
 
 </html>

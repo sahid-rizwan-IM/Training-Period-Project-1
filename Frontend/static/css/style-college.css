@@ -170,7 +170,7 @@ i .profile {
     margin-left: 10.9%;
     display: grid;
     height: auto;
-    background-image: url(/images/win\ cele.jpg);
+    background-image: url(/Frontend/static/images/win\ cele.jpg);
     background-size: 2500px;
     /* background: linear-gradient(rgb(20, 29, 51),rgb(56, 23, 38)); */
     grid-template-columns: repeat(3, 1fr);
@@ -182,13 +182,13 @@ i .profile {
     margin-left: 10.9%;
     display: grid;
     /* grid-template-columns: repeat(2, 4fr); */
-    background-image: url(/images/win\ cele.jpg);
+    background-image: url(/Frontend/static/images/win\ cele.jpg);
     background-size: 2500px;
  }
 
 
 #achievements, #ranks, #approving{
-    background-image: url(/images/win\ cele.jpg);
+    background-image: url(/Frontend/static/images/win\ cele.jpg);
     background-size: 2500px;
     /* background: linear-gradient(rgb(20, 29, 51),rgb(56, 23, 38)); */
     margin-top: 78px;
