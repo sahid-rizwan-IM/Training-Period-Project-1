@@ -494,10 +494,10 @@ createEventForm.addEventListener("submit", function(e){
 
         let eventFile = document.getElementById("file").files[0];
         let newEvents = {
-            eventName: $("#new-event").val(),
+            eventName: $("#new-event").val().trim(),
             eventType: $("#event-type").val(),
             eventDate: $("#event-date").val(),
-            eventDescription: $("#new-event-description").val(),
+            eventDescription: $("#new-event-description").val().trim(),
             eventFile: eventFile
         };
 
@@ -598,7 +598,7 @@ function validateAchievementType(){
     console.log("hii", achievementTypeSelection.value)
     // const myEventType = eventTypeSelection.value.trim();
     if(achievementTypeSelection.value == ""){
-        achievementTypeAlertmsg.textContent = "Select any achievenment type";
+        achievementTypeAlertmsg.textContent = "Select any achievement type";
         return false;
     }
     else if(achievementTypeSelection.value == "others"){
@@ -674,10 +674,10 @@ createAchieveForm.addEventListener("submit", function(e){
 
         // let achieveFile = document.getElementById("file").files[0];
         let newArchieves = {
-            achieveTitle: $("#new-achieve").val(),
+            achieveTitle: $("#new-achieve").val().trim(),
             achieveType: $("#achieve-type").val(),
             issuedDate: $("#achieve-issued-date").val(),
-            achieveDescription: $("#achieve-description").val(),
+            achieveDescription: $("#achieve-description").val().trim(),
             achieveurl: $("#link").val()
         };
 
@@ -688,9 +688,9 @@ createAchieveForm.addEventListener("submit", function(e){
         // debugger
 
         alert("You have posted an achievenment successfully!");
-        createEventMessage.textContent = "Created Achievement Successfully!";
-        createEventMessage.style.color = "green";
-        createEventForm.reset();
+        createAchieveMessage.textContent = "Created Achievement Successfully!";
+        createAchieveMessage.style.color = "green";
+        createAchieveForm.reset();
         setTimeout(() => {
             closePopup();
         }, 1000);
@@ -746,172 +746,196 @@ function displayStoredAchievements(){
 }
 window.onload = displayStoredAchievements();
 
+
+
 // RANK HOLDERS CREATE FORM VALIDATION
-// const achievementTitleInput = document.getElementById("new-achieve");
-// const achievementTitleAlertmsg = document.getElementById("new-achieve-req");
-// function validateAchievementTitle(){
-//     const myAchievementTitle = achievementTitleInput.value.trim();
-//     if(myAchievementTitle == ""){
-//         achievementTitleAlertmsg.textContent = "Achievement Title Required";
-//         return false;
-//     }
-//     else if(myAchievementTitle.length<5){
-//         achievementTitleAlertmsg.textContent = "Minimum 5 characters needed";
-//         return false;
-//     }
-//     else if(myAchievementTitle.length>30){
-//         achievementTitleAlertmsg.textContent = "Maximum 30 characters allowed";
-//         return false;
-//     }
-//     else{
-//         achievementTitleAlertmsg.textContent = "";
-//         return true;
-//     }
-// }
+const rankTitleInput = $("#new-ranktitle");
+const rankTitleAlertmsg = $("#new-ranktitle-req");
+function validateRankTitle(){
+    const rankTitle = rankTitleInput.val().trim();
+    if(rankTitle == ""){
+        rankTitleAlertmsg.textContent = "Rank Title Required";
+        return false;
+    }
+    else if(rankTitle.length<10){
+        rankTitleAlertmsg.textContent = "Minimum 10 characters needed";
+        return false;
+    }
+    else if(rankTitle.length>100){
+        rankTitleAlertmsg.textContent = "Maximum 100 characters allowed";
+        return false;
+    }
+    else{
+        rankTitleAlertmsg.textContent = "";
+        return true;
+    }
+}
 
-// const achievementTypeSelection = document.getElementById("achieve-type");
-// const achievementTypeAlertmsg = document.getElementById("achieve-type-req");
+const rankHolderNameInput = $("#rank-holder-name");
+const rankHolderNameAlertmsg = $("#rank-holder-name-req");
+function validateRankHolderName(){
+    const rankHolderName = rankHolderNameInput.val().trim();
+    if(rankHolderName == ""){
+        rankHolderNameAlertmsg.textContent = "Rank holder's name Required";
+        return false;
+    }
+    else if(rankHolderName.length<3){
+        rankHolderNameAlertmsg.textContent = "Minimum 3 characters needed";
+        return false;
+    }
+    else if(rankHolderName.length>50){
+        rankHolderNameAlertmsg.textContent = "Maximum 50 characters allowed";
+        return false;
+    }
+    else{
+        rankHolderNameAlertmsg.textContent = "";
+        return true;
+    }
+}
 
-// function validateAchievementType(){
-//     console.log("hii", achievementTypeSelection.value)
-//     // const myEventType = eventTypeSelection.value.trim();
-//     if(achievementTypeSelection.value == ""){
-//         achievementTypeAlertmsg.textContent = "Select any achievenment type";
-//         return false;
-//     }
-//     else if(achievementTypeSelection.value == "others"){
-//         const otherTextBox = $(".otherTextBox");
-//         otherTextBox.removeClass("other-type-hidden");
-//     }
-//     else{
-//         achievementTypeAlertmsg.textContent = "";
-//         return true;
-//     }
-// }
+const rankHolderDepartment = $("#department-rk");
+const rankHolderDepartmentAlertmsg = $("#department-rk-req");
 
-// const issuedDateChoose = document.getElementById("achieve-issued-date");
-// const issuedDateAlertmsg = document.getElementById("achieve-issued-date-req");
-// function validateAchieveIssuedDate(){
-//     const today = new Date();
-//     const currentYear = today.getFullYear();
-//     const currentMonth = String(today.getMonth() + 1).padStart(2, `0`);
-//     const presentDate = String(today.getDate()).padStart(2, `0`);
-//     const maxDate = `${currentYear}-${currentMonth}-${presentDate}`;
-//     issuedDateChoose.max = maxDate;
-//     if (issuedDateChoose.value===""){
-//         issuedDateAlertmsg.textContent = "Choose the achievement issued date here!";
-//         // eventDateChoose.value = minDate;
-//         return false;
-//     }
-//     else{
-//         issuedDateAlertmsg.textContent = " ";
-//         return true;
-//     }
-// }
+function validateRHDepartment(){
+    if(rankHolderDepartment.val() == ""){
+        rankHolderDepartmentAlertmsg.textContent = "Select any department";
+        return false;
+    }
+    else if(rankHolderDepartment.val() == "Others"){
+        const otherTextBox = $(".otherTextBox");
+        otherTextBox.removeClass("other-type-hidden");
+    }
+    else{
+        rankHolderDepartmentAlertmsg.textContent = "";
+        return true;
+    }
+}
 
-// const achieveDescInput = document.getElementById("achieve-description");
-// const achieveDescAlertmsg = document.getElementById("achieve-description-req");
-// function validateAchieveDescription(){
-//     if(achieveDescInput.value.trim() == ""){
-//         achieveDescAlertmsg.textContent = "Achievement Description Required";
-//         return false;
-//     }
-//     else if(achieveDescInput.value.trim().length<20){
-//         achieveDescAlertmsg.textContent = "Minimum 20 characters needed";
-//         return false;
-//     }
-//     else if(achieveDescInput.value.trim().length>100){
-//         achieveDescAlertmsg.textContent = "Maximum 100 characters allowed";
-//         return false;
-//     }
-//     else{
-//         achieveDescAlertmsg.textContent = "";
-//         return true;
-//     }
-// }
+const rankHolderPlaceInput = $("#rank-place");
+const rankHolderPlaceAlertmsg = $("#rank-place-req");
+function validateRankPlace(){
+    const rankHolderPlace = rankHolderDepartment.val().trim();
+    if( rankHolderPlace == ""){
+        rankHolderPlaceAlertmsg.textContent = "Rank holder's place is reuqired";
+        return false;
+    }
+    else if(rankHolderPlace.length<3){
+        rankHolderPlaceAlertmsg.textContent = "Minimum 3 characters needed";
+        return false;
+    }
+    else if(rankHolderPlace.length>15){
+        rankHolderPlaceAlertmsg.textContent = "Maximum 50 characters allowed";
+        return false;
+    }
+    else{
+        rankHolderPlaceAlertmsg.textContent = "";
+        return true;
+    }
+}
 
-// achievementTitleInput.addEventListener("input",validateAchievementTitle);
-// achievementTypeSelection.addEventListener("change",validateAchievementType);
-// achieveDescInput.addEventListener("input",validateAchieveDescription);
-// issuedDateChoose.addEventListener("click",validateAchieveIssuedDate);
-// issuedDateChoose.addEventListener("change",validateAchieveIssuedDate);
+const cgpaInput = $("#cgpa");
+const cgpaInputAlertmsg = $("#cgpa-req");
+function validateCGPA(){
+        const cgpa = cgpaInput.val().trim();
+        if(cgpa==""){
+            cgpaInputAlertmsg.textContent = "CGPA is required";
+            return false;
+        }
+        else if(isNaN(cgpa)){
+            cgpaInputAlertmsg.textContent = "Kindly, use Numbers";
+            return false;
+        }
+        else{
+            cgpaInputAlertmsg.textContent = "";
+            return true;
+        }
+}
 
-// const createAchieveMessage = document.getElementById("createAchieveAlertmsg");
-// const createAchieveForm = document.getElementById("create-achieve-form");
-// createAchieveForm.addEventListener("submit", function(e){
-//     console.log("strting part");
-//     e.preventDefault();
-//     debugger
-//     const isValid =
-//             validateAchievementTitle()&&
-//             validateAchievementType()&&
-//             validateAchieveDescription()&&
-//             validateAchieveIssuedDate();
 
-//     if (isValid) {
+rankTitleInput.addEventListener("input",validateRankTitle);
+rankHolderNameInput.addEventListener("input",validateRankHolderName);
+rankHolderDepartment.addEventListener("change",validateRHDepartment);
+rankHolderPlaceInput.addEventListener("input",validateRankPlace);
+cgpaInput.addEventListener("input",validateCGPA);
 
-//         // let achieveFile = document.getElementById("file").files[0];
-//         let newArchieves = {
-//             achieveTitle: $("#new-achieve").val(),
-//             achieveType: $("#achieve-type").val(),
-//             issuedDate: $("#achieve-issued-date").val(),
-//             achieveDescription: $("#achieve-description").val(),
-//             achieveurl: $("#link").val()
-//         };
+const addRankHolderMessage = document.getElementById("createRankHolderAlertmsg");
+const addRankHolderForm = document.getElementById("create-rankholders-form");
+addRankHolderForm.addEventListener("submit", function(e){
+    console.log("strting part");
+    e.preventDefault();
+    debugger
+    const isValid =
+            validateRankTitle()&&
+            validateRankHolderName()&&
+            validateRHDepartment()&&
+            validateRankPlace()&&
+            validateCGPA();
 
-//         const storedAchieves = JSON.parse(localStorage.getItem('myClgAchievements')) || [];
+    if (isValid) {
 
-//         storedAchieves.push(newArchieves);
-//         localStorage.setItem('myClgAchievements',JSON.stringify(storedAchieves));
-//         // debugger
+        // let achieveFile = document.getElementById("file").files[0];
+        // let newRankHolders = {
+        //     rankTitle: $("#new-ranktitle").val().trim(),
+        //     rankHolderName: $("#rank-holder-name").val().trim(),
+        //     department: $("#department-rk").val(),
+        //     rankPlace: $("#rank-place").val().trim(),
+        //     cgpa: $("#cgpa").val().trim()
+        // };
 
-//         alert("You have posted an achievenment successfully!");
-//         createEventMessage.textContent = "Created Achievement Successfully!";
-//         createEventMessage.style.color = "green";
-//         createEventForm.reset();
-//         setTimeout(() => {
-//             closePopup();
-//         }, 1000);
+        // const storedRankholders = JSON.parse(localStorage.getItem('myClgRankHolders')) || [];
 
-//         const myClgAchieves = document.querySelector(".achievementsContent");
-//         const ownAchieves = `
-//                 <div class="each-achieve">
-//                         <div class="achieveCardDetils">
-//                             <img class="achieve-card-image" src="/images/achieve2.jpg" alt="" width="304px" height="180px">
-//                             <h2>${newArchieves.achieveTitle}</h2>
-//                             <h3>${newArchieves.achieveType} | ${newArchieves.issuedDate}</h3>
-//                             <p>${newArchieves.achieveDescription}</p>
-//                             <a>${newArchieves.achieveurl}</a>
-//                         </div>
-//                         <div class="imp-buttons">
-//                             <button class="viewCertBtn ">View Cerificate/Proof</button>
-//                         </div>
-//                     </div>
+        // storedRankholders.push(newRankHolders);
+        // localStorage.setItem('myClgRankHolders',JSON.stringify(storedRankholders));
+        // debugger
+
+        alert("You have posted an achievenment successfully!");
+        addRankHolderMessage.textContent = "Added Rank Holder(s) Successfully!";
+        addRankHolderMessage.style.color = "green";
+        addRankHolderForm.reset();
+        setTimeout(() => {
+            closePopup();
+        }, 1000);
+
+    //     const myClgRankholders = document.querySelector(".achievementsContent");
+    //     const ownRankHolders = `
+    //             <div class="each-achieve">
+    //                     <div class="achieveCardDetils">
+    //                         <img class="achieve-card-image" src="/images/achieve2.jpg" alt="" width="304px" height="180px">
+    //                         <h2>${newArchieves.achieveTitle}</h2>
+    //                         <h3>${newArchieves.achieveType} | ${newArchieves.issuedDate}</h3>
+    //                         <p>${newArchieves.achieveDescription}</p>
+    //                         <a>${newArchieves.achieveurl}</a>
+    //                     </div>
+    //                     <div class="imp-buttons">
+    //                         <button class="viewCertBtn ">View Cerificate/Proof</button>
+    //                     </div>
+    //                 </div>
                     
-//             `;
-//         myClgAchieves.innerHTML += ownAchieves;  
-//     } 
-//     else {
-//         validateAchievementTitle();
-//         validateAchievementType();
-//         validateAchieveDescription();
-//         validateAchieveIssuedDate();
-//         alert("Please, enter the valid and required details");
-//     }
+    //         `;
+    //     myClgRankholders.innerHTML += ownRankHolders;  
+    } 
+    else {
+        validateRankTitle();
+        validateRankHolderName();
+        validateRHDepartment();
+        validateRankPlace();
+        validateCGPA();
+        alert("Please, enter the valid and required details");
+    }
     
-// });
+});
 
-// function displayStoredAchievements(){
-//     const storedAchieves = JSON.parse(localStorage.getItem('myClgAchievements')) || [];    const myClgAchieves = document.querySelector(".achievementsContent");
-//     storedAchieves.forEach(myachieves => {
-//         const ownAchieves = `
+// function displayStoredRankHolders(){
+//     const storedRankholders = JSON.parse(localStorage.getItem('myClgRankHolders')) || [];    const myClgAchieves = document.querySelector(".achievementsContent");
+//     storedRankholders.forEach(myrankholders => {
+//         const ownRankHolders = `
 //             <div class="each-achieve">
 //                     <div class="achieveCardDetils">
 //                         <img class="achieve-card-image" src="/images/achieve2.jpg" alt="" width="304px" height="180px">
-//                         <h2>${myachieves.achieveTitle}</h2>
-//                         <h3>${myachieves.achieveType} | ${myachieves.issuedDate}</h3>
-//                         <p>${myachieves.achieveDescription}</p>
-//                         <a href="${myachieves.achieveurl}">${myachieves.achieveurl}</a>
+//                         <h2>${myrankholders.achieveTitle}</h2>
+//                         <h3>${myrankholders.achieveType} | ${myrankholders.issuedDate}</h3>
+//                         <p>${myrankholders.achieveDescription}</p>
+//                         <a href="${myrankholders.achieveurl}">${myrankholders.achieveurl}</a>
 //                     </div>
 //                     <div class="imp-buttons">
 //                         <button class="viewCertBtn ">View Cerificate/Proof</button>
@@ -919,7 +943,7 @@ window.onload = displayStoredAchievements();
 //                 </div>
                 
 //         `;
-//     myClgAchieves.innerHTML += ownAchieves;
+//     myClgRankHolders.innerHTML += ownRankHolders;
 //     });
 // }
-// window.onload = displayStoredAchievements();
+// window.onload = displayStoredRankHolders();
