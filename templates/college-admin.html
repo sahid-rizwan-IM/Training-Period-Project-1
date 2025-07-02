@@ -313,15 +313,15 @@
                 <h2 class="pop-title">Add Rank Holders</h2>
                 <form id="create-rankholders-form">
                     <div class="form-group">
-                        <label for="new-rankholder">Rank Holder Title:<span class="required-star">*</span></label>
-                        <input type="text" id="new-rankholder" name="new-rankholder">
-                        <small id="new-rankholder-req" class="hidden"></small>
+                        <label for="new-ranktitle">Rank Title:<span class="required-star">*</span></label>
+                        <input type="text" id="new-ranktitle" name="new-ranktitle">
+                        <small id="new-ranktitle-req" class="hidden"></small>
                     </div>
 
                     <div class="form-group">
-                        <label for="student-name">Rank Holder Name:<span class="required-star">*</span></label>
-                        <input type="text" id="student-name" name="student-name">
-                        <small id="student-name-req" class="hidden"></small>
+                        <label for="rank-holder-name">Rank Holder Name:<span class="required-star">*</span></label>
+                        <input type="text" id="rank-holder-name" name="rank-holder-name">
+                        <small id="rank-holder-name-req" class="hidden"></small>
                     </div>
                     <div class="form-group">
                         <label for="department-rk">Department:<span class="required-star">*</span></label>
@@ -337,6 +337,12 @@
                         </select>
                         <small id="department-rk-req" class="hidden"></small>
                     </div>
+                    <div>
+                        <div class="form-group otherTextBox other-type-hidden">
+                        <label for="other-dept">other:<span class="required-star">*</span></label>
+                        <input type="text" id="other-dept" name="other-dept">
+                        <small id="other-dept-req" class="hidden"></small>
+                    </div>
                     
                     <div class="form-group">
                         <label for="rank-place">Rank Place:<span class="required-star">*</span></label>
@@ -345,7 +351,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="cgpa">CGPA:</label>
+                        <label for="cgpa">CGPA:<span class="required-star">*</span></label>
                         <input type="text" id="cgpa" name="cgpa">
                         <small id="cgpa-req" class="hidden"></small>
                     </div>
