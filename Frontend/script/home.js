@@ -1,5 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
-    fetch("http://localhost:3000")
+    fetch("http://localhost:3000/api/data")
         .then(res => res.json())
         .then(data => {
             const header = document.getElementById("header");
