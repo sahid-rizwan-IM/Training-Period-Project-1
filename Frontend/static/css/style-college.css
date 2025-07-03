@@ -211,7 +211,7 @@ i .profile {
     z-index: 7 !important;
 }
 
-.otherclg-content{
+.otherclg-content {
     /* width: 25rem; */
     max-height: 100vh;
     background-color: rgb(240, 240, 240);
@@ -243,6 +243,34 @@ i .profile {
     display:grid;
     grid-template-columns: repeat(4,1fr);
 }
+.rankHoldersContent{
+    height: auto;
+    /* padding-left: 6rem; */
+    color: rgb(72, 67, 99);
+    z-index: 10;
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+}
+.each-rank-heading{
+    /* max-height: 100vh; */
+    background-color: rgb(240, 240, 240);
+    color: rgb(72, 67, 99);
+    z-index: 7;
+    margin: 20px 10px 10px 15px;
+    border-radius: 5px;
+    display:grid;
+    border: 1px solid black;
+    box-shadow: 2px 0px 2px rgb(11, 11, 12), 2px 2px 25px rgb(13, 12, 14), 2px 2px 12px rgb(17, 16, 16);
+    transition: all 0.3s ease-in-out; 
+}
+
+.each-holder h2, h3, h4, img{
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+    justify-self: center;
+}
+
 .each-my-events{
     /* width: 150px; */
     background-color: rgb(240, 240, 240);
