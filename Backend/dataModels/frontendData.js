@@ -1,26 +1,28 @@
+const navTitle = "Mutli-College Event Site"
 const navData = [
     { 
-        id: "#main-container", 
-        name: "Homeeee" 
+        navLink: "#main-container", 
+        navName: "Homeee" 
     },
     { 
-        id: "#instructions", 
-        name: "Instructions" 
+        navLink: "#instructions", 
+        navName: "Instructions" 
     },
     { 
-        id: "clg-admin-login.html", 
-        name: "College Admin" 
+        navLink: "clg-admin-login.html", 
+        navName: "College Admin" 
     },
     { 
-        id: "#", 
-        name: "Student" 
+        navLink: "#", 
+        navName: "Student" 
     },
     { 
-        id: "#", 
-        name: "View other Colleges" 
+        navLink: "#", 
+        navName: "View other College" 
     }
 ];
 
 module.exports={
-    navData
+    navData,
+    navTitle
 };
