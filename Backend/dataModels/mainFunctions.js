@@ -12,6 +12,28 @@ function navBarData(res, combinedData){
 
 }
 
+function serveImage(res, imageName) {
+    const imagePath = path.join(__dirname, "Frontend", "static", "images", imageName);
+    const ext = path.extname(imageName).toLowerCase();
+    const mimeType = {
+        '.jpg': contentType.JPEG,
+        '.jpeg': contentType.JPEG,
+        '.png': contentType.PNG,
+        '.avif': contentType.AVIF
+    }[ext] || contentType.BINARYFILE;
+
+    fs.readFile(imagePath, (err, data) => {
+        if (err) {
+            res.writeHead(404, { 'Content-Type': contentType.TEXTPLAIN });
+            res.end('404 Not Found: Image not found');
+        } else {
+            res.writeHead(200, { 'Content-Type': mimeType});
+            res.end(data);
+        }
+    });
+}
+
 module.exports={
-    navBarData
+    navBarData,
+    serveImage
 }

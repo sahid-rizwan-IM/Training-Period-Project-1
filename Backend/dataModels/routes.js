@@ -1,6 +1,7 @@
 const url = require('url');
-const { navBarData } = require('./mainFunctions');
+const mainFunctions = require('./mainFunctions');
 const frontendData = require('./frontendData.js');
+const backendData = require('./backendData.js');
 
 
 function handleRoutes(req, res) {
@@ -17,18 +18,18 @@ function handleRoutes(req, res) {
             navTitle: frontendData.navTitle,
             navData: frontendData.navData
         };
-        navBarData(res, combinedData);
+        mainFunctions.navBarData(res, combinedData);
     }
-    // else if (pathname === '/image' && req.method === 'GET') {
-    //     if (!query.name) {
-    //         res.writeHead(400, { 'Content-Type': 'text/plain' });
-    //         res.end('400 Bad Request: Image name missing');
-    //     } else {
-    //         serveImage(res, query.name);
-    //     }
-    // }
+    else if (pathname === '/images' && req.method === 'GET') {
+        if (!query.name) {
+            res.writeHead(400, { 'Content-Type': backendData.contentType.TEXTPLAIN });
+            res.end('400 Bad Request: Image name missing');
+        } else {
+            mainFunctions.serveImage(res, query.name);
+        }
+    }
     else {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
+        res.writeHead(404, { 'Content-Type': backendData.contentType.TEXTPLAIN });
         res.end('404 Not Found: Route invalid');
     }
 }
