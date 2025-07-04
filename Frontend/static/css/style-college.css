@@ -249,7 +249,8 @@ i .profile {
     color: rgb(72, 67, 99);
     z-index: 10;
     display:grid;
-    grid-template-columns: repeat(4,1fr);
+    /* grid-template-columns: repeat(2,1fr); */
+    margin: 0rem 1rem;
 }
 .each-rank-heading{
     /* max-height: 100vh; */
@@ -263,12 +264,30 @@ i .profile {
     box-shadow: 2px 0px 2px rgb(11, 11, 12), 2px 2px 25px rgb(13, 12, 14), 2px 2px 12px rgb(17, 16, 16);
     transition: all 0.3s ease-in-out; 
 }
+.each-rank-heading h2{
+    margin: 1rem;
+}
 
-.each-holder h2, h3, h4, img{
-    align-items: center;
-    margin: 0px;
+.rankHolders{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 1rem;
+}
+
+.each-holder{
+    margin-left: 1rem;
+    
+}
+
+.each-holder h2, .each-holder h3, h4{
+    margin: 0.3rem;
     padding: 0px;
     justify-self: center;
+    align-self: center;
+}
+.each-holder img{
+    border-radius: 50px;
+    margin-left: 2.5rem;
 }
 
 .each-my-events{
@@ -281,7 +300,7 @@ i .profile {
     transition: all 0.3s ease-in-out;
     box-shadow: 2px 0px 2px rgb(11, 11, 12), 2px 2px 25px rgb(13, 12, 14), 2px 2px 12px rgb(17, 16, 16);
 }
-.each-my-events h2, h4, p{
+.each-my-events h2, .each-my-events h4, p{
     padding-left:10px;
     text-wrap: wrap;
     display:flex;
