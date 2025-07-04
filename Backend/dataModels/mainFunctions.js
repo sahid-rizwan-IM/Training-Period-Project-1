@@ -12,8 +12,16 @@ function navBarData(res, combinedData){
 
 }
 
+function homeContents(res, homeContent){
+    res.writeHead(200, {
+        'Content-Type': contentType.APPJSON,
+        'Access-Control-Allow-Origin': '*' 
+    });
+    res.end(JSON.stringify(homeContent));
+}
+
 function serveImage(res, imageName) {
-    const imagePath = path.join(__dirname, "Frontend", "static", "images", imageName);
+    const imagePath = path.join(__dirname,"..","..","Frontend", "static", "images", imageName);
     const ext = path.extname(imageName).toLowerCase();
     const mimeType = {
         '.jpg': contentType.JPEG,
@@ -35,5 +43,6 @@ function serveImage(res, imageName) {
 
 module.exports={
     navBarData,
-    serveImage
+    serveImage,
+    homeContents
 }

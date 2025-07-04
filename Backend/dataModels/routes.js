@@ -10,15 +10,19 @@ function handleRoutes(req, res) {
     const query = parsedUrl.query;
 
     if (pathname === '/' && req.method === 'GET') {
-        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.writeHead(200, { 'Content-Type': backendData.contentType.TEXTHTML });
         res.end('<h1>Welcome to Multi-College Event Platform</h1>');
     }
-    else if (pathname === '/api/data' && req.method === 'GET') {
+    else if (pathname === '/api/homenavdata' && req.method === 'GET') {
         const combinedData = {
             navTitle: frontendData.navTitle,
             navData: frontendData.navData
         };
         mainFunctions.navBarData(res, combinedData);
+    }
+    else if (pathname === '/api/homecontent' && req.method === 'GET') {
+        const homeContent = frontendData.homeContent;
+        mainFunctions.navBarData(res, homeContent);
     }
     else if (pathname === '/images' && req.method === 'GET') {
         if (!query.name) {
