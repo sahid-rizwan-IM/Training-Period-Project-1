@@ -890,6 +890,56 @@ cgpaInput.on("input",validateCGPA);
 //     validateRankTitle();
 // })
 
+const addNewHolder = document.querySelector(".addAnotherRankHolder");
+addNewHolder.addEventListener("click", function (){
+    const newfeilds = document.getElementById("rankHolderDetails");
+    newfeilds.innerHTML += `
+        <div class="form-group">
+                        <label for="rank-holder-name">Rank Holder Name:<span class="required-star">*</span></label>
+                        <input type="text" id="rank-holder-name" name="rank-holder-name">
+                        <small id="rank-holder-name-req" class="hidden"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="department-rk">Department:<span class="required-star">*</span></label>
+                        <select id="department-rk" name="department-rk">
+                            <option value="">Select</option>
+                            <option value="Computer Science and Engineering">CSE</option>
+                            <option value="Information Technology">IT</option>
+                            <option value="Electronics and Communication Engineering">ECE</option>
+                            <option value="Electrical and Electronics Engineering">EEE</option>
+                            <option value="Civil Engineering">Civil</option>
+                            <option value="Mechanical Engineering">Mech</option>
+                            <option value="Others">Others</option>
+                        </select>
+                        <small id="department-rk-req" class="hidden"></small>
+                    </div>
+                    <div>
+                        <div class="form-group otherTextBox other-type-hidden">
+                        <label for="other-dept">other:<span class="required-star">*</span></label>
+                        <input type="text" id="other-dept" name="other-dept">
+                        <small id="other-dept-req" class="hidden"></small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="rank-place">Rank Place:<span class="required-star">*</span></label>
+                        <input type="text" id="rank-place" name="rank-place">
+                        <small id="rank-place-req" class="hidden"></small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cgpa">CGPA:<span class="required-star">*</span></label>
+                        <input type="text" id="cgpa" name="cgpa">
+                        <small id="cgpa-req" class="hidden"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="file">Upload Photo:</label>
+                        <input type="file" id="photo-file" name="photo-file">
+                        <small id="photo-file-req" class="hidden"></small>
+                    </div>
+    `;
+});
+
+
 const addRankHolderMessage = document.getElementById("createRankHolderAlertmsg");
 const addRankHolderForm = document.getElementById("create-rankholders-form");
 addRankHolderForm.addEventListener("submit", function(e){
