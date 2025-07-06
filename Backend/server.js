@@ -1,6 +1,4 @@
 //creating a new server using node.js
-
-
 //http module will be used
 const http = require('http'); //importing http package
 const handelRoutes = require('./dataModels/routes')
