@@ -40,7 +40,7 @@ window.addEventListener("DOMContentLoaded", () => {
                             <h2 ><span class="imp1">${data.h2Span1}<br>${data.h2Span2}<br>${data.h2Span3}</span>${data.h2Content}</h2>
                         </div>
                         <div class="event-img">
-                            <img class="event-img" src="/api/v1/home/images?name=event1.jpg" alt="image">
+                            <img class="event-img" src="http://localhost:3000/api/v1/home/images?name=event1.jpg" alt="image">
                         </div>
                     </div>
                 `;
@@ -52,6 +52,7 @@ window.addEventListener("DOMContentLoaded", () => {
     fetch("http://localhost:3000/api/v1/home/home-rolescontents")
         .then(res => res.json())
         .then(data => {
+            data = data?.data || null;
             const rolesContent = document.getElementById("instructions");
             item = data.roles;
             const rolesHtml = `
@@ -81,9 +82,18 @@ window.addEventListener("DOMContentLoaded", () => {
                         </div>
                     </div>
                 `;
-            })
-
+            });
             
+        });
+    
+    fetch("http://localhost:3000/api/v1/home/homefooter")
+        .then(res => res.json())
+        .then(data => {
+            data = data?.data || null;
+            const footerContent = document.getElementById("footer");
+            if(footerContent){
+                footerContent.innerHTML = `<p>${data.footer}</p>`
+            }
         })
 });
 
