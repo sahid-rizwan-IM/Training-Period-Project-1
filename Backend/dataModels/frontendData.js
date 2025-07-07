@@ -34,8 +34,49 @@ const homeContent = {
     h2Content : "— across campuses"
 }
 
+const roles = {
+    instructTitle : "Important Roles"
+}
+
+const cardsName = [
+    {
+        roleCardTitle : "COLLEGE ADMIN",
+        cardRoles :
+            {
+            Role1 : "Register and login",
+            Role2 : "Post inter and intra college events",
+            Role3 : "View other college events and profiles",
+            Role4 : "Enhance your college profile",
+            Role5 : "Approve student registrations"
+            }
+    },
+    {
+        roleCardTitle: "STUDENTS",
+        cardRoles : 
+        {
+            Role1 : "Register and login",
+            Role2 : "View intra & inter college event",
+            Role3 : "Participate in events and track for updates",
+            Role4 : "View other college profile"
+        }
+    }
+    
+]
+
+// const adminRoles = {
+//     Role1 : "Register and login",
+//     admRole2 : "Post inter and intra college events",
+//     admRole3 : "View other college events and profiles",
+//     admRole4 : "Enhance your college profile",
+//     admRole5 : "Approve student registrations"
+// }
+
+// const studentRoles = {
+//     stuRole2 : "View intra & inter college event",
+//     stuRole3 : "Participate in events and track for updates",
+//     stuRole4 : "View other college profile"
+// }
+
 module.exports={
-    navData,
-    navTitle,
-    homeContent
+    navData, navTitle, homeContent, roles, cardsName
 };
