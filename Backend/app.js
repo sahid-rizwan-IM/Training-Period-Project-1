@@ -6,15 +6,17 @@ const path = require('path'); //to find path based on os by itself.
 // use() - its a middleware function/method - it works for all the routes automatically.
 // get() and post() - these are router methods - works only when a particular url is called or requested.
 // send() - used in express, it identifies the content-type of the passed data by itself.
-//sendFie() - if a file is passed, it reads the whole file (like html file)
+//sendFile() - if a file is passed, it reads the whole file (like html file)
 app.use(express.static(path.join(__dirname, '..', 'Frontend', 'templates')));
 app.use(express.static(path.join(__dirname, '..', 'Frontend', 'static')));
 app.use(express.static(path.join(__dirname, '..', 'Frontend', 'script')));
-app.use(express.static(path.join(__dirname, '..', 'Frontend', 'static', 'images')));
+
+//routers called here
 app.use(homePage);
 
+//incorrect url error page
 app.use((req, res, next)=>{
-    console.log("default");
+    console.log("default error");
     res.status(404).send("Error: Page Not Found!");
 });
 

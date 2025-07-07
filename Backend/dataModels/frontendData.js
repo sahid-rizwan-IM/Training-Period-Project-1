@@ -1,8 +1,8 @@
-const navTitle = "Multi-College Event Site"
+const navTitle = "Multi-College Event Platform"
 const navData = [
     { 
         navLink: "#main-container", 
-        navName: "Homeee" 
+        navName: "Home" 
     },
     { 
         navLink: "#instructions", 
@@ -23,7 +23,7 @@ const navData = [
 ];
 
 const homeContent = {
-    h1p1Content : "\"A unified platformmmm to",
+    h1p1Content : "\"A unified platform to",
     h1SpanContent : "organize and explore college events",
     h1p2Content : "across institutions\"",
     homePtagP1 : "Welcome! A multi-college event sharing platform designed to bring together colleges, students, and events under one digital roof.",
