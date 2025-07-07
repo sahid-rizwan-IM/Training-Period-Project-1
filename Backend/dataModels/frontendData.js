@@ -9,7 +9,7 @@ const navData = [
         navName: "Instructions" 
     },
     { 
-        navLink: "/clg-admin-login.html", 
+        navLink: "clg-admin-login.html", 
         navName: "College Admin" 
     },
     { 
@@ -32,11 +32,11 @@ const homeContent = {
     h2Span2 : "Celebrate.",
     h2Span3 : "Compete.",
     h2Content : "— across campuses"
-}
+};
 
 const roles = {
     instructTitle : "Important Roles"
-}
+};
 
 const cardsName = [
     {
@@ -61,22 +61,10 @@ const cardsName = [
         }
     }
     
-]
+];
 
-// const adminRoles = {
-//     Role1 : "Register and login",
-//     admRole2 : "Post inter and intra college events",
-//     admRole3 : "View other college events and profiles",
-//     admRole4 : "Enhance your college profile",
-//     admRole5 : "Approve student registrations"
-// }
-
-// const studentRoles = {
-//     stuRole2 : "View intra & inter college event",
-//     stuRole3 : "Participate in events and track for updates",
-//     stuRole4 : "View other college profile"
-// }
+const footer = "PROJECT ON TRAINING PERIOD | INNOVATION MINDS &copy; 2025";
 
 module.exports={
-    navData, navTitle, homeContent, roles, cardsName
+    navData, navTitle, homeContent, roles, cardsName, footer
 };
