@@ -1,7 +1,8 @@
 window.addEventListener("DOMContentLoaded", () => {
-    fetch("http://localhost:3000/api/homenavdata")
+    fetch("http://localhost:3000/api/v1/home/homenavdata")
         .then(res => res.json())
         .then(data => {
+            data = data?.data || null;
             const header = document.getElementById("header");
             if (header){
                 // Insert the nav title
@@ -24,21 +25,21 @@ window.addEventListener("DOMContentLoaded", () => {
         })
         .catch(err => console.error("Error loading nav:", err));
 
-    fetch("http://localhost:3000/api/homecontent")
+    fetch("http://localhost:3000/api/v1/home/homecontent")
         .then(res => res.json())
         .then(data => {
             const homeContentpage = document.querySelector(".hero-card");
-            const item = data;
+            // const item = data;
             if(homeContentpage){ 
                 const html =`
                     <div class="info">  
                         <div>
-                            <h1> ${item.h1p1Content} <span class="imp">${item.h1SpanContent}</span> ${item.h1p2Content}</h1>
-                            <p> ${item.homePtagP1}<br>${item.homePtagP2}</p>
-                            <h2 ><span class="imp1">${item.h2Span1}<br>${item.h2Span2}<br>${item.h2Span3}</span>${item.h2Content}</h2>
+                            <h1> ${data.h1p1Content} <span class="imp">${data.h1SpanContent}</span> ${data.h1p2Content}</h1>
+                            <p> ${data.homePtagP1}<br>${data.homePtagP2}</p>
+                            <h2 ><span class="imp1">${data.h2Span1}<br>${data.h2Span2}<br>${data.h2Span3}</span>${data.h2Content}</h2>
                         </div>
                         <div class="event-img">
-                            <img class="event-img" src="/images?name=event1.jpg" alt="image">
+                            <img class="event-img" src="/api/v1/home/images?name=event1.jpg" alt="image">
                         </div>
                     </div>
                 `;
@@ -46,5 +47,53 @@ window.addEventListener("DOMContentLoaded", () => {
                 
             }
         });
+    
+    fetch("http://localhost:3000/api/v1/home/home-rolescontents")
+        .then(res => res.json())
+        .then(data => {
+            const rolesContent = document.getElementById("instructions");
+            item = data.roles;
+            const rolesHtml = `
+                    <h1 class="instruct-title">${item.instructTitle}</h1>
+                    <div class="instruct-card">
+                        
+                    </div>
+            `
+            rolesContent.innerHTML = rolesHtml;
+
+            const roleCards = document.querySelector(".instruct-card");
+            data.cardsName.forEach(roles =>{
+                roleCards.innerHTML += `
+                    <div class="roles">
+                        <h2 class="card-name">${roles.roleCardTitle}</h2>
+                        <div class="each-role">
+                            <h4>${roles.cardRoles.Role1}</h4>
+                        </div>
+                        <div class="each-role">
+                            <h4>${roles.cardRoles.Role2}</h4>
+                        </div>
+                        <div class="each-role">
+                            <h4>${roles.cardRoles.Role3}</h4>
+                        </div>
+                        <div class="each-role">
+                            <h4>${roles.cardRoles.Role4}</h4>
+                        </div>
+                    </div>
+                `;
+
+            //     const cardPoints = document.querySelector(".each-role");
+            //     const item1 = data.cardsName;    
+            //     cardPoints.innerHTML += `
+            //             <div class="each-role">
+            //                 <h4>${item1.cardRoles.Role5}</h4>
+            //             </div>
+            //     `;
+            // })
+            })
+
+            
+        })
+
+
 });
 
