@@ -8,15 +8,13 @@ const path = require('path'); //to find path based on os by itself.
 // get() and post() - these are router methods - works only when a particular url is called or requested.
 // send() - used in express, it identifies the content-type of the passed data by itself.
 //sendFile() - if a file is passed, it reads the whole file (like html file)
-// app.use(express.static(path.join(__dirname, '..', 'Frontend', 'templates')));
-// app.use(express.static(path.join(__dirname, '..', 'Frontend', 'static')));
-// app.use(express.static(path.join(__dirname, '..', 'Frontend', 'script')));
 
-// app.get('/',(req,res)=>{
-//     console.log("home page here");
-//     res.sendFile(path.join(rootDir,'..','Frontend','templates','home.html'));
-// });
 //routers called here
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+});
+
 app.use('/api/v1/home',homePage);
 
 //incorrect url error page
