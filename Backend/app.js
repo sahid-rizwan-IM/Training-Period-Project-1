@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const rootDir = require('./express_routes/path');
 // const bodyParser = require('body-parser');
 const homePage = require('./express_routes/home_routes');
 const path = require('path'); //to find path based on os by itself.
@@ -11,8 +12,12 @@ app.use(express.static(path.join(__dirname, '..', 'Frontend', 'templates')));
 app.use(express.static(path.join(__dirname, '..', 'Frontend', 'static')));
 app.use(express.static(path.join(__dirname, '..', 'Frontend', 'script')));
 
+app.get('/',(req,res)=>{
+    console.log("home page here");
+    res.sendFile(path.join(rootDir,'..','Frontend','templates','home.html'));
+});
 //routers called here
-app.use(homePage);
+app.use('/api/v1/home',homePage);
 
 //incorrect url error page
 app.use((req, res, next)=>{
