@@ -1,5 +1,5 @@
 const frontendData = require('../dataModels/frontendData');
-const homeNavController = {
+const homeController = {
     getHomeNavData(req,res){
         try{
             res.status(200).json(
@@ -22,9 +22,29 @@ const homeNavController = {
                 status : 500
             })
         }
+    },
+    getHomeContent(req,res){
+        try{
+            res.status(200).json(
+                {
+                    success : true,
+                    data : {
+                        homeContent : frontendData.homeContent
+                    },
+                    error : null,
+                    status : 200
+                }
+            )
+        }
+        catch{
+            res.status(500).json({
+                success : false,
+                data : null,
+                error : err.message,
+                status : 500
+            })
+        }
     }
 }
 
-// const
-
-module.exports = homeNavController;
+module.exports = homeController;

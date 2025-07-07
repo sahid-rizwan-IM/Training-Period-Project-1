@@ -28,6 +28,7 @@ window.addEventListener("DOMContentLoaded", () => {
     fetch("http://localhost:3000/api/v1/home/homecontent")
         .then(res => res.json())
         .then(data => {
+            data = data?.data.homeContent || null;
             const homeContentpage = document.querySelector(".hero-card");
             // const item = data;
             if(homeContentpage){ 
@@ -80,20 +81,9 @@ window.addEventListener("DOMContentLoaded", () => {
                         </div>
                     </div>
                 `;
-
-            //     const cardPoints = document.querySelector(".each-role");
-            //     const item1 = data.cardsName;    
-            //     cardPoints.innerHTML += `
-            //             <div class="each-role">
-            //                 <h4>${item1.cardRoles.Role5}</h4>
-            //             </div>
-            //     `;
-            // })
             })
 
             
         })
-
-
 });
 

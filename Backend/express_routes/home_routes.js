@@ -3,13 +3,11 @@ const router = express.Router();
 const path = require('path');
 const rootDir = require('./path');
 const frontendData = require('../dataModels/frontendData');
-const homeNavController = require('../express_controller/home_controller');
+const homeController = require('../express_controller/home_controller');
 
-router.get('/homenavdata', homeNavController.getHomeNavData);
+router.get('/homenavdata', homeController.getHomeNavData);
 
-router.get('/homecontent', (req, res) => {
-    res.send(frontendData.homeContent);
-});
+router.get('/homecontent', homeController.getHomeContent);
 
 router.get('/images', (req, res) => {
     const imageName = req.query.name;
