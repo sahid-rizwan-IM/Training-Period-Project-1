@@ -35,7 +35,7 @@ html, body{
     -webkit-text-fill-color: transparent;
 }
 nav{
-    margin-left: 20%;
+    margin-left: 13%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,7 +76,7 @@ nav a:hover::after{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('/home-bg3.avif');
+    background-image: url('/images?name=home-bg3.avif');
     background-size: cover;
     color: white;
 }

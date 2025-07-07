@@ -38,7 +38,7 @@ window.addEventListener("DOMContentLoaded", () => {
                             <h2 ><span class="imp1">${item.h2Span1}<br>${item.h2Span2}<br>${item.h2Span3}</span>${item.h2Content}</h2>
                         </div>
                         <div class="event-img">
-                            <img class="event-img" src="/event1.jpg" alt="image">
+                            <img class="event-img" src="/images?name=event1.jpg" alt="image">
                         </div>
                     </div>
                 `;
