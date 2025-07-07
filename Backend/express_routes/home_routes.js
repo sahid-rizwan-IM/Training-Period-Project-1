@@ -10,15 +10,20 @@ router.get('/home',(req,res,next)=>{
 });
 
 router.get('/api/homenavdata', (req, res) => {
-    res.json({
+    res.send({
         navTitle: frontendData.navTitle,
         navData: frontendData.navData
     });
 });
 
-// API: home content
 router.get('/api/homecontent', (req, res) => {
-    res.json(frontendData.homeContent);
+    res.send(frontendData.homeContent);
+});
+
+router.get('/images', (req, res) => {
+    const imageName = req.query.name;
+    const imagePath = path.join(rootDir, '..', 'Frontend', 'static', 'images', imageName);
+    res.sendFile(imagePath);
 });
 
 module.exports = router;
