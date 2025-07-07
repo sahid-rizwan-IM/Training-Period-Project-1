@@ -4,7 +4,7 @@ const path = require('path');
 const rootDir = require('./path');
 const frontendData = require('../dataModels/frontendData');
 
-router.get('/home',(req,res,next)=>{
+router.get('/',(req,res,next)=>{
     console.log("home page here");
     res.sendFile(path.join(rootDir,'..','Frontend','templates','home.html'));
 });
