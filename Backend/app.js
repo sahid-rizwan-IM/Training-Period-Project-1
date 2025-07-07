@@ -18,6 +18,7 @@ app.use(homePage);
 app.use((req, res, next)=>{
     console.log("default error");
     res.status(404).send("Error: Page Not Found!");
+    next();
 });
 
 // app.use(bodyParser.urlencoded());//next handle function
