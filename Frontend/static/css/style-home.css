@@ -76,7 +76,7 @@ nav a:hover::after{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('/images?name=home-bg3.avif');
+    background-image: url('/api/v1/home/images?name=home-bg3.avif');
     background-size: cover;
     color: white;
 }
