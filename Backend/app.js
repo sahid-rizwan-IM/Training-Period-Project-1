@@ -1,21 +1,36 @@
 const express = require('express');
 const app = express();
-const rootDir = require('./express_routes/path');
-// const bodyParser = require('body-parser');
+const path = require('path');
+const bodyParser = require('body-parser');
 const homePage = require('./express_routes/home_routes');
-const path = require('path'); //to find path based on os by itself.
+const eventRoutes = require('./express_routes/event_routes');
+// const path = require('path'); //to find path based on os by itself.
 // use() - its a middleware function/method - it works for all the routes automatically.
 // get() and post() - these are router methods - works only when a particular url is called or requested.
 // send() - used in express, it identifies the content-type of the passed data by itself.
 //sendFile() - if a file is passed, it reads the whole file (like html file)
 
+app.use(bodyParser.json());//next handle function
+app.use(express.json());
 //routers called here
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
+app.set("view engine", "jade");
+app.set("views", path.join(__dirname, "views"));
 
 app.use('/api/v1/home',homePage);
+app.use('/api/v2/events', eventRoutes);
+
+app.get("/", (req, res) => {
+    res.render("index.jade", {
+        "title": "College Event Site",
+        "h1Value": "welcome you!"
+    });
+})
 
 //incorrect url error page
 app.use((req, res, next)=>{
@@ -24,7 +39,6 @@ app.use((req, res, next)=>{
     next();
 });
 
-// app.use(bodyParser.urlencoded());//next handle function
 
 app.listen(3000, ()=>{
     console.log("server running on port 3000");
