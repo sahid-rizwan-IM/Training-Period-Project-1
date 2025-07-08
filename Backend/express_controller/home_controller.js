@@ -52,12 +52,6 @@ const homeController = {
             const imageName = req.query.name;
             const imagePath = path.join(rootDir, '..', 'Frontend', 'static', 'images', imageName);
             res.status(200).sendFile(imagePath);
-            //.json({
-            //     success : true,
-            //     data : true,
-            //     error : null,
-            //     status : 200
-            // })
         }
         catch(err){
             res.status(500).json({
