@@ -9,7 +9,7 @@ const navData = [
         navName: "Instructions" 
     },
     { 
-        navLink: "clg-admin-login.html", 
+        navLink: "/templates/clg-admin-login.html", 
         navName: "College Admin" 
     },
     { 
@@ -43,28 +43,32 @@ const cardsName = [
         roleCardTitle : "COLLEGE ADMIN",
         cardRoles :
             {
-            Role1 : "Register and login",
-            Role2 : "Post inter and intra college events",
-            Role3 : "View other college events and profiles",
-            Role4 : "Enhance your college profile",
-            Role5 : "Approve student registrations"
+            role1 : "Register and login",
+            role2 : "Post inter and intra college events",
+            role3 : "View other college events and profiles",
+            role4 : "Enhance your college profile",
+            role5 : "Approve student registrations"
             }
     },
     {
         roleCardTitle: "STUDENTS",
         cardRoles : 
         {
-            Role1 : "Register and login",
-            Role2 : "View intra & inter college event",
-            Role3 : "Participate in events and track for updates",
-            Role4 : "View other college profile"
+            role1 : "Register and login",
+            role2 : "View intra & inter college event",
+            role3 : "Participate in events and track for updates",
+            role4 : "View other college profile"
         }
     }
     
 ];
+ const images = {
+    imageSource : "/static/images/event1.jpg",
+    imageAlt : "Event Image"
+ }
 
-const footer = "PROJECT ON TRAINING PERIOD | INNOVATION MINDS &copy; 2025";
+const footer = "PROJECT ON TRAINING PERIOD | INNOVATION MINDS © 2025";
 
 module.exports={
-    navData, navTitle, homeContent, roles, cardsName, footer
+    navData, navTitle, homeContent, roles, cardsName, footer, images
 };
