@@ -563,6 +563,7 @@ async function displayStoredEvents() {
                             <p>${myEvents.eventDescription}</p>
                         </div>
                         <div class="imp-buttons">
+                            <button class="button" >Delete</button>
                             <button class="button" onclick="toViewRegisteredStudents()">View Registered students</button>
                         </div>
                     </div>
@@ -578,6 +579,7 @@ async function displayStoredEvents() {
 }
 
 window.onload = displayStoredEvents();
+
 
 
 
