@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
+const fronendData = require('../Backend/dataModels/frontendData');
 const homePage = require('./express_routes/home_routes');
 const eventRoutes = require('./express_routes/event_routes');
 // const path = require('path'); //to find path based on os by itself.
@@ -13,7 +14,7 @@ const eventRoutes = require('./express_routes/event_routes');
 app.use(bodyParser.json());//next handle function
 app.use(express.json());
 
-app.use('/Frontend', express.static(path.join(__dirname, '..', 'Frontend')));
+app.use(express.static(path.join(__dirname, '..', 'Frontend')));
 //routers called here
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -35,18 +36,8 @@ app.get("/index", (req, res) => {
 })
 
 app.get("/", (req, res) => {
-    res.render("home.jade", {
-        webTitle: "College Event WebApp",
-        navTitle : "Multi-College Event Site",
-        navData : [
-            { navLink: "#main-container", navName: "Home" },
-            { navLink: "#instructions", navName: "Instructions" },
-            { navLink: "clg-admin-login.html", navName: "College Admin" },
-            { navLink: "#", navName: "Student" },
-            { navLink: "#", navName: "View other College" }
-        ]
-    });
-})
+    res.render("home.jade", fronendData);
+});
 
 //incorrect url error page
 app.use((req, res, next)=>{
