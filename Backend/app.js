@@ -12,6 +12,8 @@ const eventRoutes = require('./express_routes/event_routes');
 
 app.use(bodyParser.json());//next handle function
 app.use(express.json());
+
+app.use('/Frontend', express.static(path.join(__dirname, '..', 'Frontend')));
 //routers called here
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -25,10 +27,24 @@ app.set("views", path.join(__dirname, "views"));
 app.use('/api/v1/home',homePage);
 app.use('/api/v2/events', eventRoutes);
 
-app.get("/", (req, res) => {
+app.get("/index", (req, res) => {
     res.render("index.jade", {
         "title": "College Event Site",
         "h1Value": "welcome you!"
+    });
+})
+
+app.get("/", (req, res) => {
+    res.render("home.jade", {
+        webTitle: "College Event WebApp",
+        navTitle : "Multi-College Event Site",
+        navData : [
+            { navLink: "#main-container", navName: "Home" },
+            { navLink: "#instructions", navName: "Instructions" },
+            { navLink: "clg-admin-login.html", navName: "College Admin" },
+            { navLink: "#", navName: "Student" },
+            { navLink: "#", navName: "View other College" }
+        ]
     });
 })
 
