@@ -1,30 +1,39 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title #{webTitle}
-    link(rel="stylesheet", href="/Frontend/static/css/style-home.css")
-
-  body
-    //- Header section
-    #main-container
-      header#header
-        include ./includes/home_nav
-          
-
-      //- About Web App
-      main.hero-card
-        //- Dynamic content from backend (via home.js)
-
-    //- Instruction & role cards
-    section#instructions
-      //- Dynamic content from backend (via home.js)
-
-    //- Footer
-    footer#footer
-      //- Filled by JS from backend
-
-    //- JS Libraries
-    script(src="https://code.jquery.com/jquery-3.7.1.min.js")
-    script(src="/Frontend/script/home.js")
+include ./includes/home_content
+#main-container
+    header#header
+        div
+            h2 #{navTitle}
+        nav
+            ul#sidemenu
+                each item in navData
+                    li: a(href=item.navLink)= item.navName
+    main.hero-card
+        .info 
+            div
+                h1 #{homeContent.h1p1Content} 
+                    span.imp #{homeContent.h1SpanContent}  
+                    |#{homeContent.h1p2Content}
+                    
+                p #{homeContent.homePtagP1}
+                    br 
+                    |#{homeContent.homePtagP2}
+                h2 
+                    span.imp1 #{homeContent.h2Span1}
+                        br 
+                        |#{homeContent.h2Span2}
+                        br 
+                        |#{homeContent.h2Span3} 
+                    |#{homeContent.h2Content}
+            .event-img 
+                img.event-img(src=images.imageSource, alt=images.imageAlt)
+section#instructions
+    h1.instruct-title #{roles.instructTitle}
+    .instruct-card
+        each item in cardsName
+            .roles 
+                h2.card-name #{item.roleCardTitle}
+                each role in item.cardRoles 
+                    .each-role
+                        h4=role
+footer#footer 
+    p #{footer}
