@@ -1,29 +1,29 @@
 window.addEventListener("DOMContentLoaded", () => {
-    // fetch("http://localhost:3000/api/v1/home/homenavdata")
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         data = data?.data || null;
-    //         const header = document.getElementById("header");
-    //         if (header){
-    //             // Insert the nav title
-    //             header.innerHTML = `
-    //                 <div>
-    //                     <h2>${data.navTitle}</h2>
-    //                 </div>
-    //                 <nav>
-    //                     <ul id="sidemenu"></ul>
-    //                 </nav>
-    //             `;
-    //         }
-    //         // Populate the nav menu items
-    //         const sidemenu = document.getElementById("sidemenu");
-    //         data.navData.forEach(item => {
-    //             sidemenu.innerHTML +=`
-    //                 <li><a href="${item.navLink}">${item.navName}</a></li>
-    //             `
-    //         });
-    //     })
-    //     .catch(err => console.error("Error loading nav:", err));
+    fetch("http://localhost:3000/api/v1/home/homenavdata")
+        .then(res => res.json())
+        .then(data => {
+            data = data?.data || null;
+            const header = document.getElementById("header");
+            if (header){
+                // Insert the nav title
+                header.innerHTML = `
+                    <div>
+                        <h2>${data.navTitle}</h2>
+                    </div>
+                    <nav>
+                        <ul id="sidemenu"></ul>
+                    </nav>
+                `;
+            }
+            // Populate the nav menu items
+            const sidemenu = document.getElementById("sidemenu");
+            data.navData.forEach(item => {
+                sidemenu.innerHTML +=`
+                    <li><a href="${item.navLink}">${item.navName}</a></li>
+                `
+            });
+        })
+        .catch(err => console.error("Error loading nav:", err));
 
     fetch("http://localhost:3000/api/v1/home/homecontent")
         .then(res => res.json())
@@ -48,7 +48,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 
             }
         });
-    
+        
     fetch("http://localhost:3000/api/v1/home/home-rolescontents")
         .then(res => res.json())
         .then(data => {
@@ -69,16 +69,16 @@ window.addEventListener("DOMContentLoaded", () => {
                     <div class="roles">
                         <h2 class="card-name">${roles.roleCardTitle}</h2>
                         <div class="each-role">
-                            <h4>${roles.cardRoles.Role1}</h4>
+                            <h4>${roles.cardRoles.role1}</h4>
                         </div>
                         <div class="each-role">
-                            <h4>${roles.cardRoles.Role2}</h4>
+                            <h4>${roles.cardRoles.role2}</h4>
                         </div>
                         <div class="each-role">
-                            <h4>${roles.cardRoles.Role3}</h4>
+                            <h4>${roles.cardRoles.role3}</h4>
                         </div>
                         <div class="each-role">
-                            <h4>${roles.cardRoles.Role4}</h4>
+                            <h4>${roles.cardRoles.role4}</h4>
                         </div>
                     </div>
                 `;
