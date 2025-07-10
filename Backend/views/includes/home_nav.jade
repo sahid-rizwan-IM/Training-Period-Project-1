@@ -1,0 +1,7 @@
+header#header
+        div
+            h2 #{navTitle}
+        nav
+            ul#sidemenu
+                each item in navData
+                    li: a(href=item.navLink)= item.navName
