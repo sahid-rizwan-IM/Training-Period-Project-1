@@ -188,10 +188,13 @@ nav a:hover::after{
 }
 footer{
     width: 100%;
-    text-align: center;
     font-weight: 600;
-    /* margin-top: 50px; */
     padding: 10px 0px;
-    color:#343148FF;
     background: #e9d0b6;
+    text-align: center;
+}
+
+footer p{
+    justify-content: center;
+    color:#343148FF;
 }
