@@ -1,16 +1,16 @@
 [
   {
-    "id": 1751965974747,
-    "eventName": "workshop on AI & ML",
+    "id": 1752146078910,
+    "eventName": "Hackathon '25",
     "eventType": "intra",
-    "eventDate": "2025-07-16",
-    "eventDescription": "This workshop will guide your in a right career path for your AI & ML world with main road map"
+    "eventDate": "2025-07-23",
+    "eventDescription": "This is a national level hackathon 2025 for 2nd and 3rd year engineering students to give their innovative idea for win amazing oppoturnity."
   },
   {
-    "id": 1751966100375,
+    "id": 1752146814535,
     "eventName": "Hackathon '25",
-    "eventType": "inter",
-    "eventDate": "2025-07-16",
-    "eventDescription": "Tamil Nadu Level Hackathon 2025 for 2nd and 3rd year engineering students to deploy their thoughts and innovative ideas to grab an opportunity to get into government side tech department."
+    "eventType": "intra",
+    "eventDate": "2025-07-23",
+    "eventDescription": "This is a national level hackathon 2025 for 2nd and 3rd year engineering students to give their innovative idea for win amazing oppoturnity."
   }
 ]

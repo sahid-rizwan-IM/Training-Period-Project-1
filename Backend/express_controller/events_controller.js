@@ -65,6 +65,79 @@ const eventController = {
                 status: 500
             });
         }
+    },
+
+    deleteEvent(req, res) {
+        try {
+            const eventId = parseInt(req.params.id);
+            const rawData = fs.readFileSync(eventDataPath);
+            let events = JSON.parse(rawData);
+
+            const filteredEvents = events.filter(event => event.id !== eventId);
+
+            if (filteredEvents.length === events.length) {
+                return res.status(404).json({
+                    success: false,
+                    error: "Event not found",
+                    status: 404
+                });
+            }
+
+            fs.writeFileSync(eventDataPath, JSON.stringify(filteredEvents, null, 2));
+            res.status(200).json({
+                success: true,
+                message: "Event deleted successfully",
+                status: 200
+            });
+
+        } catch (err) {
+            res.status(500).json({
+                success: false,
+                error: err.message,
+                status: 500
+            });
+        }
+    },
+
+    updateEvent(req, res) {
+        try {
+            const eventId = parseInt(req.params.id);
+            const eventBody = req.body;
+
+            const rawData = fs.readFileSync(eventDataPath);
+            let events = JSON.parse(rawData);
+
+            const eventIndex = events.findIndex(event => event.id === eventId);
+
+            if (eventIndex === -1) {
+                return res.status(404).json({
+                    success: false,
+                    error: "Event not found",
+                    status: 404
+                });
+            }
+
+            // Update the event at the found index
+            events[eventIndex] = {
+                id: eventId,
+                ...eventBody
+            };
+
+            fs.writeFileSync(eventDataPath, JSON.stringify(events, null, 2));
+
+            res.status(200).json({
+                success: true,
+                message: "Event updated successfully",
+                status: 200
+            });
+
+        } catch (err) {
+            res.status(500).json({
+                success: false,
+                error: err.message,
+                status: 500
+            });
+        }
     }
 
 };

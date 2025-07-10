@@ -15,6 +15,7 @@ app.use(bodyParser.json());//next handle function
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, '..', 'Frontend')));
+app.use('/static', express.static(path.join(__dirname, '..', 'Frontend', 'static')));
 //routers called here
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -28,16 +29,22 @@ app.set("views", path.join(__dirname, "views"));
 app.use('/api/v1/home',homePage);
 app.use('/api/v2/events', eventRoutes);
 
-app.get("/index", (req, res) => {
-    res.render("index.jade", {
-        "title": "College Event Site",
-        "h1Value": "welcome you!"
+app.get("/", (req, res) => {
+    res.render("home.jade", {
+        ...fronendData,
+        reqUrl : req.url
+
+    });
+    
+});
+
+app.get("/events",(req,res) =>{
+    res.render("clg_admin.jade",  {
+        ...fronendData,
+        reqUrl : req.url
+
     });
 })
-
-app.get("/", (req, res) => {
-    res.render("home.jade", fronendData);
-});
 
 //incorrect url error page
 app.use((req, res, next)=>{

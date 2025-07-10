@@ -5,6 +5,7 @@ const eventController = require('../express_controller/events_controller');
 
 router.get('/get-events', eventController.getAllEvents);
 router.post('/create-event', eventController.createEvent);
-// router.delete('/delete-event/:id', eventController.deleteEvent);
+router.delete('/delete-event/:id', eventController.deleteEvent);
+router.put('/update-event/:id', eventController.updateEvent);
 
 module.exports = router;
