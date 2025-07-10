@@ -1,0 +1,17 @@
+doctype html
+html(lang="en")
+  head
+    include ./includes/header
+    if(reqUrl.includes("/events"))
+      include ./includes/clg_admin_nav
+    else
+      include ./includes/home_nav
+    block head
+  body
+    block body
+    include ./includes/footer
+    block script
+      script(src="https://code.jquery.com/jquery-3.7.1.min.js")
+      if(reqUrl.includes("/events"))
+        script(src="/script/college-admin.js")
+ 
