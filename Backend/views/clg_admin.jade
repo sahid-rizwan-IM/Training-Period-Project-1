@@ -1,1 +1,106 @@
-include ./include/clg_admin_content
+extend layout
+block body
+  body
+    .main-container
+      
+
+    main#dash-main
+      aside.sidebar
+        ul
+          li.sidebar-link.active(onclick="activePage('otherclg-event',this)")
+            a(href="#otherclg-event") Other College Events
+          li.sidebar-link(onclick="activePage('MyCollege-Events',this)")
+            a(href="#MyCollege-Events") My Events
+          li.sidebar-link(onclick="activePage('achievements',this)")
+            a(href="#achievements") Achievements
+          li.sidebar-link(onclick="activePage('ranks',this)")
+            a(href="#ranks") Rank Holders
+          li.sidebar-link(onclick="activePage('approving',this)")
+            a(href="#approving") Approve Students
+
+      #otherclg-event.section
+      .desc-popup
+      input#register-popup(type="checkbox", hidden)
+      .event-reg-popup
+        .form-popup-content
+          #reg-card-details
+          form#reg-form
+            .form-group
+              label(for="clg-code") College Code: 
+                span.required-star *
+              input#clg-code(type="text", name="clg-code")
+              small#clg-code-req.hidden
+            .form-group
+              label(for="clg-name") College Name: 
+                span.required-star *
+              input#clg-name(type="text", name="clg-name")
+              small#clg-name-req.hidden
+            .form-group
+              label(for="name") Full Name: 
+                span.required-star *
+              input#name(type="text", name="name")
+              small#full-name-req.hidden
+            .form-group
+              label(for="email") Email ID: 
+                span.required-star *
+              input#email(type="email", name="email")
+              small#email-req.hidden
+            .form-group
+              label(for="dept") Department: 
+                span.required-star *
+              input#dept(type="text", name="dept")
+              small#dept-req.hidden
+            .form-group
+              label(for="year") Year:
+              select#year(name="year")
+                option(value="") Select
+                option(value="1st") 1st Year
+                option(value="2nd") 2nd Year
+                option(value="3rd") 3rd Year
+                option(value="4th") 4th Year
+              small#year-req.hidden
+            p#submitAlertmsg
+            button#submit-btn(type="submit") Submit
+
+      #MyCollege-Events.section.hidden-page-content
+        #myclg-event
+          .myclg-content
+          div
+            button#create-button(title="Create New Event", onclick="openCreateForm()") +
+            button(onclick="clearEvents()") Clear All Events
+
+        #create-event-popup
+          .create-event-popup-content
+            label.close-btn(for="create-popup", onclick="closePopup()") &times;
+            h2.pop-title Create a new event
+            form#create-form
+                input#edit-event-id(type="hidden")
+              .form-group
+                label(for="new-event") Event Name: 
+                    span.required-star *
+                input#new-event(type="text", name="new-event")
+                small#new-event-name-req.hidden
+              .form-group
+                label(for="event-type") Event Type: 
+                    span.required-star *
+                select#event-type(name="event-type")
+                  option(value="") Select
+                  option(value="intra") Intra Event
+                  option(value="inter") Inter Event
+                small#event-type-req.hidden
+              .form-group
+                label(for="event-date") Event date: 
+                    span.required-star *
+                input#event-date(type="date", name="event-date")
+                small#event-date-req.hidden
+              .form-group
+                label(for="new-event-description") Description: 
+                    span.required-star *
+                textarea#new-event-description(rows="3", cols="100", name="new-event-description")
+                small#event-description-req.hidden
+              .form-group
+                label(for="file") Upload file:
+                input#file(type="file", name="file")
+              small#createAlertmsg.hidden
+              button#create-btn(type="submit") Create
+            //-    button#submit-event-btn(type="submit") Create
