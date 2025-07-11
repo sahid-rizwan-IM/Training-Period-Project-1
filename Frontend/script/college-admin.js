@@ -151,25 +151,19 @@ function closePopup(){
     document.querySelector("#create-event-popup").style.display = "none";
     const createEventForm = document.getElementById("create-form");
     createEventForm.reset();
-
-    // if(update){
-    //     document.querySelector("#create-event-popup").style.display = "none";
-    //     const createEventForm = document.getElementById("create-form");
-    //     createEventForm.reset();
-    // }
-    //to close achievements creation form popup
-    // document.querySelector("#create-achieve-popup").style.display = "none";
-    // const createAchievementForm = document.getElementById("create-achieve-form");
-    // createAchievementForm.reset();
-    // //to close rank holders form popup
-    // document.querySelector("#create-rankholders-popup").style.display = "none";
-    // const createRankHoldersForm = document.getElementById("create-rankholders-form");
-    // createRankHoldersForm.reset();
+    // to close achievements creation form popup
+    document.querySelector("#create-achieve-popup").style.display = "none";
+    const createAchievementForm = document.getElementById("create-achieve-form");
+    createAchievementForm.reset();
+    //to close rank holders form popup
+    document.querySelector("#create-rankholders-popup").style.display = "none";
+    const createRankHoldersForm = document.getElementById("create-rankholders-form");
+    createRankHoldersForm.reset();
     // to clear all the alert msg in both forms
     const alertMsgs = document.querySelectorAll("small");
     alertMsgs.forEach(msg => msg.textContent = "");
     // to close view registered students popup
-    // document.querySelector("#viewRegStudents-popup").style.display = "none";
+    document.querySelector("#viewRegStudents-popup").style.display = "none";
 
 }
 
@@ -181,18 +175,10 @@ function registrationFormDynamicDetials(collegeName, eventName){
         <h3 id="regCollegeName" class="pop-title">${collegeName}</h3>
         <h2 id="regEventName" class="pop-title">Register for Event - ${eventName}</h2>
     `;
-
         registerationCardDetails.innerHTML = regDetails;
         registerationCardDetails.style.display = "block";
         console.log("reg button clicked");
 }
-
-//registered list here
-// let registeredStudents = [
-//     {
-//         //will be stored dynamically
-//     }
-// ]
 
 const collegeCode = document.getElementById("clg-code");
 const collegecodeAlertmsg = document.getElementById("clg-code-req");
@@ -307,16 +293,12 @@ function validateYearSelection(){
     }
 }
 
-
-
 collegeCode.addEventListener("input",validatecollegeCode);
 collegeName.addEventListener("input",validatecollegeName);
 fullnameInput.addEventListener("input",validatefullName);
 emailInput.addEventListener("input",validateEmail);
 departmentName.addEventListener("input",validateDepartment);
 yearSelection.addEventListener("change", validateYearSelection);
-
-
 
 const message = document.getElementById("submitAlertmsg");
 const form = document.getElementById("reg-form");
@@ -357,7 +339,6 @@ form.addEventListener("submit", function(e){
     
 });
 
-
 function openCreateForm(){
     const createEventForm = document.getElementById("create-event-popup");
     createEventForm.style.display = "block";   
@@ -381,17 +362,14 @@ function toViewRegisteredStudents(){
 function activePage(pageId, clickedId){
     document.querySelectorAll('.section').forEach(section => {
         section.classList.add('hidden-page-content');
-        // section.innerHTML = "";
     });
 
     const pageId1 = document.getElementById(pageId);
     pageId1.classList.remove('hidden-page-content');
-    // pageId1.style.flex = 2;
 
     document.querySelectorAll('.sidebar-link').forEach(link => {
         link.classList.remove('active');
     });
-
     // Add active to the clicked link
     if(clickedId){
         clickedId.classList.add('active');
@@ -424,7 +402,6 @@ function validateEventName(){
 const eventTypeSelection = document.getElementById("event-type");
 const eventTypeAlertmsg = document.getElementById("event-type-req");
 function validateEventType(){
-    // const myEventType = eventTypeSelection.value.trim();
     if(eventTypeSelection.value == ""){
         eventTypeAlertmsg.textContent = "Select any event type";
         return false;
@@ -468,7 +445,6 @@ function validateEventDate(){
     
     if (eventDateChoose.value===""){
         eventDateAlertmsg.textContent = "Choose a date here!";
-        // eventDateChoose.value = minDate;
         return false;
     }
     else{
@@ -487,11 +463,11 @@ const eventFile = document.getElementById("file");
 
 const createEventBtn = document.getElementById("create-button");
 
-    createEventBtn.addEventListener("click", () => {
-        resetFormState();            // Reset form to default "Create" mode
-        createEventForm.reset();     // Clear all input fields
-        openCreateForm();            // Open the popup form
-    });
+createEventBtn.addEventListener("click", () => {
+    resetFormState();           
+    createEventForm.reset();     
+    openCreateForm();         
+});
 
 const createEventMessage = document.getElementById("createAlertmsg");
 const createEventForm = document.getElementById("create-form");
@@ -587,14 +563,14 @@ createEventForm.addEventListener("submit", async function (e) {
 
 function resetFormState() {
     document.getElementById("edit-event-id").value = "";
-    document.querySelector(".pop-title").style.display = "block"; // or ".pop-title" if that's your title
+    document.querySelector(".pop-title").style.display = "block";
     document.getElementById("create-btn").textContent = "Create";
 }
 
 // Initial Load My Events
 async function displayStoredEvents() {
     try {
-        const response = await fetch("http://localhost:3000/api/v2/events/get-events");
+        const response = await fetch("http://localhost:3000/api/v2/events/get-allevents");
         const result = await response.json();
         const myClgEvent = document.querySelector(".myclg-content");
         if (response.ok && result.data.length > 0) {
@@ -682,114 +658,6 @@ function handleEditEvent(button) {
     openCreateForm();
 }
 
-
-// function renderMyEvent(event) {
-//     const myClgEvent = document.querySelector(".myclg-content");
-//     const eventCard = `
-//         <div class="each-my-events">
-//             <div>
-//                 <h2 class="event-name">${event.eventName}</h2>
-//                 <h3>${event.eventType} | ${event.eventDate}</h3>
-//                 <p>${event.eventDescription}</p>
-//             </div>
-//             <div class="imp-buttons">
-//                 <button class="button" onclick="toViewRegisteredStudents()">View Registered Students</button>
-//             </div>
-//         </div>
-//     `;
-//     myClgEvent.innerHTML += eventCard;
-    
-// }
-
-// activePage('MyCollege-Events', document.querySelector("li.sidebar-link:nth-child(2)"));
-// createEventForm.addEventListener("submit", function(e){
-//     console.log("strting part");
-//     e.preventDefault();
-//     debugger
-//     const isValid =
-//             validateEventName()&&
-//             validateEventType()&&
-//             validateEventDescription()&&
-//             validateEventDate();
-
-//     if (isValid) {
-
-//         let eventFile = document.getElementById("file").files[0];
-//         let newEvents = {
-//             eventName: $("#new-event").val().trim(),
-//             eventType: $("#event-type").val(),
-//             eventDate: $("#event-date").val(),
-//             eventDescription: $("#new-event-description").val().trim(),
-//             eventFile: eventFile
-//         };
-
-//         const storedEvents = JSON.parse(localStorage.getItem('newmyClgEvents')) || [];
-
-//         storedEvents.push(newEvents);
-//         localStorage.setItem('newmyClgEvents',JSON.stringify(storedEvents));
-//         // debugger
-
-//         alert("You have created a event successfully!");
-//         createEventMessage.textContent = "Created Event Successfully!";
-//         createEventMessage.style.color = "green";
-//         createEventForm.reset();
-//         setTimeout(() => {
-//             closePopup();
-//         }, 1000);
-
-//         const myClgEvent = document.querySelector(".myclg-content");
-//         const ownEvents = `
-//                 <div class="each-my-events">
-//                     <div>
-//                         <h2 class="event-name ">${newEvents.eventName}</h2>
-//                         <h3>${newEvents.eventType} | ${newEvents.eventDate}</h3>
-//                         <p>${newEvents.eventDescription}</p>
-//                     </div>
-//                     <div class="imp-buttons ">
-//                         <button class="button" onclick="toViewRegisteredStudents()">View Registered students</button>
-//                     </div>
-//                 </div>
-                    
-//             `;
-//         myClgEvent.innerHTML += ownEvents;  
-//     } 
-//     else {
-//         validateEventName();
-//         validateEventType();
-//         validateEventDescription();
-//         validateEventDate();
-//         alert("Please, enter the valid and required details");
-//     }
-    
-// });
-
-// function displayStoredEvents(){
-//     const storedEvents = JSON.parse(localStorage.getItem('newmyClgEvents')) || [];
-//     const myClgEvent = document.querySelector(".myclg-content");
-//     storedEvents.forEach(myEvents => {
-//         const ownEvents = `
-//             <div class="each-my-events">
-//                 <div>
-//                     <h2 class="event-name ">${myEvents.eventName}</h2>
-//                     <h3>${myEvents.eventType} | ${myEvents.eventDate}</h3>
-//                     <p>${myEvents.eventDescription}</p>
-//                 </div>
-//                 <div class="imp-buttons">
-//                     <button class="button" onclick="toViewRegisteredStudents()">View Registered students</button>
-//                 </div>
-//             </div>
-//         `;
-//         myClgEvent.innerHTML += ownEvents;
-//     }); 
-// }
-// window.onload = displayStoredEvents();
-
-// function clearEvents() {
-//     // localStorage.removeItem("newmyClgEvents");
-//     localStorage.removeItem("myClgAchievements");
-//     alert("All Cleared!");
-// }
-
 // ACHIEVEMENTS CREATE FORM VALIDATION
 const achievementTitleInput = document.getElementById("new-achieve");
 const achievementTitleAlertmsg = document.getElementById("new-achieve-req");
@@ -818,7 +686,6 @@ const achievementTypeAlertmsg = document.getElementById("achieve-type-req");
 
 function validateAchievementType(){
     console.log("hii", achievementTypeSelection.value)
-    // const myEventType = eventTypeSelection.value.trim();
     if(achievementTypeSelection.value == ""){
         achievementTypeAlertmsg.textContent = "Select any achievement type";
         return false;
@@ -826,8 +693,6 @@ function validateAchievementType(){
     else if(achievementTypeSelection.value == "others"){
         const otherTextBox = $(".otherTextBox");
         otherTextBox.removeClass("other-type-hidden");
-        // achievementTypeSelection = $("#other-achieve-type").val().trim();
-        // return true;
     }
     else{
         achievementTypeAlertmsg.textContent = "";
@@ -870,7 +735,6 @@ function validateAchieveIssuedDate(){
     issuedDateChoose.max = maxDate;
     if (issuedDateChoose.value===""){
         issuedDateAlertmsg.textContent = "Choose the achievement issued date here!";
-        // eventDateChoose.value = minDate;
         return false;
     }
     else{
@@ -948,7 +812,7 @@ createAchieveForm.addEventListener("submit", function(e){
         const ownAchieves = `
                 <div class="each-achieve">
                         <div class="achieveCardDetils">
-                            <img class="achieve-card-image" src="/Frontend/static/images/achieve2.jpg" alt="image" width="304px" height="180px">
+                            <img class="achieve-card-image" src="/static/images/achieve2.jpg" alt="image" width="304px" height="180px">
                             <h2>${newArchieves.achieveTitle}</h2>
                             <h3>${newArchieves.achieveType} | ${newArchieves.issuedDate}</h3>
                             <p>${newArchieves.achieveDescription}</p>
@@ -979,7 +843,7 @@ function displayStoredAchievements(){
         const ownAchieves = `
             <div class="each-achieve">
                 <div class="achieveCardDetils">
-                    <img class="achieve-card-image" src="/Frontend/static/images/achieve2.jpg" alt="" width="304px" height="180px">
+                    <img class="achieve-card-image" src="/static/images/achieve2.jpg" alt="" width="304px" height="180px">
                     <h2>${myachieves.achieveTitle}</h2>
                     <h3>${myachieves.achieveType} | ${myachieves.issuedDate}</h3>
                     <p>${myachieves.achieveDescription}</p>
