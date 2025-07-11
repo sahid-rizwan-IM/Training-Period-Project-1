@@ -1,250 +1,251 @@
 extend layout
 block body
-  body
-    .main-container
-      
+  .main-container
+    
 
-    main#dash-main
-      aside.sidebar
-        ul
-          li.sidebar-link.active(onclick="activePage('otherclg-event',this)")
-            a(href="#otherclg-event") Other College Events
-          li.sidebar-link(onclick="activePage('MyCollege-Events',this)")
-            a(href="#MyCollege-Events") My Events
-          li.sidebar-link(onclick="activePage('achievements',this)")
-            a(href="#achievements") Achievements
-          li.sidebar-link(onclick="activePage('ranks',this)")
-            a(href="#ranks") Rank Holders
-          li.sidebar-link(onclick="activePage('approving',this)")
-            a(href="#approving") Approve Students
+  main#dash-main
+    aside.sidebar
+      ul
+        li.sidebar-link.active(onclick="activePage('otherclg-event',this)")
+          a(href="#otherclg-event") Other College Events
+        li.sidebar-link(onclick="activePage('MyCollege-Events',this)")
+          a(href="#MyCollege-Events") My Events
+        li.sidebar-link(onclick="activePage('achievements',this)")
+          a(href="#achievements") Achievements
+        li.sidebar-link(onclick="activePage('ranks',this)")
+          a(href="#ranks") Rank Holders
+        li.sidebar-link(onclick="activePage('approving',this)")
+          a(href="#approving") Approve Students
 
-      #otherclg-event.section
-      .desc-popup
-      input#register-popup(type="checkbox", hidden)
-      .event-reg-popup
-        .form-popup-content
-          #reg-card-details
-          form#reg-form
+    #otherclg-event.section 
+    //- other clg page
+    .desc-popup
+    //- descriptioon popup
+    input#register-popup(type="checkbox", hidden)
+    .event-reg-popup
+      .form-popup-content
+        #reg-card-details
+        form#reg-form
+          .form-group
+            label(for="clg-code") College Code: 
+              span.required-star *
+            input#clg-code(type="text", name="clg-code")
+            small#clg-code-req.hidden
+          .form-group
+            label(for="clg-name") College Name: 
+              span.required-star *
+            input#clg-name(type="text", name="clg-name")
+            small#clg-name-req.hidden
+          .form-group
+            label(for="name") Full Name: 
+              span.required-star *
+            input#name(type="text", name="name")
+            small#full-name-req.hidden
+          .form-group
+            label(for="email") Email ID: 
+              span.required-star *
+            input#email(type="email", name="email")
+            small#email-req.hidden
+          .form-group
+            label(for="dept") Department: 
+              span.required-star *
+            input#dept(type="text", name="dept")
+            small#dept-req.hidden
+          .form-group
+            label(for="year") Year:
+            select#year(name="year")
+              option(value="") Select
+              option(value="1st") 1st Year
+              option(value="2nd") 2nd Year
+              option(value="3rd") 3rd Year
+              option(value="4th") 4th Year
+            small#year-req.hidden
+          p#submitAlertmsg
+          button#submit-btn(type="submit") Submit
+
+    #MyCollege-Events.section.hidden-page-content
+      #myclg-event
+        .myclg-content
+        div
+          button#create-button(title="Create New Event", onclick="openCreateForm()") +
+          //- button(onclick="clearEvents()") Clear All Events
+
+      #create-event-popup
+        .create-event-popup-content
+          label.close-btn(for="create-popup", onclick="closePopup()") &times;
+          h2.pop-title Create a new event
+          form#create-form
+            input#edit-event-id(type="hidden")
             .form-group
-              label(for="clg-code") College Code: 
-                span.required-star *
-              input#clg-code(type="text", name="clg-code")
-              small#clg-code-req.hidden
+              label(for="new-event") Event Name: 
+                  span.required-star *
+              input#new-event(type="text", name="new-event")
+              small#new-event-name-req.hidden
             .form-group
-              label(for="clg-name") College Name: 
-                span.required-star *
-              input#clg-name(type="text", name="clg-name")
-              small#clg-name-req.hidden
-            .form-group
-              label(for="name") Full Name: 
-                span.required-star *
-              input#name(type="text", name="name")
-              small#full-name-req.hidden
-            .form-group
-              label(for="email") Email ID: 
-                span.required-star *
-              input#email(type="email", name="email")
-              small#email-req.hidden
-            .form-group
-              label(for="dept") Department: 
-                span.required-star *
-              input#dept(type="text", name="dept")
-              small#dept-req.hidden
-            .form-group
-              label(for="year") Year:
-              select#year(name="year")
+              label(for="event-type") Event Type: 
+                  span.required-star *
+              select#event-type(name="event-type")
                 option(value="") Select
-                option(value="1st") 1st Year
-                option(value="2nd") 2nd Year
-                option(value="3rd") 3rd Year
-                option(value="4th") 4th Year
-              small#year-req.hidden
-            p#submitAlertmsg
-            button#submit-btn(type="submit") Submit
-
-      #MyCollege-Events.section.hidden-page-content
-        #myclg-event
-          .myclg-content
-          div
-            button#create-button(title="Create New Event", onclick="openCreateForm()") +
-            //- button(onclick="clearEvents()") Clear All Events
-
-        #create-event-popup
-          .create-event-popup-content
-            label.close-btn(for="create-popup", onclick="closePopup()") &times;
-            h2.pop-title Create a new event
-            form#create-form
-              input#edit-event-id(type="hidden")
-              .form-group
-                label(for="new-event") Event Name: 
-                    span.required-star *
-                input#new-event(type="text", name="new-event")
-                small#new-event-name-req.hidden
-              .form-group
-                label(for="event-type") Event Type: 
-                    span.required-star *
-                select#event-type(name="event-type")
-                  option(value="") Select
-                  option(value="intra") Intra Event
-                  option(value="inter") Inter Event
-                small#event-type-req.hidden
-              .form-group
-                label(for="event-date") Event date: 
-                    span.required-star *
-                input#event-date(type="date", name="event-date")
-                small#event-date-req.hidden
-              .form-group
-                label(for="new-event-description") Description: 
-                    span.required-star *
-                textarea#new-event-description(rows="3", cols="100", name="new-event-description")
-                small#event-description-req.hidden
-              .form-group
-                label(for="file") Upload file:
-                input#file(type="file", name="file")
-              small#createAlertmsg.hidden
-              button#create-btn(type="submit") Create
-        #viewRegStudents-popup
-          .registered-popup-content
-            label.close-btn(for="viewRegStudents-popup", onclick="closePopup()") &times;
-            h4.pop-title Registered students
-            h2.pop-title For the event - EVENT NAME
-            table.registered-table
-              tr
-                th Full Name
-                th College code
-                th college Name
-                th Department
-                th Year
-              tr
-                td Sahid Rizwan
-                td 8203
-                td A.V.C. College of Engineering
-                td Information Technology
-                td 4th year
-              tr
-                td Kayal Vizhi
-                td 8203
-                td A.V.C. College of Engineering
-                td Information Technology
-                td 4th year
-
-        #achievements.section.hidden-page-content
-          #myclgAchieves
-            .achievementsContent
-              //- // WILL BE TAKEN DYNAMICALLY
-            div
-              button#create-achieve-button(title="Create New Achievement", onclick="openCreateAchieveForm()") +
-              button.clear-btn(onclick="clearEvents()") Clear All Achievements
-
-        #create-achieve-popup
-          .create-achieve-popup-content
-            label.close-btn(for="create-achieve-popup", onclick="closePopup()") &times;
-            h2.pop-title Create an Achievement
-            form#create-achieve-form
-              .form-group
-                label(for="new-achieve") Achievement Title: 
+                option(value="intra") Intra Event
+                option(value="inter") Inter Event
+              small#event-type-req.hidden
+            .form-group
+              label(for="event-date") Event date: 
                   span.required-star *
-                input#new-achieve(type="text", name="new-achieve")
-                small#new-achieve-req.hidden
-              .form-group
-                label(for="achieve-type") Achievement Type: 
+              input#event-date(type="date", name="event-date")
+              small#event-date-req.hidden
+            .form-group
+              label(for="new-event-description") Description: 
                   span.required-star *
-                select#achieve-type(name="achieve-type")
-                  option(value="") Select
-                  option(value="Academic") Academic
-                  option(value="Sports") Sports
-                  option(value="Culturals") Culturals
-                  option(value="Research/Conference") Research/Conference
-                  option(value="Technical") Technical
-                  option(value="others") Others
-                small#achieve-type-req.hidden
-              .form-group.otherTextBox.other-type-hidden
-                label(for="other-achieve-type") other: 
-                  span.required-star *
-                input#other-achieve-type(type="text", name="other-achieve-type")
-                small#other-achieve-type-req.hidden
-              .form-group
-                label(for="achieve-issued-date") Issued Date: 
-                  span.required-star *
-                input#achieve-issued-date(type="date", name="achieve-issued-date")
-                small#achieve-issued-date-req.hidden
-              .form-group
-                label(for="achieve-description") Detailed Description: 
-                  span.required-star *
-                textarea#achieve-description(rows="3", cols="100", name="achieve-description")
-                small#achieve-description-req.hidden
-              .form-group
-                label(for="proof-file") Upload Certificate/Proof:
-                input#proof-file(type="file", name="proof-file")
-                small#proof-file-req.hidden
-              .form-group
-                label(for="link") External Link:
-                input#link(type="url", name="link")
-              small#createAchieveAlertmsg.hidden
-              button#create-achieve-btn(type="submit") Create
+              textarea#new-event-description(rows="3", cols="100", name="new-event-description")
+              small#event-description-req.hidden
+            .form-group
+              label(for="file") Upload file:
+              input#file(type="file", name="file")
+            small#createAlertmsg.hidden
+            button#create-btn(type="submit") Create
+      #viewRegStudents-popup
+        .registered-popup-content
+          label.close-btn(for="viewRegStudents-popup", onclick="closePopup()") &times;
+          h4.pop-title Registered students
+          h2.pop-title For the event - EVENT NAME
+          table.registered-table
+            tr
+              th Full Name
+              th College code
+              th college Name
+              th Department
+              th Year
+            tr
+              td Sahid Rizwan
+              td 8203
+              td A.V.C. College of Engineering
+              td Information Technology
+              td 4th year
+            tr
+              td Kayal Vizhi
+              td 8203
+              td A.V.C. College of Engineering
+              td Information Technology
+              td 4th year
 
-        #ranks.section.hidden-page-content
-          #myClgRankHolders
-            .rankHoldersContent
-              .each-rank-heading
-                h2 Rank Heading
-                hr
-                .rankHolders
-                  each _ in [1,2,3,4,5,6]
-                    .each-holder
-                      img(src="/static/images/achieve5.jpg", alt="rank holder's image", width="100px", height="100px")
-                      h2 Holder's Name
-                      h3 Department
-                      h3 rank place | cgpa
-            div
-              button#create-rankholders-button(title="Create New Rank Holder", onclick="openCreateRankHolderForm()") +
-              button.clear-btn(onclick="clearEvents()") Clear All Achievements
+    #achievements.section.hidden-page-content
+      #myclgAchieves
+        .achievementsContent
+          //- // WILL BE TAKEN DYNAMICALLY
+        div
+          button#create-achieve-button(title="Create New Achievement", onclick="openCreateAchieveForm()") +
+          button.clear-btn(onclick="clearEvents()") Clear All Achievements
 
-        #create-rankholders-popup
-          .create-rankholders-popup-content
-            label.close-btn(for="create-rankholders-popup", onclick="closePopup()") &times;
-            h2.pop-title Add Rank Holders
-            form#create-rankholders-form
-              .form-group
-                label(for="new-ranktitle") Rank Title: span.required-star *
-                input#new-ranktitle(type="text", name="new-ranktitle")
-                small#new-ranktitle-req.hidden
-              #rankHolderDetails
-                .form-group
-                  label(for="rank-holder-name") Rank Holder Name: span.required-star *
-                  input#rank-holder-name(type="text", name="rank-holder-name")
-                  small#rank-holder-name-req.hidden
-                .form-group
-                  label(for="department-rk") Department: span.required-star *
-                  select#department-rk(name="department-rk")
-                    option(value="") Select
-                    option(value="Computer Science and Engineering") CSE
-                    option(value="Information Technology") IT
-                    option(value="Electronics and Communication Engineering") ECE
-                    option(value="Electrical and Electronics Engineering") EEE
-                    option(value="Civil Engineering") Civil
-                    option(value="Mechanical Engineering") Mech
-                    option(value="Others") Others
-                  small#department-rk-req.hidden
-                .form-group.otherTextBox.other-type-hidden
-                  label(for="other-dept") other: span.required-star *
-                  input#other-dept(type="text", name="other-dept")
-                  small#other-dept-req.hidden
-                .form-group
-                  label(for="rank-place") Rank Place: span.required-star *
-                  input#rank-place(type="text", name="rank-place")
-                  small#rank-place-req.hidden
-                .form-group
-                  label(for="cgpa") CGPA: span.required-star *
-                  input#cgpa(type="text", name="cgpa")
-                  small#cgpa-req.hidden
-                .form-group
-                  label(for="photo-file") Upload Photo:
-                  input#photo-file(type="file", name="photo-file")
-                  small#photo-file-req.hidden
-              button.addAnotherRankHolder Add new rank Holder
-              small#createRankHolderAlertmsg.hidden
-              button#create-rankholder-btn(type="submit") Create
+    #create-achieve-popup
+      .create-achieve-popup-content
+        label.close-btn(for="create-achieve-popup", onclick="closePopup()") &times;
+        h2.pop-title Create an Achievement
+        form#create-achieve-form
+          .form-group
+            label(for="new-achieve") Achievement Title: 
+              span.required-star *
+            input#new-achieve(type="text", name="new-achieve")
+            small#new-achieve-req.hidden
+          .form-group
+            label(for="achieve-type") Achievement Type: 
+              span.required-star *
+            select#achieve-type(name="achieve-type")
+              option(value="") Select
+              option(value="Academic") Academic
+              option(value="Sports") Sports
+              option(value="Culturals") Culturals
+              option(value="Research/Conference") Research/Conference
+              option(value="Technical") Technical
+              option(value="others") Others
+            small#achieve-type-req.hidden
+          .form-group.otherTextBox.other-type-hidden
+            label(for="other-achieve-type") other: 
+              span.required-star *
+            input#other-achieve-type(type="text", name="other-achieve-type")
+            small#other-achieve-type-req.hidden
+          .form-group
+            label(for="achieve-issued-date") Issued Date: 
+              span.required-star *
+            input#achieve-issued-date(type="date", name="achieve-issued-date")
+            small#achieve-issued-date-req.hidden
+          .form-group
+            label(for="achieve-description") Detailed Description: 
+              span.required-star *
+            textarea#achieve-description(rows="3", cols="100", name="achieve-description")
+            small#achieve-description-req.hidden
+          .form-group
+            label(for="proof-file") Upload Certificate/Proof:
+            input#proof-file(type="file", name="proof-file")
+            small#proof-file-req.hidden
+          .form-group
+            label(for="link") External Link:
+            input#link(type="url", name="link")
+          small#createAchieveAlertmsg.hidden
+          button#create-achieve-btn(type="submit") Create
 
-        #approving.section.hidden-page-content Approve Students Content
+    #ranks.section.hidden-page-content
+      #myClgRankHolders
+        .rankHoldersContent
+          .each-rank-heading
+            h2 Rank Heading
+            hr
+            .rankHolders
+              each _ in [1,2,3,4,5,6]
+                .each-holder
+                  img(src="/static/images/achieve5.jpg", alt="rank holder's image", width="100px", height="100px")
+                  h2 Holder's Name
+                  h3 Department
+                  h3 rank place | cgpa
+        div
+          button#create-rankholders-button(title="Create New Rank Holder", onclick="openCreateRankHolderForm()") +
+          button.clear-btn(onclick="clearEvents()") Clear All Achievements
+
+    #create-rankholders-popup
+      .create-rankholders-popup-content
+        label.close-btn(for="create-rankholders-popup", onclick="closePopup()") &times;
+        h2.pop-title Add Rank Holders
+        form#create-rankholders-form
+          .form-group
+            label(for="new-ranktitle") Rank Title: span.required-star *
+            input#new-ranktitle(type="text", name="new-ranktitle")
+            small#new-ranktitle-req.hidden
+          #rankHolderDetails
+            .form-group
+              label(for="rank-holder-name") Rank Holder Name: span.required-star *
+              input#rank-holder-name(type="text", name="rank-holder-name")
+              small#rank-holder-name-req.hidden
+            .form-group
+              label(for="department-rk") Department: span.required-star *
+              select#department-rk(name="department-rk")
+                option(value="") Select
+                option(value="Computer Science and Engineering") CSE
+                option(value="Information Technology") IT
+                option(value="Electronics and Communication Engineering") ECE
+                option(value="Electrical and Electronics Engineering") EEE
+                option(value="Civil Engineering") Civil
+                option(value="Mechanical Engineering") Mech
+                option(value="Others") Others
+              small#department-rk-req.hidden
+            .form-group.otherTextBox.other-type-hidden
+              label(for="other-dept") other: span.required-star *
+              input#other-dept(type="text", name="other-dept")
+              small#other-dept-req.hidden
+            .form-group
+              label(for="rank-place") Rank Place: span.required-star *
+              input#rank-place(type="text", name="rank-place")
+              small#rank-place-req.hidden
+            .form-group
+              label(for="cgpa") CGPA: span.required-star *
+              input#cgpa(type="text", name="cgpa")
+              small#cgpa-req.hidden
+            .form-group
+              label(for="photo-file") Upload Photo:
+              input#photo-file(type="file", name="photo-file")
+              small#photo-file-req.hidden
+          button.addAnotherRankHolder Add new rank Holder
+          small#createRankHolderAlertmsg.hidden
+          button#create-rankholder-btn(type="submit") Create
+
+    #approving.section.hidden-page-content Approve Students Content
 

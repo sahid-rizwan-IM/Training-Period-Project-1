@@ -671,8 +671,8 @@ function validateAchievementTitle(){
         achievementTitleAlertmsg.textContent = "Minimum 5 characters needed";
         return false;
     }
-    else if(myAchievementTitle.length>30){
-        achievementTitleAlertmsg.textContent = "Maximum 30 characters allowed";
+    else if(myAchievementTitle.length>50){
+        achievementTitleAlertmsg.textContent = "Maximum 50 characters allowed";
         return false;
     }
     else{
@@ -754,8 +754,8 @@ function validateAchieveDescription(){
         achieveDescAlertmsg.textContent = "Minimum 20 characters needed";
         return false;
     }
-    else if(achieveDescInput.value.trim().length>100){
-        achieveDescAlertmsg.textContent = "Maximum 100 characters allowed";
+    else if(achieveDescInput.value.trim().length>300){
+        achieveDescAlertmsg.textContent = "Maximum 300 characters allowed";
         return false;
     }
     else{
@@ -777,12 +777,12 @@ createAchieveForm.addEventListener("submit", function(e){
     console.log("strting part");
     e.preventDefault();
     debugger
-    const isValid =
-            validateAchievementTitle()&&
-            validateAchievementType()&&
-            validateAchieveDescription()&&
-            validateAchieveIssuedDate()&&
-            validateOtherDept();
+    let isValid = ''
+    if (achievementTypeSelection.value === 'others'){
+        isValid += validateAchievementTitle()&&validateAchievementType()&&validateAchieveDescription()&&validateAchieveIssuedDate()&&validateOtherDept();
+    } else{
+        isValid += validateAchievementTitle()&& validateAchievementType()&& validateAchieveDescription()&& validateAchieveIssuedDate();
+    }
 
     if (isValid) {
         // let achieveFile = document.getElementById("file").files[0];
@@ -819,6 +819,8 @@ createAchieveForm.addEventListener("submit", function(e){
                             <a>${newArchieves.achieveurl}</a>
                         </div>
                         <div class="imp-buttons">
+                            <button class="button edit-event-btn" onclick="">Edit</button>
+                            <button class="button delete-event-btn" onclick="">Delete</button>
                             <button class="viewCertBtn ">View Cerificate/Proof</button>
                         </div>
                     </div>
@@ -850,6 +852,8 @@ function displayStoredAchievements(){
                     <a href="${myachieves.achieveurl}">${myachieves.achieveurl}</a>
                 </div>
                 <div class="imp-buttons">
+                    <button class="button edit-event-btn" onclick="">Edit</button>
+                    <button class="button delete-event-btn" onclick="">Delete</button>
                     <button class="viewCertBtn">View Cerificate/Proof</button>
                 </div>
             </div>     

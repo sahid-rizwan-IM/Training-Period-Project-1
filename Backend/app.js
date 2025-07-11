@@ -14,8 +14,8 @@ const eventRoutes = require('./express_routes/event_routes');
 app.use(bodyParser.json());//next handle function
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, '..', 'Frontend')));
-app.use('/static', express.static(path.join(__dirname, '..', 'Frontend', 'static')));
+// app.use(express.static(path.join(__dirname, '..', 'Frontend')));
+app.use('/static', express.static(path.join(__dirname, '..', 'Frontend')));
 //routers called here
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');

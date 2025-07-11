@@ -12,5 +12,19 @@
     "eventType": "inter",
     "eventDate": "2025-07-24",
     "eventDescription": "Want to build your career in AI & ML? Join the two days workshop on AI & ML, where you can get an idea in the plan to build your career wih proper guideness and roadmap. Every participant will have an opportunity to get placed in 4 company listed through interviews! Register NOW"
+  },
+  {
+    "id": 1752229056066,
+    "eventName": "workshop",
+    "eventType": "intra",
+    "eventDate": "2025-07-23",
+    "eventDescription": "This is a national level hackathon 2025 for 2nd and 3rd year engineering students to give their innovative idea for win amazing oppoturnity."
+  },
+  {
+    "id": 1752243625531,
+    "eventName": "Workshop on AI & ML",
+    "eventType": "inter",
+    "eventDate": "2025-07-24",
+    "eventDescription": "Want to build your career in AI & ML? Join the two days workshop on AI & ML, where you can get an idea in the plan to build your career wih proper guideness and roadmap. Every participant will have an opportunity to get placed in 4 company listed through interviews! Register NOW"
   }
 ]
