@@ -3,6 +3,29 @@ const path = require('path');
 const eventDataPath = path.join(__dirname, '..', 'Model', 'eventcreate.json');
 
 const eventController = {
+    getSingleEvent(req,res){
+        try{
+            const eventId = parseInt(req.params.id);
+            const rawData = fs.readFileSync(eventDataPath);
+            let events = JSON.parse(rawData);
+            const newEvent = events.filter(event => event.id === eventId);
+            
+
+            res.status(200).json({
+                success: true,
+                data: newEvent,
+                error: null,
+                status: 200
+            });
+        } catch (err){
+            res.status(500).json({
+                success: false,
+                data: null,
+                error: err.message,
+                status: 500
+            });
+        }
+    },
     getAllEvents(req, res) {
         try {
             const rawData = fs.readFileSync(eventDataPath);
@@ -116,13 +139,10 @@ const eventController = {
                     status: 404
                 });
             }
-
-            // Update the event at the found index
             events[eventIndex] = {
                 id: eventId,
                 ...eventBody
             };
-
             fs.writeFileSync(eventDataPath, JSON.stringify(events, null, 2));
 
             res.status(200).json({
