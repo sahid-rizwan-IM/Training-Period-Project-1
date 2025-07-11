@@ -67,7 +67,7 @@ block body
           .myclg-content
           div
             button#create-button(title="Create New Event", onclick="openCreateForm()") +
-            button(onclick="clearEvents()") Clear All Events
+            //- button(onclick="clearEvents()") Clear All Events
 
         #create-event-popup
           .create-event-popup-content
@@ -116,7 +116,7 @@ block body
                 th Department
                 th Year
               tr
-                td Sahid riz rizwan
+                td Sahid Rizwan
                 td 8203
                 td A.V.C. College of Engineering
                 td Information Technology
@@ -127,12 +127,11 @@ block body
                 td A.V.C. College of Engineering
                 td Information Technology
                 td 4th year
-              //- Add more rows dynamically if needed
 
         #achievements.section.hidden-page-content
           #myclgAchieves
             .achievementsContent
-              // WILL BE TAKEN DYNAMICALLY
+              //- // WILL BE TAKEN DYNAMICALLY
             div
               button#create-achieve-button(title="Create New Achievement", onclick="openCreateAchieveForm()") +
               button.clear-btn(onclick="clearEvents()") Clear All Achievements
@@ -143,11 +142,13 @@ block body
             h2.pop-title Create an Achievement
             form#create-achieve-form
               .form-group
-                label(for="new-achieve") Achievement Title: span.required-star *
+                label(for="new-achieve") Achievement Title: 
+                  span.required-star *
                 input#new-achieve(type="text", name="new-achieve")
                 small#new-achieve-req.hidden
               .form-group
-                label(for="achieve-type") Achievement Type: span.required-star *
+                label(for="achieve-type") Achievement Type: 
+                  span.required-star *
                 select#achieve-type(name="achieve-type")
                   option(value="") Select
                   option(value="Academic") Academic
@@ -158,15 +159,18 @@ block body
                   option(value="others") Others
                 small#achieve-type-req.hidden
               .form-group.otherTextBox.other-type-hidden
-                label(for="other-achieve-type") other: span.required-star *
+                label(for="other-achieve-type") other: 
+                  span.required-star *
                 input#other-achieve-type(type="text", name="other-achieve-type")
                 small#other-achieve-type-req.hidden
               .form-group
-                label(for="achieve-issued-date") Issued Date: span.required-star *
+                label(for="achieve-issued-date") Issued Date: 
+                  span.required-star *
                 input#achieve-issued-date(type="date", name="achieve-issued-date")
                 small#achieve-issued-date-req.hidden
               .form-group
-                label(for="achieve-description") Detailed Description: span.required-star *
+                label(for="achieve-description") Detailed Description: 
+                  span.required-star *
                 textarea#achieve-description(rows="3", cols="100", name="achieve-description")
                 small#achieve-description-req.hidden
               .form-group
@@ -188,7 +192,7 @@ block body
                 .rankHolders
                   each _ in [1,2,3,4,5,6]
                     .each-holder
-                      img(src="/Frontend/static/images/achieve5.jpg", alt="rank holder's image", width="100px", height="100px")
+                      img(src="/static/images/achieve5.jpg", alt="rank holder's image", width="100px", height="100px")
                       h2 Holder's Name
                       h3 Department
                       h3 rank place | cgpa
