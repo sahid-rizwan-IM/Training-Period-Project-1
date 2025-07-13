@@ -1,3 +1,4 @@
+// 
 const fs = require('fs');
 const path = require('path');
 const eventDataPath = path.join(__dirname, '..', 'Model', 'eventcreate.json');
@@ -9,7 +10,6 @@ const eventController = {
             const rawData = fs.readFileSync(eventDataPath);
             let events = JSON.parse(rawData);
             const newEvent = events.filter(event => event.id === eventId);
-            
 
             res.status(200).json({
                 success: true,
@@ -26,6 +26,7 @@ const eventController = {
             });
         }
     },
+
     getAllEvents(req, res) {
         try {
             const rawData = fs.readFileSync(eventDataPath);
@@ -49,13 +50,15 @@ const eventController = {
     createEvent(req, res) {
         try {
             const { eventName, eventType, eventDate, eventDescription } = req.body;
-            
+            const fileInfo = req.file ? req.file.filename : null;
+
             const newEvent = {
                 id: new Date().getTime(),
                 eventName,
                 eventType,
                 eventDate,
-                eventDescription
+                eventDescription,
+                file: fileInfo
             };
 
             let events = [];
@@ -65,7 +68,7 @@ const eventController = {
             }
 
             events.push(newEvent);
-            fs.writeFileSync(eventDataPath, JSON.stringify(events,null,2));
+            fs.writeFileSync(eventDataPath, JSON.stringify(events, null, 2));
 
             res.status(200).json({
                 success: true,
@@ -91,8 +94,6 @@ const eventController = {
 
             const filteredEvents = events.filter(event => event.id !== eventId);
 
-            
-
             fs.writeFileSync(eventDataPath, JSON.stringify(filteredEvents, null, 2));
             res.status(200).json({
                 success: true,
@@ -113,6 +114,7 @@ const eventController = {
         try {
             const eventId = parseInt(req.params.id);
             const eventBody = req.body;
+            const fileInfo = req.file ? req.file.filename : null;
 
             const rawData = fs.readFileSync(eventDataPath);
             let events = JSON.parse(rawData);
@@ -126,10 +128,14 @@ const eventController = {
                     status: 404
                 });
             }
-            events[eventIndex] = {
+
+            const updatedEvent = {
                 id: eventId,
                 ...eventBody
             };
+            if (fileInfo) updatedEvent.file = fileInfo;
+
+            events[eventIndex] = updatedEvent;
             fs.writeFileSync(eventDataPath, JSON.stringify(events, null, 2));
 
             res.status(200).json({
@@ -146,7 +152,6 @@ const eventController = {
             });
         }
     }
-
 };
 
 module.exports = eventController;

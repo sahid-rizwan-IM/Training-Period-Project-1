@@ -165,6 +165,7 @@ function closePopup(){
     // to close view registered students popup
     document.querySelector("#viewRegStudents-popup").style.display = "none";
 
+    document.querySelector(".image-popup").style.display = "none";
 }
 
 function registrationFormDynamicDetials(collegeName, eventName){
@@ -499,13 +500,18 @@ createEventForm.addEventListener("submit", async function (e) {
 
         try {
 
+            const formData = new FormData();
+            formData.append("eventName", eventNameInput.value.trim());
+            formData.append("eventType", eventTypeSelection.value);
+            formData.append("eventDate", eventDateChoose.value);
+            formData.append("eventDescription", eventDescInput.value.trim());
+            formData.append("file", eventFile.files[0]);
+
             const response = await fetch(endpoint, {
                 method,
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(newEvent)
+                body: formData
             });
+
 
             const result = await response.json();
 
@@ -522,6 +528,12 @@ createEventForm.addEventListener("submit", async function (e) {
 
                 if(method === "POST"){
                     const newEvents = result.data;
+                    const fileDisplay = myEvents.file
+                        ? myEvents.file.endsWith('.pdf')
+                            ? `<a href="/uploads/${myEvents.file}" download class="file-link">Download PDF</a>`
+                            : `<a href="javascript:void(0)" class="file-link" onclick="showImagePopup('/uploads/${myEvents.file}')">View Image</a>`
+                        : '';
+
                     const myClgEvent = document.querySelector(".myclg-content");
                     const ownEvents = `
                             <div class="each-my-events" data-id="${newEvents.id}">
@@ -529,6 +541,7 @@ createEventForm.addEventListener("submit", async function (e) {
                                     <h2 class="event-name ">${newEvents.eventName}</h2>
                                     <h3>${newEvents.eventType} | ${newEvents.eventDate}</h3>
                                     <p>${newEvents.eventDescription}</p>
+                                    ${fileDisplay}
                                 </div>
                                 <div class="imp-buttons ">
                                     <button class="button edit-event-btn" onclick="handleEditEvent(this)">Edit</button>
@@ -575,12 +588,19 @@ async function displayStoredEvents() {
         const myClgEvent = document.querySelector(".myclg-content");
         if (response.ok && result.data.length > 0) {
             result.data.forEach(myEvents => {
+                const fileDisplay = myEvents.file
+                    ? myEvents.file.endsWith('.pdf')
+                        ? `<a href="/uploads/${myEvents.file}" download class="file-link">Download PDF</a>`
+                        : `<a href="javascript:void(0)" class="file-link" onclick="showImagePopup('/uploads/${myEvents.file}')">View Image</a>`
+                    : '';
+
                 const ownEvents = `
                     <div class="each-my-events" data-id="${myEvents.id}">
                         <div>
                             <h2 class="event-name ">${myEvents.eventName}</h2>
                             <h3>${myEvents.eventType} | ${myEvents.eventDate}</h3>
                             <p>${myEvents.eventDescription}</p>
+                            ${fileDisplay}
                         </div>
                         <div class="imp-buttons">
                             <button class="button edit-event-btn" onclick="handleEditEvent(this)">Edit</button>
@@ -598,6 +618,26 @@ async function displayStoredEvents() {
         console.error("Failed to fetch events", err);
     }
 }
+
+function showImagePopup(src) {
+    // Remove existing popup if any
+    const existingPopup = document.querySelector('.image-popup');
+    if (existingPopup) existingPopup.remove();
+
+    const popup = document.createElement('div');
+    popup.className = 'image-popup';
+
+    popup.innerHTML = `
+        <div class="popup-overlay" onclick="this.parentElement.remove()"></div>
+        <div class="img-popup-content">
+            <label for="register-popup" class="close-btn" onclick="closePopup()">&times;</label>
+            <img src="${src}" alt="Event File" class="popup-image">
+        </div>
+    `;
+
+    document.body.appendChild(popup);
+}
+
 
 window.onload = displayStoredEvents();
 setTimeout(() => {

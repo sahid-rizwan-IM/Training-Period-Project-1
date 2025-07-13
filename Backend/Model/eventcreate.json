@@ -9,7 +9,7 @@
   {
     "id": 1752170932165,
     "eventName": "Workshop on AI & ML",
-    "eventType": "inter",
+    "eventType": "intra",
     "eventDate": "2025-07-24",
     "eventDescription": "Want to build your career in AI & ML? Join the two days workshop on AI & ML, where you can get an idea in the plan to build your career wih proper guideness and roadmap. Every participant will have an opportunity to get placed in 4 company listed through interviews! Register NOW"
   },
@@ -28,10 +28,19 @@
     "eventDescription": "Want to build your career in AI & ML? Join the two days workshop on AI & ML, where you can get an idea in the plan to build your career wih proper guideness and roadmap. Every participant will have an opportunity to get placed in 4 company listed through interviews! Register NOW"
   },
   {
-    "id": 1752245008402,
-    "eventName": "Workshop on MongoDB",
+    "id": 1752429876696,
+    "eventName": "workshop on AI & ML",
     "eventType": "inter",
-    "eventDate": "2025-07-24",
-    "eventDescription": "Register now for learning and gaining experience in mongoDB"
+    "eventDate": "2025-07-17",
+    "eventDescription": "Event Description RequiredEvent Description RequiredEvent Description Required",
+    "file": "1752429876688-event1.jpg"
+  },
+  {
+    "id": 1752430607917,
+    "eventName": "workshop on AI & ML",
+    "eventType": "intra",
+    "eventDate": "2025-07-29",
+    "eventDescription": "Event Description Required \r\nEvent Description Required \r\nEvent Description Required",
+    "file": "1752430607907-bitlocker.pdf"
   }
 ]
