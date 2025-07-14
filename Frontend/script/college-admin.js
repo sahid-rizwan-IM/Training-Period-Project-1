@@ -165,7 +165,10 @@ function closePopup(){
     // to close view registered students popup
     document.querySelector("#viewRegStudents-popup").style.display = "none";
 
-    document.querySelector(".image-popup").style.display = "none";
+    const popup = document.querySelector(".image-popup");
+    if (popup) popup.remove();
+
+    // document.querySelector(".image-popup").style.display = "none";
 }
 
 function registrationFormDynamicDetials(collegeName, eventName){
@@ -505,7 +508,9 @@ createEventForm.addEventListener("submit", async function (e) {
             formData.append("eventType", eventTypeSelection.value);
             formData.append("eventDate", eventDateChoose.value);
             formData.append("eventDescription", eventDescInput.value.trim());
-            formData.append("file", eventFile.files[0]);
+            if (eventFile.files.length > 0) {
+                formData.append("file", eventFile.files[0]);
+            }
 
             const response = await fetch(endpoint, {
                 method,
@@ -528,10 +533,10 @@ createEventForm.addEventListener("submit", async function (e) {
 
                 if(method === "POST"){
                     const newEvents = result.data;
-                    const fileDisplay = myEvents.file
-                        ? myEvents.file.endsWith('.pdf')
-                            ? `<a href="/uploads/${myEvents.file}" download class="file-link">Download PDF</a>`
-                            : `<a href="javascript:void(0)" class="file-link" onclick="showImagePopup('/uploads/${myEvents.file}')">View Image</a>`
+                    const fileDisplay = newEvents.file
+                        ? newEvents.file.endsWith('.pdf')
+                            ? `<a href="/uploads/${newEvents.file}" download class="file-link">Download PDF</a>`
+                            : `<a href="javascript:void(0)" class="file-link" onclick="showImagePopup('/uploads/${newEvents.file}')">View Image</a>`
                         : '';
 
                     const myClgEvent = document.querySelector(".myclg-content");

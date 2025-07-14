@@ -50,7 +50,7 @@ const eventController = {
     createEvent(req, res) {
         try {
             const { eventName, eventType, eventDate, eventDescription } = req.body;
-            const fileInfo = req.file ? req.file.filename : null;
+            // const fileInfo = req.file ? req.file.filename : null;
 
             const newEvent = {
                 id: new Date().getTime(),
@@ -58,8 +58,11 @@ const eventController = {
                 eventType,
                 eventDate,
                 eventDescription,
-                file: fileInfo
             };
+
+            if (req.file) {
+                newEvent.file = req.file.filename;
+            }
 
             let events = [];
             if (fs.existsSync(eventDataPath)) {

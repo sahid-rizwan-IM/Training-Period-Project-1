@@ -21,14 +21,11 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({ storage, fileFilter });
 
-
 router.get('/get-event/:id', eventController.getSingleEvent);
 router.get('/get-allevents', eventController.getAllEvents);
 router.post('/create-event',upload.single('file'), eventValidator.createEvent, eventController.createEvent);
 router.delete('/delete-event/:id',eventValidator.deleteEvent, eventController.deleteEvent);
 router.put('/update-event/:id', eventController.updateEvent);
 
-
 module.exports = router;
-
 // jwt token app.use
