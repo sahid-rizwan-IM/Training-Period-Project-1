@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const fronendData = require('../Backend/dataModels/frontendData');
 const homePage = require('./express_routes/home_routes');
 const eventRoutes = require('./express_routes/event_routes');
+const mongoose = require('mongoose');
+const myEvents = require('./Model/events');
 // const path = require('path'); //to find path based on os by itself.
 // use() - its a middleware function/method - it works for all the routes automatically.
 // get() and post() - these are router methods - works only when a particular url is called or requested.
@@ -27,6 +29,18 @@ app.use((req, res, next) => {
 app.set("view engine", "jade");
 app.set("views", path.join(__dirname, "views"));
 
+mongoose.connect("mongodb://localhost:27017/multiCollegeEvents")
+    .then(() => {
+        console.log("MongoDB Connected");
+        
+    })
+    .catch( err=> {
+        console.error("Connection failed", err.message);
+    });
+
+
+
+
 app.use('/api/v1/home',homePage);
 app.use('/api/v2/events', eventRoutes);
 
@@ -44,6 +58,13 @@ app.get("/events",(req,res) =>{
         ...fronendData,
         reqUrl : req.url
 
+    });
+})
+
+app.get("/clg-admin-login",(req,res) =>{
+    res.render("clg_admin_login.jade",  {
+        ...fronendData,
+        reqUrl : req.url
     });
 })
 

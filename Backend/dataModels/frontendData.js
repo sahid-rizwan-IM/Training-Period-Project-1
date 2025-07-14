@@ -9,7 +9,7 @@ const navData = [
         navName: "Instructions" 
     },
     { 
-        navLink: "/templates/clg-admin-login.html", 
+        navLink: "/clg-admin-login", 
         navName: "College Admin" 
     },
     { 

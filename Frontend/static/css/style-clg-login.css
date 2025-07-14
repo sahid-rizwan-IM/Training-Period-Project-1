@@ -232,3 +232,16 @@ i .profile {
 .hidden-form{
     display: none;
 }
+
+footer{
+    width: 100%;
+    font-weight: 600;
+    padding: 10px 0px;
+    background: #e9d0b6;
+    text-align: center;
+}
+
+footer p{
+    justify-content: center;
+    color:#343148FF;
+}

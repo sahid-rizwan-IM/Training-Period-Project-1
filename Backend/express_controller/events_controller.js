@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const myEvents = require('../Model/events');
 const eventDataPath = path.join(__dirname, '..', 'Model', 'eventcreate.json');
 
 const eventController = {
@@ -28,11 +29,11 @@ const eventController = {
 
     getAllEvents(req, res) {
         try {
-            const rawData = fs.readFileSync(eventDataPath);
-            const events = JSON.parse(rawData);
+            const rawData = myEvents.find();
+            // const events = JSON.parse(rawData)
             res.status(200).json({
                 success: true,
-                data: events,
+                data: rawData,
                 error: null,
                 status: 200
             });
