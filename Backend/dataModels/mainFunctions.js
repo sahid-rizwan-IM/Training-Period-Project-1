@@ -9,7 +9,6 @@ function navBarData(res, combinedData){
             'Access-Control-Allow-Origin': '*' 
         });
         res.end(JSON.stringify(combinedData));
-
 }
 
 function homeContents(res, homeContent){

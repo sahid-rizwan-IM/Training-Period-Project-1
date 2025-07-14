@@ -1,4 +1,3 @@
-// 
 const fs = require('fs');
 const path = require('path');
 const eventDataPath = path.join(__dirname, '..', 'Model', 'eventcreate.json');
