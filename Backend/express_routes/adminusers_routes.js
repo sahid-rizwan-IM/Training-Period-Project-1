@@ -25,6 +25,6 @@ adminRouter.get('/get-adminuser/:id', adminUsersController.getSingleAdminUser);
 adminRouter.get('/get-alladminusers', adminUsersController.getAllAdminUsers);
 adminRouter.post('/add-adminuser',upload.single('file'),  adminUsersController.addAdminUser);
 adminRouter.delete('/delete-adminuser/:id', adminUsersController.deleteAdminUser);
-// router.put('/update-adminuser/:id', adminUsersController.updateAdminUser);
+adminRouter.put('/update-adminuser/:id', adminUsersController.updateAdminUser);
 
 module.exports = adminRouter;

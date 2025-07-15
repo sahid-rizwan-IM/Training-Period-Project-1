@@ -7,7 +7,7 @@ const homePage = require('./express_routes/home_routes');
 const eventRoutes = require('./express_routes/event_routes');
 const adminUserRoutes = require('./express_routes/adminusers_routes');
 const mongoose = require('mongoose');
-const myEventsModel = require('./Model/events');
+// const myEventsModel = require('./Model/events');
 // const path = require('path'); //to find path based on os by itself.
 // use() - its a middleware function/method - it works for all the routes automatically.
 // get() and post() - these are router methods - works only when a particular url is called or requested.
@@ -38,13 +38,6 @@ mongoose.connect("mongodb://localhost:27017/multiCollegeEvents")
     .catch( err=> {
         console.error("Connection failed", err.message);
     });
-
-// myEventsModel.find({})
-// .then((myevents)=>{console.log(myevents)})
-// .catch(err=>{
-//   console.error("cannot fetch user",err.message)
-// })
-
 
 app.use('/api/v1/home',homePage);
 app.use('/api/v2/events', eventRoutes);

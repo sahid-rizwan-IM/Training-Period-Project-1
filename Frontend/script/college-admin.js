@@ -535,8 +535,8 @@ createEventForm.addEventListener("submit", async function (e) {
                     const newEvents = result.data;
                     const fileDisplay = newEvents.file
                         ? newEvents.file.endsWith('.pdf')
-                            ? `<a href="/uploads/${newEvents.file}" download class="file-link">Download PDF</a>`
-                            : `<a href="javascript:void(0)" class="file-link" onclick="showImagePopup('/uploads/${newEvents.file}')">View Image</a>`
+                            ? `<a href="/uploads/event_files/${newEvents.file}" download class="file-link">Download PDF</a>`
+                            : `<a href="javascript:void(0)" class="file-link" onclick="showImagePopup('/uploads/event_files/${newEvents.file}')">View Image</a>`
                         : '';
 
                     const myClgEvent = document.querySelector(".myclg-content");
@@ -595,8 +595,8 @@ async function displayStoredEvents() {
             result.data.forEach(myEvents => {
                 const fileDisplay = myEvents.file
                     ? myEvents.file.endsWith('.pdf')
-                        ? `<a href="/uploads/${myEvents.file}" download class="file-link">Download PDF</a>`
-                        : `<a href="javascript:void(0)" class="file-link" onclick="showImagePopup('/uploads/${myEvents.file}')">View Image</a>`
+                        ? `<a href="/uploads/event_files/${myEvents.file}" download class="file-link">Download PDF</a>`
+                        : `<a href="javascript:void(0)" class="file-link" onclick="showImagePopup('/uploads/event_files/${myEvents.file}')">View Image</a>`
                     : '';
 
                 const ownEvents = `

@@ -9,5 +9,5 @@ const myEventSchema = new mongoose.Schema({
   file: String
 }, { collection: 'myEvents' });
 
-const myEventsModel = mongoose.model("myEvents", myEventSchema);  // this line is critical
+const myEventsModel = mongoose.model("myEvents", myEventSchema);
 module.exports = myEventsModel;
