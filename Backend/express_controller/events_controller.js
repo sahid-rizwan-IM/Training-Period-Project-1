@@ -1,160 +1,312 @@
-const fs = require('fs');
-const path = require('path');
-const myEvents = require('../Model/events');
-const eventDataPath = path.join(__dirname, '..', 'Model', 'eventcreate.json');
+// const fs = require('fs');
+// const path = require('path');
+// const myEventsModel = require('../Model/events');
+// const eventDataPath = path.join(__dirname, '..', 'Model', 'eventcreate.json');
+
+// const eventController = {
+//     getSingleEvent(req,res){
+//         try{
+//             const eventId = parseInt(req.params.id);
+//             const rawData = fs.readFileSync(eventDataPath);
+//             let events = JSON.parse(rawData);
+//             const newEvent = events.filter(event => event.id === eventId);
+
+//             res.status(200).json({
+//                 success: true,
+//                 data: newEvent,
+//                 error: null,
+//                 status: 200
+//             });
+//         } catch (err){
+//             res.status(500).json({
+//                 success: false,
+//                 data: null,
+//                 error: err.message,
+//                 status: 500
+//             });
+//         }
+//     },
+
+//     getAllEvents(req, res) {
+//         try {
+//             const rawData = myEventsModel.find();
+//             // const events = JSON.parse(rawData)
+//             res.status(200).json({
+//                 success: true,
+//                 data: rawData,
+//                 error: null,
+//                 status: 200
+//             });
+//         } catch (err) {
+//             res.status(500).json({
+//                 success: false,
+//                 data: null,
+//                 error: err.message,
+//                 status: 500
+//             });
+//         }
+//     },
+
+//     createEvent(req, res) {
+//         try {
+//             const { eventName, eventType, eventDate, eventDescription } = req.body;
+//             // const fileInfo = req.file ? req.file.filename : null;
+
+//             const newEvent = {
+//                 id: new Date().getTime(),
+//                 eventName,
+//                 eventType,
+//                 eventDate,
+//                 eventDescription,
+//             };
+
+//             if (req.file) {
+//                 newEvent.file = req.file.filename;
+//             }
+
+//             let events = [];
+//             if (fs.existsSync(eventDataPath)) {
+//                 const rawData = fs.readFileSync(eventDataPath);
+//                 events = JSON.parse(rawData);
+//             }
+
+//             events.push(newEvent);
+//             fs.writeFileSync(eventDataPath, JSON.stringify(events, null, 2));
+
+//             res.status(200).json({
+//                 success: true,
+//                 data: newEvent,
+//                 message: 'Event created successfully',
+//                 status: 200
+//             });
+//         } catch (err) {
+//             res.status(500).json({
+//                 success: false,
+//                 data: null,
+//                 error: err.message,
+//                 status: 500
+//             });
+//         }
+//     },
+
+//     deleteEvent(req, res) {
+//         try {
+//             const eventId = parseInt(req.params.id);
+//             const rawData = fs.readFileSync(eventDataPath);
+//             let events = JSON.parse(rawData);
+
+//             const filteredEvents = events.filter(event => event.id !== eventId);
+
+//             fs.writeFileSync(eventDataPath, JSON.stringify(filteredEvents, null, 2));
+//             res.status(200).json({
+//                 success: true,
+//                 message: "Event deleted successfully",
+//                 status: 200
+//             });
+
+//         } catch (err) {
+//             res.status(500).json({
+//                 success: false,
+//                 error: err.message,
+//                 status: 500
+//             });
+//         }
+//     },
+
+//     updateEvent(req, res) {
+//         try {
+//             const eventId = parseInt(req.params.id);
+//             const eventBody = req.body;
+//             const fileInfo = req.file ? req.file.filename : null;
+
+//             const rawData = fs.readFileSync(eventDataPath);
+//             let events = JSON.parse(rawData);
+
+//             const eventIndex = events.findIndex(event => event.id === eventId);
+
+//             if (eventIndex === -1) {
+//                 return res.status(404).json({
+//                     success: false,
+//                     error: "Event not found",
+//                     status: 404
+//                 });
+//             }
+
+//             const updatedEvent = {
+//                 id: eventId,
+//                 ...eventBody
+//             };
+//             if (fileInfo) updatedEvent.file = fileInfo;
+
+//             events[eventIndex] = updatedEvent;
+//             fs.writeFileSync(eventDataPath, JSON.stringify(events, null, 2));
+
+//             res.status(200).json({
+//                 success: true,
+//                 message: "Event updated successfully",
+//                 status: 200
+//             });
+
+//         } catch (err) {
+//             res.status(500).json({
+//                 success: false,
+//                 error: err.message,
+//                 status: 500
+//             });
+//         }
+//     }
+// };
+
+// module.exports = eventController;
+
+const myEventsModel = require('../Model/events');
 
 const eventController = {
-    getSingleEvent(req,res){
-        try{
-            const eventId = parseInt(req.params.id);
-            const rawData = fs.readFileSync(eventDataPath);
-            let events = JSON.parse(rawData);
-            const newEvent = events.filter(event => event.id === eventId);
+  async getSingleEvent(req, res) {
+    try {
+      const eventId = req.params.id;
+      const event = await myEventsModel.findOne({ id: eventId });
 
-            res.status(200).json({
-                success: true,
-                data: newEvent,
-                error: null,
-                status: 200
-            });
-        } catch (err){
-            res.status(500).json({
-                success: false,
-                data: null,
-                error: err.message,
-                status: 500
-            });
-        }
-    },
+      if (!event) {
+        return res.status(404).json({
+          success: false,
+          error: "Event not found",
+          status: 404
+        });
+      }
 
-    getAllEvents(req, res) {
-        try {
-            const rawData = myEvents.find();
-            // const events = JSON.parse(rawData)
-            res.status(200).json({
-                success: true,
-                data: rawData,
-                error: null,
-                status: 200
-            });
-        } catch (err) {
-            res.status(500).json({
-                success: false,
-                data: null,
-                error: err.message,
-                status: 500
-            });
-        }
-    },
-
-    createEvent(req, res) {
-        try {
-            const { eventName, eventType, eventDate, eventDescription } = req.body;
-            // const fileInfo = req.file ? req.file.filename : null;
-
-            const newEvent = {
-                id: new Date().getTime(),
-                eventName,
-                eventType,
-                eventDate,
-                eventDescription,
-            };
-
-            if (req.file) {
-                newEvent.file = req.file.filename;
-            }
-
-            let events = [];
-            if (fs.existsSync(eventDataPath)) {
-                const rawData = fs.readFileSync(eventDataPath);
-                events = JSON.parse(rawData);
-            }
-
-            events.push(newEvent);
-            fs.writeFileSync(eventDataPath, JSON.stringify(events, null, 2));
-
-            res.status(200).json({
-                success: true,
-                data: newEvent,
-                message: 'Event created successfully',
-                status: 200
-            });
-        } catch (err) {
-            res.status(500).json({
-                success: false,
-                data: null,
-                error: err.message,
-                status: 500
-            });
-        }
-    },
-
-    deleteEvent(req, res) {
-        try {
-            const eventId = parseInt(req.params.id);
-            const rawData = fs.readFileSync(eventDataPath);
-            let events = JSON.parse(rawData);
-
-            const filteredEvents = events.filter(event => event.id !== eventId);
-
-            fs.writeFileSync(eventDataPath, JSON.stringify(filteredEvents, null, 2));
-            res.status(200).json({
-                success: true,
-                message: "Event deleted successfully",
-                status: 200
-            });
-
-        } catch (err) {
-            res.status(500).json({
-                success: false,
-                error: err.message,
-                status: 500
-            });
-        }
-    },
-
-    updateEvent(req, res) {
-        try {
-            const eventId = parseInt(req.params.id);
-            const eventBody = req.body;
-            const fileInfo = req.file ? req.file.filename : null;
-
-            const rawData = fs.readFileSync(eventDataPath);
-            let events = JSON.parse(rawData);
-
-            const eventIndex = events.findIndex(event => event.id === eventId);
-
-            if (eventIndex === -1) {
-                return res.status(404).json({
-                    success: false,
-                    error: "Event not found",
-                    status: 404
-                });
-            }
-
-            const updatedEvent = {
-                id: eventId,
-                ...eventBody
-            };
-            if (fileInfo) updatedEvent.file = fileInfo;
-
-            events[eventIndex] = updatedEvent;
-            fs.writeFileSync(eventDataPath, JSON.stringify(events, null, 2));
-
-            res.status(200).json({
-                success: true,
-                message: "Event updated successfully",
-                status: 200
-            });
-
-        } catch (err) {
-            res.status(500).json({
-                success: false,
-                error: err.message,
-                status: 500
-            });
-        }
+      res.status(200).json({
+        success: true,
+        data: event,
+        error: null,
+        status: 200
+      });
+    } catch (err) {
+      res.status(500).json({
+        success: false,
+        data: null,
+        error: err.message,
+        status: 500
+      });
     }
+  },
+
+  async getAllEvents(req, res) {
+  try {
+    const events = await myEventsModel.find();
+
+    res.status(200).json({
+      success: true,
+      data: events,
+      error: null,
+      status: 200
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      data: null,
+      error: err.message,
+      status: 500
+    });
+  }
+},
+
+  async createEvent(req, res) {
+    try {
+      const { eventName, eventType, eventDate, eventDescription } = req.body;
+      const file = req.file ? req.file.filename : null;
+
+      const newEvent = new myEventsModel({
+        id: new Date().getTime(),
+        eventName,
+        eventType,
+        eventDate,
+        eventDescription,
+        file
+      });
+
+      await newEvent.save();
+
+      console.log("Saved event:", newEvent); // debug log
+
+      res.status(200).json({
+        success: true,
+        data: newEvent,
+        message: "Event created successfully",
+        status: 200
+      });
+    } catch (err) {
+      res.status(500).json({
+        success: false,
+        data: null,
+        error: err.message,
+        status: 500
+      });
+    }
+  },
+
+  async deleteEvent(req, res) {
+    try {
+      const eventId = req.params.id;
+      const deleted = await myEventsModel.findOneAndDelete({ id: eventId });
+
+      if (!deleted) {
+        return res.status(404).json({
+          success: false,
+          error: "Event not found",
+          status: 404
+        });
+      }
+
+      res.status(200).json({
+        success: true,
+        message: "Event deleted successfully",
+        status: 200
+      });
+    } catch (err) {
+      res.status(500).json({
+        success: false,
+        error: err.message,
+        status: 500
+      });
+    }
+  },
+
+  async updateEvent(req, res) {
+    try {
+      const eventId = req.params.id;
+      const updatedData = req.body;
+      if (req.file) {
+        updatedData.file = req.file.filename;
+      }
+
+      const updated = await myEventsModel.findOneAndUpdate(
+        { id: eventId },
+        updatedData,
+        { new: true }
+      );
+
+      if (!updated) {
+        return res.status(404).json({
+          success: false,
+          error: "Event not found",
+          status: 404
+        });
+      }
+
+      res.status(200).json({
+        success: true,
+        message: "Event updated successfully",
+        status: 200
+      });
+    } catch (err) {
+      res.status(500).json({
+        success: false,
+        error: err.message,
+        status: 500
+      });
+    }
+  }
 };
 
 module.exports = eventController;

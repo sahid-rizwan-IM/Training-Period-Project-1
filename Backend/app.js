@@ -5,13 +5,14 @@ const bodyParser = require('body-parser');
 const fronendData = require('../Backend/dataModels/frontendData');
 const homePage = require('./express_routes/home_routes');
 const eventRoutes = require('./express_routes/event_routes');
+const adminUserRoutes = require('./express_routes/adminusers_routes');
 const mongoose = require('mongoose');
-const myEvents = require('./Model/events');
+const myEventsModel = require('./Model/events');
 // const path = require('path'); //to find path based on os by itself.
 // use() - its a middleware function/method - it works for all the routes automatically.
 // get() and post() - these are router methods - works only when a particular url is called or requested.
 // send() - used in express, it identifies the content-type of the passed data by itself.
-//sendFile() - if a file is passed, it reads the whole file (like html file)
+//sendFile() - if a file is passed, it reads the whole file (like html file).
 
 app.use(bodyParser.json());//next handle function
 app.use(express.json());
@@ -38,11 +39,16 @@ mongoose.connect("mongodb://localhost:27017/multiCollegeEvents")
         console.error("Connection failed", err.message);
     });
 
-
+// myEventsModel.find({})
+// .then((myevents)=>{console.log(myevents)})
+// .catch(err=>{
+//   console.error("cannot fetch user",err.message)
+// })
 
 
 app.use('/api/v1/home',homePage);
 app.use('/api/v2/events', eventRoutes);
+app.use('/api/v3/adminusers', adminUserRoutes);
 
 app.get("/", (req, res) => {
     res.render("home.jade", {
@@ -57,7 +63,6 @@ app.get("/events",(req,res) =>{
     res.render("clg_admin.jade",  {
         ...fronendData,
         reqUrl : req.url
-
     });
 })
 

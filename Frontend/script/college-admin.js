@@ -485,12 +485,12 @@ createEventForm.addEventListener("submit", async function (e) {
         validateEventDate();
 
     if (isValid) {
-        const newEvent = {
-            eventName: eventNameInput.value.trim(),
-            eventType: eventTypeSelection.value,
-            eventDate: eventDateChoose.value,
-            eventDescription: eventDescInput.value.trim()
-        };
+        // const newEvent = {
+        //     eventName: eventNameInput.value.trim(),
+        //     eventType: eventTypeSelection.value,
+        //     eventDate: eventDateChoose.value,
+        //     eventDescription: eventDescInput.value.trim()
+        // };
 
         const eventId = document.getElementById("edit-event-id").value.trim();
         const isUpdate = eventId !== "";

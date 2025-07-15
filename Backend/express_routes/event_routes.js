@@ -6,7 +6,7 @@ const eventController = require('../express_controller/events_controller');
 const multer = require('multer');
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, '..', 'uploads'));
+        cb(null, path.join(__dirname, '..', 'uploads','event_files'));
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + '-' + file.originalname);

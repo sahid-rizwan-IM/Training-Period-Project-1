@@ -43,5 +43,19 @@
     "eventDate": "2025-07-30",
     "eventDescription": "if (req.file) {\r\n                newEvent.file = req.file.filename;\r\n            }if (req.file) {\r\n                newEvent.file = req.file.filename;\r\n            }",
     "file": "1752469812555-Screenshot (6).png"
+  },
+  {
+    "id": 1752558711969,
+    "eventName": "Workshop on MongoDB",
+    "eventType": "inter",
+    "eventDate": "2025-07-24",
+    "eventDescription": "Register now for learning and gaining experience in mongoDB"
+  },
+  {
+    "id": 1752559546386,
+    "eventName": "Workshop on MongoDB",
+    "eventType": "inter",
+    "eventDate": "2025-07-24",
+    "eventDescription": "Register now for learning and gaining experience in mongoDB"
   }
 ]

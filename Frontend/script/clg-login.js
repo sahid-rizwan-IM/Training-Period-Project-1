@@ -335,7 +335,7 @@ password.addEventListener("input", validatePassword);
 confirmPass.addEventListener("input", validateConfirmPassword);
 
 const signupFormSubmit = document.getElementById("signupForm");
-signupFormSubmit.addEventListener("submit", function (e) {
+signupFormSubmit.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const isValid =
@@ -347,10 +347,54 @@ signupFormSubmit.addEventListener("submit", function (e) {
         validateConfirmPassword();
 
     if (isValid) {
-        alert("Signup Successful!");
-        signupFormSubmit.reset();
-        openLoginForm();
-    } else {
+
+        // const eventId = document.getElementById("edit-event-id").value.trim();
+        // const isUpdate = eventId !== "";
+
+        const endpoint = "http://localhost:3000/api/v2/adminusers/add-adminusers";
+
+        const method = "POST";
+
+        try {
+
+            const formData = new FormData();
+            formData.append("eventName", signupClgCode.value.trim());
+            formData.append("eventType", admincollegeName.value.trim());
+            formData.append("eventDate", signupEmail.value.trim());
+            formData.append("eventDescription", password.value.trim());
+            if (eventFile.files.length > 0) {
+                formData.append("file", eventFile.files[0]);
+            }
+
+        const response = await fetch(endpoint, {
+            method,
+            body: formData
+        });
+
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert("Signup Successful!");
+            signupFormSubmit.reset();
+            // document.getElementById("edit-event-id").value = "";
+            setTimeout(() => {
+                openLoginForm();
+            }, 1000);
+        }
+    } catch (err) {
+        alert("Failed to create event. Try again later.");
+        console.error(err);
+    }
+    // if (isValid) {
+
+    //     const newAdminUser = {
+
+    //     }
+    //     alert("Signup Successful!");
+    //     signupFormSubmit.reset();
+    //     openLoginForm();
+    // } else {
         validateSignupCode();
         validateCollegeName();
         validateSignupEmail();
@@ -359,4 +403,5 @@ signupFormSubmit.addEventListener("submit", function (e) {
         validateConfirmPassword();
         alert("Please fix validation errors before submitting.");
     }
+
 });
