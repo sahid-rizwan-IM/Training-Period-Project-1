@@ -490,8 +490,8 @@ createEventForm.addEventListener("submit", async function (e) {
         const isUpdate = eventId !== "";
 
         const endpoint = isUpdate
-            ? `http://localhost:3000/api/v2/events/update-event/${eventId}`
-            : "http://localhost:3000/api/v2/events/create-event";
+            ? `/api/v2/events/update-event/${eventId}`
+            : "/api/v2/events/create-event";
 
         const method = isUpdate ? "PUT" : "POST";
 
@@ -508,6 +508,9 @@ createEventForm.addEventListener("submit", async function (e) {
 
             const response = await fetch(endpoint, {
                 method,
+                headers: {
+                    "userid": localStorage.getItem("userid")
+                },
                 body: formData
             });
 
@@ -562,7 +565,7 @@ createEventForm.addEventListener("submit", async function (e) {
             }
         } catch (err) {
             alert("Failed to create event. Try again later.");
-            console.error(err);
+            console.log(err);
         }
     } else {
         validateEventName();
@@ -585,7 +588,7 @@ async function displayStoredEvents() {
         const response = await fetch("/api/v2/events/get-allevents", {
             method: "GET",
             headers:{
-                "Content-Type": "applicatioon/json",
+                "Content-Type": "application/json",
                 "userid" : localStorage.getItem("userid")
             }
         });

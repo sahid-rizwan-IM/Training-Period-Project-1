@@ -110,9 +110,14 @@ adminLoginForm.addEventListener("submit", async function (e) {
             alert(result.message || "Login failed.");
             return;
         }
-
+        res.status(200).json({
+            success: true,
+            userid: user._id, // ✅ make sure this is included
+            role: user.role,
+            message: "Login successful"
+        });
         alert("Login Successful!");
-        localStorage.setItem("userid", result.userId);
+        localStorage.setItem("userid", result.userid);
         if (result.role === "college admin") {
             window.location.href = "/events";
         } else if (result.role === "student") {

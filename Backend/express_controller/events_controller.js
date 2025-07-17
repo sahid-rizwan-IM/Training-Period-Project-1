@@ -32,12 +32,14 @@ const eventController = {
 
   async getAllEvents(req, res) {
   try {
-    const userId = req.headers.userId;
+    const userId = req.headers.userid;
     const events = await myEventsModel.find({
-      
+      userId
     });
     console.log(req.session);
     console.log(req.headers);
+    console.log("User ID received:", req.headers['userid']);
+
     
 
     res.status(200).json({
@@ -59,11 +61,17 @@ const eventController = {
 
   async createEvent(req, res) {
     try {
+      const userId = req.headers.userid;
+
+      if (!userId) {
+        return res.status(400).json({ success: false, message: "User ID not found in headers" });
+      }
       const { eventName, eventType, eventDate, eventDescription } = req.body;
       const file = req.file ? req.file.filename : null;
 
       const newEvent = new myEventsModel({
         id: new Date().getTime(),
+        userId,
         eventName,
         eventType,
         eventDate,

@@ -17,7 +17,13 @@ const mongoose = require('mongoose');
 //sendFile() - if a file is passed, it reads the whole file (like html file).
 
 // app.use(bodyParser.json());//next handle function
-app.use(express.json());
+// app.use(express.json());
+app.use((err, req, res, next) => {
+  if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+    return res.status(400).json({ success: false, error: 'Invalid JSON body' });
+  }
+  next();
+});
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(express.static(path.join(__dirname, '..', 'Frontend')));
 
@@ -50,7 +56,9 @@ app.use(async(req,res,next)=>{
 })
 //routers called here
 app.use('/api/v1/home',homePage);
+app.use(express.json());
 app.use('/api/v2/events', eventRoutes);
+// app.use('/api/v2/events', eventRoutes);
 app.use('/registeredusers', registeredUserRoutes);
 app.use('/superadmin', superAdminRoutes);
 
