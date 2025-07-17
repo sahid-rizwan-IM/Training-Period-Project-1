@@ -24,7 +24,7 @@ async function deleteEvent(req, res, next) {
         const filePath = path.join(event_files, event.file);
 
         fs.unlink(filePath, (err) => {
-            if (err) {
+            if (err) {adminUserLogoFile
                 console.error("File deletion error:", err.message);
             }
         });

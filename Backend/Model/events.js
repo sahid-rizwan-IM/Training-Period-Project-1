@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const myEventSchema = new mongoose.Schema({
-  id: Number,
+  id: Number, //user.id
   eventName: String,
   eventType: String,
   eventDate: String,
@@ -11,3 +11,4 @@ const myEventSchema = new mongoose.Schema({
 
 const myEventsModel = mongoose.model("myEvents", myEventSchema);
 module.exports = myEventsModel;
+ 

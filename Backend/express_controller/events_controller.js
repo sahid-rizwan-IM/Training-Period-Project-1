@@ -32,7 +32,13 @@ const eventController = {
 
   async getAllEvents(req, res) {
   try {
-    const events = await myEventsModel.find();
+    const userId = req.headers.userId;
+    const events = await myEventsModel.find({
+      
+    });
+    console.log(req.session);
+    console.log(req.headers);
+    
 
     res.status(200).json({
       success: true,
@@ -41,6 +47,7 @@ const eventController = {
       status: 200
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json({
       success: false,
       data: null,

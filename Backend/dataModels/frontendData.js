@@ -9,12 +9,8 @@ const navData = [
         navName: "Instructions" 
     },
     { 
-        navLink: "/clg-admin-login", 
-        navName: "College Admin" 
-    },
-    { 
-        navLink: "#", 
-        navName: "Student" 
+        navLink: "/login", 
+        navName: "Login" 
     },
     { 
         navLink: "#", 

@@ -4,8 +4,8 @@ html(lang="en")
     include ./includes/header
     if(reqUrl.includes("/events"))
       include ./includes/clg_admin_nav
-    else if reqUrl.includes("/clg-admin-login")
-      include ./includes/clg_admin_login_nav
+    else if reqUrl.includes("/login")
+      include ./includes/users_login_nav
     else
       include ./includes/home_nav
     block head
@@ -16,7 +16,7 @@ html(lang="en")
       script(src="https://code.jquery.com/jquery-3.7.1.min.js")
       if(reqUrl.includes("/events"))
         script(src="/script/college-admin.js")
-      if(reqUrl.includes("/clg-admin-login"))
+      if(reqUrl.includes("/login"))
         script(src="/script/clg-login.js")
 
  

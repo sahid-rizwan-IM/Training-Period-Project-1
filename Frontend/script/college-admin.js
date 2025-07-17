@@ -582,7 +582,14 @@ function resetFormState() {
 // Initial Load My Events
 async function displayStoredEvents() {
     try {
-        const response = await fetch("http://localhost:3000/api/v2/events/get-allevents");
+        const response = await fetch("/api/v2/events/get-allevents", {
+            method: "GET",
+            headers:{
+                "Content-Type": "applicatioon/json",
+                "userid" : localStorage.getItem("userid")
+            }
+        });
+
         const result = await response.json();
         const myClgEvent = document.querySelector(".myclg-content");
         if (response.ok && result.data.length > 0) {

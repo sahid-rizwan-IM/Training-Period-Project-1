@@ -91,24 +91,24 @@ nav a {
 
 /* z */
 
-#reminding-points{
+#admin-reminding-points, #student-reminding-points{
   background: #fbfbfb;
   position: fixed;
   top: 80px;
   right: 5px;
   padding: 30px 30px 10px 25px;
-  display: none;
+  /* display: none; */
   font-family:Arial, Helvetica, sans-serif;
   border-radius: 10px;
   opacity: 0.9;
   animation: slideDown 0.3s ease-in-out;
 }
 
-#reminding-points li{
+#admin-reminding-points li, #student-reminding-points li{
     margin: 12px 0px;
     transition: all 0.3s ease;
 }
-#reminding-points li:hover{
+#admin-reminding-points li:hover, #student-reminding-points li:hover{
     transform: translateX(5px);
 }
 @keyframes slideDown {
@@ -121,6 +121,11 @@ nav a {
         opacity: 1; 
     }
 }
+.remind-hidden{
+    display:none;
+}
+
+
 
 .closePopup {
   position: absolute;
@@ -148,11 +153,11 @@ i .profile {
     background: linear-gradient(rgb(20, 29, 51),rgb(56, 23, 38));
 }
 
-#loginFormContent, #signupFormContent{
+#loginFormContent,#superAdminLogin, #signupFormContent{
     justify-content: center;
     background-color: rgba(236, 236, 207, 0.936);
     border-radius: 10px;
-    max-height: 700px;
+    max-height: 2000px;
     margin-top: 70px;
     min-width: 500px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -163,7 +168,7 @@ i .profile {
     margin-bottom: 30px;
 }
 
-#loginFormContent h1, #signupFormContent h1{
+#loginFormContent h1, #signupFormContent h1, #superAdminLogin h1{
     text-align: center;
     margin-bottom: 0px;
 }
@@ -172,7 +177,7 @@ i .profile {
     /* transition: all 0.7s ease-in-out; */
 }
 
-#loginForm input, #signupForm input{
+#loginForm input, #signupForm input, #signupForm select{
     display: block;
     padding: 15px;
     width: 100%;
@@ -232,6 +237,11 @@ i .profile {
 .hidden-form{
     display: none;
 }
+
+.clgExtraDetailsHidden{
+    display:none;
+}
+
 
 footer{
     width: 100%;

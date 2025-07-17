@@ -1,0 +1,21 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{webTitle}
+        link(rel="stylesheet", href="/static/css/style-clg-login.css")
+    body
+        #main-content
+            #superAdminLogin
+                h1 Super Admin Login
+                form#loginForm
+
+                    input(type="email", id="super-admin-email", name="super-admin-email", placeholder="Email")
+                    small#super-admin-email-req.login-hidden
+
+                    input(type="password", id="super-admin-pass", name="super-admin-pass", placeholder="Passcode")
+                    small#super-admin-pass-req.login-hidden
+
+                    button#login-btn Sign in
+        script(src="/script/super-admin.js")

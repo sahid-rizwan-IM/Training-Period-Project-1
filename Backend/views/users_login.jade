@@ -1,0 +1,81 @@
+extend layout
+block body
+    .main-container
+
+    #main-content
+      #loginFormContent
+        h1 Login
+        form#loginForm
+          input(type="text", id="login-clg-code", name="login-clg-code", placeholder="Collegecode")
+          small#login-clg-code-req.login-hidden
+
+          input(type="email", id="login-email", name="login-email", placeholder="Email")
+          small#login-email-req.login-hidden
+
+          input(type="password", id="login-pass", name="login-pass", placeholder="Passcode")
+          small#login-pass-req.login-hidden
+
+          button#login-btn Sign in
+
+          p
+            | New to this? 
+            a.changeForm(href="#", onclick="openSignUpForm()") Sign Up Here
+
+      //- #overlay
+      //-   #admin-reminding-points.remind-hidden
+      //-     label.closePopup(onclick="closePopup()") &times;
+      //-     li Register(if new) or login to admin dashboard
+      //-     li Post inter and intra college events
+      //-     li View other college events and profiles
+      //-     li Enhance your college profile
+      //-     li Approve student registrations
+      //-   #student-reminding-points.remind-hidden
+      //-     label.closePopup(onclick="closePopup()") &times;
+      //-     li Register(if new) or login
+      //-     li View intra and inter college event
+      //-     li Participate in events and track for updates
+      //-     li View other college profile
+
+      #signupFormContent.hidden-form
+        h1 Register
+        form#signupForm
+          select#userRole(name="userRole")
+            option(value="student") Student
+            option(value="college admin") College Admin
+          
+          input(type="text", id="admin-reg-clg-code", name="admin-clg-code", placeholder="Collegecode")
+          small#admin-reg-clg-code-req.signup-hidden
+          
+          .studentreq.stuExtraDetailsHidden
+            input(type="text", id="student-name", name="student-name", placeholder="Student Name")
+            small#student-name-req.signup-hidden
+
+            input(type="text", id="student-regno", name="student-regno", placeholder="Registration Number")
+            small#student-regno-req.signup-hidden
+          .collegeadminreq.clgExtraDetailsHidden
+            input(type="text", id="admin-reg-clg-name", name="admin-reg-clg-name", placeholder="Collegename")
+            small#admin-reg-clg-name-req.signup-hidden
+
+            input(type="file", id="logo-image", name="logo-image", class="file-input", title="Upload College Logo")
+            small#logo-image-req.signup-hidden
+
+            input(type="text", id="admin-aff-num", name="admin-aff-num", placeholder="Afflication number")
+            small#admin-aff-num-req.signup-hidden
+
+            input(type="text", id="admin-location", name="admin-location", placeholder="Location (eg: city or district )")
+            small#admin-location-req.signup-hidden
+          
+          input(type="email", id="admin-email", name="admin-email", placeholder="Email")
+          small#admim-email-req.signup-hidden
+
+          input(type="password", id="admin-reg-pass", name="admin-reg-pass", placeholder="Passcode")
+          small#admin-reg-pass-req.signup-hidden
+
+          input(type="password", id="admin-reg-confirm-pass", name="admin-reg-confirm-pass", placeholder="Confirm Passcode")
+          small#admin-reg-confirm-pass-req.signup-hidden
+
+          button#signup-btn Sign Up
+
+          p
+            | You have an account already? 
+            a.changeForm(href="#", onclick="openLoginForm()") Login Here

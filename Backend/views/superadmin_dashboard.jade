@@ -1,0 +1,46 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Super Admin Dashboard
+    link(rel="stylesheet", href="/static/css/super-admin-dashboard.css")
+  body
+    h1 Super Admin Dashboard
+
+    .section
+      h2 College Admins
+      if collegeAdmins && collegeAdmins.length
+        each admin in collegeAdmins
+          .user-card
+            p Name: #{admin.collegeName || 'N/A'}
+            p Email: #{admin.email || 'N/A'}
+            p Code: #{admin.collegeCode || 'N/A'}
+            p Location: #{admin.location || 'N/A'}
+            p Affiliation #: #{admin.affiliationNumber || 'N/A'}
+            if admin.logoFile
+              img(src=`/uploads/admin_users_logo/${admin.logoFile}`, alt="College Logo", width="80")
+            else
+              p No logo uploaded
+            button(onclick=`approveUser('${admin._id}')`) Approve
+            button(onclick=`editUser('${admin._id}')`) Edit
+            button(onclick=`deleteUser('${admin._id}')`) Delete
+      else
+        p No college admin users found.
+
+    .section
+      h2 Student Users
+      if students && students.length
+        each student in students
+          .user-card
+            p Name: #{student.studentName || 'N/A'}
+            p Email: #{student.email || 'N/A'}
+            p College Code: #{student.collegeCode || 'N/A'}
+            p Register Number: #{student.registerNumber || 'N/A'}
+            button(onclick=`approveUser('${student._id}')`) Approve
+            button(onclick=`editUser('${student._id}')`) Edit
+            button(onclick=`deleteUser('${student._id}')`) Delete
+      else
+        p No student users found.
+
+    script(src="/script/super-admin-dashboard.js")
