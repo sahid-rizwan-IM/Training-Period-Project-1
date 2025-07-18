@@ -1,3 +1,4 @@
+const mongoose =require('mongoose');
 const myEventsModel = require('../Model/events');
 
 const eventController = {
@@ -33,11 +34,25 @@ const eventController = {
   async getAllEvents(req, res) {
   try {
     const userId = req.headers.userid;
-    const events = await myEventsModel.find({
-      userId
+    // const events = await myEventsModel.find({
+    //   userId
+    // });
+    if (!userId) {
+      return res.status(400).json({
+        success: false,
+        message: "User ID not found in headers"
+      });
+    }
+
+    // const userObjectId = new mongoose.Types.ObjectId(userId);
+
+    const events = await myEventsModel.find({userId}).populate({
+      path: "userId",
+      select: "collegeName location logofile" // only these fields
     });
-    console.log(req.session);
-    console.log(req.headers);
+    console.log("Populated user data:", events[0].userId);
+    // console.log(req.session);
+    // console.log(req.headers);
     console.log("User ID received:", req.headers['userid']);
 
     
@@ -62,16 +77,18 @@ const eventController = {
   async createEvent(req, res) {
     try {
       const userId = req.headers.userid;
+      
 
       if (!userId) {
         return res.status(400).json({ success: false, message: "User ID not found in headers" });
       }
+      const userObjectId = new mongoose.Types.ObjectId(userId);
       const { eventName, eventType, eventDate, eventDescription } = req.body;
       const file = req.file ? req.file.filename : null;
 
       const newEvent = new myEventsModel({
         id: new Date().getTime(),
-        userId,
+        userId: userObjectId,
         eventName,
         eventType,
         eventDate,
