@@ -2,6 +2,33 @@ const mongoose =require('mongoose');
 const myEventsModel = require('../Model/events');
 
 const eventController = {
+  async getOtherCollegeEvents(req, res) {
+    try {
+      const currentUserId = req.query.userId;
+      
+      console.log("current id: ",currentUserId);
+
+      const events = await myEventsModel.find({
+        userId: { $ne: currentUserId },
+        eventType: "inter" // Only other colleges' events
+      }).populate("userId", "collegeName location logofile");
+      console.log(events);
+
+      res.status(200).json({
+        success: true,
+        data: events,
+        status: 200
+      });
+
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        error: "Server error",
+        status: 500
+      });
+    }
+  },
+
   async getSingleEvent(req, res) {
     try {
       const eventId = req.params.id;
@@ -34,6 +61,7 @@ const eventController = {
   async getAllEvents(req, res) {
   try {
     const userId = req.headers.userid;
+    // console.log("data user:", userId);
     // const events = await myEventsModel.find({
     //   userId
     // });
@@ -50,10 +78,10 @@ const eventController = {
       path: "userId",
       select: "collegeName location logofile" // only these fields
     });
-    console.log("Populated user data:", events[0].userId);
+    // console.log("Populated user data:", events[0].userId);
     // console.log(req.session);
     // console.log(req.headers);
-    console.log("User ID received:", req.headers['userid']);
+    // console.log("User ID received:", req.headers['userid']);
 
     
 

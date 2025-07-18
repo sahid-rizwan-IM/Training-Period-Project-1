@@ -4,7 +4,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
   const passcode = document.getElementById("super-admin-pass").value.trim();
 
   try {
-    const res = await fetch("http://localhost:3000/superadmin/login", {
+    const res = await fetch("/api/v4/superadmin/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

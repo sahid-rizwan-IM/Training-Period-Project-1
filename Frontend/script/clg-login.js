@@ -94,7 +94,7 @@ adminLoginForm.addEventListener("submit", async function (e) {
     }
 
     try {
-        const response = await fetch("http://localhost:3000/api/v4/auth/login", {
+        const response = await fetch("/api/v4/auth/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -378,7 +378,7 @@ signupFormSubmit.addEventListener("submit", async function (e) {
         // const eventId = document.getElementById("edit-event-id").value.trim();
         // const isUpdate = eventId !== "";
 
-        const endpoint = "http://localhost:3000/registeredusers/add-user";
+        const endpoint = "/api/v3/registeredusers/add-user";
 
         try {
 

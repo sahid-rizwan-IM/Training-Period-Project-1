@@ -3,7 +3,7 @@ async function approveUser(userId) {
   if (!confirmed) return;
 
   try {
-    const res = await fetch(`/superadmin/approve-user/${userId}`, {
+    const res = await fetch(`/api/v4/superadmin/approve-user/${userId}`, {
       method: "PUT"
     });
     const data = await res.json();
@@ -20,7 +20,7 @@ async function deleteUser(userId) {
   if (!confirmed) return;
 
   try {
-    const res = await fetch(`/superadmin/delete-user/${userId}`, {
+    const res = await fetch(`/api/v4/superadmin/delete-user/${userId}`, {
       method: "DELETE"
     });
     const data = await res.json();

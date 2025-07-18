@@ -24,7 +24,7 @@ app.use((err, req, res, next) => {
   }
   next();
 });
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(express.static(path.join(__dirname, 'uploads')));
 app.use(express.static(path.join(__dirname, '..', 'Frontend')));
 
 app.use((req, res, next) => {
@@ -59,8 +59,8 @@ app.use('/api/v1/home',homePage);
 app.use(express.json());
 app.use('/api/v2/events', eventRoutes);
 // app.use('/api/v2/events', eventRoutes);
-app.use('/registeredusers', registeredUserRoutes);
-app.use('/superadmin', superAdminRoutes);
+app.use('/api/v3/registeredusers', registeredUserRoutes);
+app.use('/api/v4/superadmin', superAdminRoutes);
 
 app.use('/api/v4/auth', authRoutes);
 

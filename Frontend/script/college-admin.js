@@ -1,128 +1,3 @@
-//Other college event content box
-const otherclgEvents = [{
-        id: "clg1",
-        logo: "/static/images/avc-logo.jpg",
-        collegeName: "A.V.C. College of Engineering",
-        location: "Mayiladuthurai, Tamil Nadu",
-        eventName: "National Conference",
-        date: "25th june 2025",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event.Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event.Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event.Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event.Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
-    },
-    {
-        id: "clg2",
-        logo: "/static/images/cresent-logo.png",
-        collegeName: "Crescent Institute of Science & Technology ",
-        location: "Chennai, Tamil Nadu",
-        eventName: "Innovative Hackathon'25",
-        date: "20th june 2025",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
-    },
-    {
-        id: "clg3",
-        logo: "/static/images/avc-logo.jpg",
-        collegeName: "A.V.C. College of Engineering",
-        location: "Mayiladuthurai, Tamil Nadu",
-        eventName: "Workshop on AI & ML",
-        date: "20th june 2025",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
-    },
-    {
-        id: "clg4",
-        logo: "/static/images/as-salam-logo.jpg",
-        collegeName: "AS-SALAM College of Engineering and Technology",
-        location: "Aduthurai, Tamil Nadu",
-        eventName: "InfoTech Paper Presentatin'25",
-        date: "7th july 2025",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
-    },
-    {
-        id: "clg1",
-        logo: "/static/images/avc-logo.jpg",
-        collegeName: "A.V.C. College of Engineering",
-        location: "Mayiladuthurai, Tamil Nadu",
-        eventName: "National Conference",
-        date: "25th june 2025",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event.Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event.Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event.Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event.Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
-    },
-    {
-        id: "clg2",
-        logo: "/static/images/cresent-logo.png",
-        collegeName: "Crescent Institute of Science & Technology ",
-        location: "Chennai, Tamil Nadu",
-        eventName: "Innovative Hackathon'25",
-        date: "20th june 2025",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
-    },
-    {
-        id: "clg3",
-        logo: "/static/images/avc-logo.jpg",
-        collegeName: "A.V.C. College of Engineering",
-        location: "Mayiladuthurai, Tamil Nadu",
-        eventName: "Workshop on AI & ML",
-        date: "20th june 2025",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
-    },
-    {
-        id: "clg4",
-        logo: "/static/images/as-salam-logo.jpg",
-        collegeName: "AS-SALAM College of Engineering and Technology",
-        location: "Aduthurai, Tamil Nadu",
-        eventName: "InfoTech Paper Presentatin'25",
-        date: "7th july 2025",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
-    },
-    {
-        id: "clg2",
-        logo: "/static/images/cresent-logo.png",
-        collegeName: "Crescent Institute of Science & Technology ",
-        location: "Chennai, Tamil Nadu",
-        eventName: "Innovative Hackathon'25",
-        date: "20th june 2025",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
-    },
-    {
-        id: "clg3",
-        logo: "/static/images/avc-logo.jpg",
-        collegeName: "A.V.C. College of Engineering",
-        location: "Mayiladuthurai, Tamil Nadu",
-        eventName: "Workshop on AI & ML",
-        date: "20th june 2025",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
-    },
-    {
-        id: "clg2",
-        logo: "/static/images/cresent-logo.png",
-        collegeName: "Crescent Institute of Science & Technology ",
-        location: "Chennai, Tamil Nadu",
-        eventName: "Innovative Hackathon'25",
-        date: "20th june 2025",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.This is the full event description, with all necessary details, rules, dates, and contacts for the event."
-    }
-];
-
-const otherclgContainer = document.getElementById("otherclg-event");
-otherclgEvents.forEach(event => {
-    const eventHTML = `
-        <div class="otherclg-content">
-            <div class="event-header">
-                <img src="${event.logo}" alt="college logo">
-                <div>
-                    <h4>${event.collegeName}</h4>
-                    <h6>${event.location}</h6>
-                </div>
-            </div>
-            <div>
-                <h3 class="event-name">${event.eventName}</h3>
-                <div class="imp-buttons">
-                    <!--description button that calls evedesc with prticular evet details-->
-                    <button class="descButton" onclick="otherClgEventDescPopup(\`${event.collegeName}\`, \`${event.eventName}\`, \`${event.date}\`, \`${event.description}\`)">Description</button>
-                    <label for="register-popup" class="regButton" onclick= "registrationFormDynamicDetials(\`${event.collegeName}\`, \`${event.eventName}\`)">Register</label>
-                </div>
-            </div>
-        </div>
-    `;
-    otherclgContainer.innerHTML += eventHTML;
-});
 
 //Desciption display part
 function otherClgEventDescPopup(collegeName, eventName, date, description) {
@@ -139,6 +14,47 @@ function otherClgEventDescPopup(collegeName, eventName, date, description) {
     descPopup.innerHTML = descPopupContent;
     descPopup.style.display = "flex";
 }
+const currentUserId = localStorage.getItem("userid");
+console.log("local:",currentUserId);
+fetch(`/api/v2/events/get-other-events?userId=${currentUserId}`)
+  .then((res) => res.json())
+  .then((data) => {
+    if (data.success && Array.isArray(data.data)) {
+      const otherEvents = data.data;
+
+      otherEvents.forEach((event) => {
+        // console.log(event);
+        const logo = event.userId.logofile;
+
+        console.log(logo);
+        const otherclgContainer = document.getElementById("otherclg-event");
+        const eventHTML = `
+            <div class="otherclg-content">
+                <div class="event-header">
+                    <img src="/admin_users_logo/${logo}" alt="college-logo">
+                    <div>
+                        <h4>${event.userId.collegeName}</h4>
+                        <h6>${event.userId.location}</h6>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="event-name">${event.eventName}</h3>
+                    <div class="imp-buttons">
+                        <!--description button that calls evedesc with prticular evet details-->
+                        <button class="descButton" onclick="otherClgEventDescPopup(\`${event.userId.collegeName}\`, \`${event.eventName}\`, \`${event.eventDate}\`, \`${event.eventDescription}\`)">Description</button>
+                        <label for="register-popup" class="regButton" onclick= "registrationFormDynamicDetials(\`${event.userId.collegeName}\`, \`${event.eventName}\`)">Register</label>
+                    </div>
+                </div>
+            </div>
+        `;
+        otherclgContainer.innerHTML += eventHTML;
+
+      });
+    } else {
+      console.error("No other events found.");
+    }
+  })
+  .catch((err) => console.error("Error fetching other events:", err));
 
 function closePopup(){
     // to close description popup
