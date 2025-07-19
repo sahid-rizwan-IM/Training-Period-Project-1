@@ -1,0 +1,31 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{webTitle}
+        link(rel="stylesheet", href="/static/css/style-college.css")
+    body
+        .main-container
+            header.header
+                h2 Multi College Event Platform
+                nav
+                    ul#sidemenu
+                        li
+                            a.nav-link(href="/") Home
+                        li
+                            a.nav-link(href="#")
+                                | Profile
+                                i.fa-regular.fa-user(style="padding:5px")
+                    button.logout
+                        a(href="#", style="color:#e9d0b6")
+                            | Logout
+                            i.fa-solid.fa-arrow-right-from-bracket(style="padding:5px")
+
+        main#dash-main
+            aside.sidebar
+                ul
+                    li.sidebar-link.active(onclick="activePage('intra-event',this)")
+                        a(href="#intra-event") Intra Events
+                    li.sidebar-link(onclick="activePage('inter-Events',this)")
+                        a(href="#inter-Events") Inter Events

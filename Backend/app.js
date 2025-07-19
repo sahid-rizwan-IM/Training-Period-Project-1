@@ -89,6 +89,13 @@ app.get("/login",(req,res) =>{
     });
 })
 
+app.get("/student-dash",(req,res) =>{
+    res.render("student_dashboard.jade",  {
+        ...fronendData,
+        reqUrl : req.url
+    });
+})
+
 app.get("/superadmin", (req,res) => {
     res.render("super_admin_login.jade");
 })
