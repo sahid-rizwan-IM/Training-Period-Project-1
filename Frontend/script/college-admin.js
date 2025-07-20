@@ -386,7 +386,9 @@ const createEventBtn = document.getElementById("create-button");
 createEventBtn.addEventListener("click", () => {
     resetFormState();           
     createEventForm.reset();     
-    openCreateForm();         
+    openCreateForm();
+    const previewContainer = document.getElementById("existing-file-preview");
+    previewContainer.style.display = 'none';
 });
 
 const createEventMessage = document.getElementById("createAlertmsg");
@@ -448,13 +450,13 @@ createEventForm.addEventListener("submit", async function (e) {
                     const newEvents = result.data;
                     const fileDisplay = newEvents.file
                         ? newEvents.file.endsWith('.pdf')
-                            ? `<a href="/uploads/event_files/${newEvents.file}" download class="file-link">Download PDF</a>`
-                            : `<a href="javascript:void(0)" class="file-link" onclick="showImagePopup('/uploads/event_files/${newEvents.file}')">View Image</a>`
+                            ? `<a href="/event_files/${newEvents.file}" download class="file-link">Download PDF</a>`
+                            : `<a href="javascript:void(0)" class="file-link" onclick="showImagePopup('/event_files/${newEvents.file}')">View Image</a>`
                         : '';
 
                     const myClgEvent = document.querySelector(".myclg-content");
                     const ownEvents = `
-                            <div class="each-my-events" data-id="${newEvents.id}">
+                            <div class="each-my-events" data-id="${newEvents._id}">
                                 <div>
                                     <h2 class="event-name ">${newEvents.eventName}</h2>
                                     <h3>${newEvents.eventType} | ${newEvents.eventDate}</h3>
@@ -499,28 +501,82 @@ function resetFormState() {
 }
 
 // Initial Load My Events
+// async function displayStoredEvents() {
+//     try {
+//         const response = await fetch("/api/v2/events/get-allevents", {
+//             method: "GET",
+//             headers:{
+//                 "Content-Type": "application/json",
+//                 "userid" : localStorage.getItem("userid")
+//             }
+//         });
+
+//         const result = await response.json();
+        
+//     } catch (err) {
+//         console.error("Failed to fetch events", err);
+//     }
+// }
+
 async function displayStoredEvents() {
     try {
         const response = await fetch("/api/v2/events/get-allevents", {
             method: "GET",
-            headers:{
+            headers: {
                 "Content-Type": "application/json",
-                "userid" : localStorage.getItem("userid")
+                "userid": localStorage.getItem("userid")
             }
         });
 
         const result = await response.json();
-        const myClgEvent = document.querySelector(".myclg-content");
+        
         if (response.ok && result.data.length > 0) {
             result.data.forEach(myEvents => {
-                const fileDisplay = myEvents.file
+                renderMyEvents(myEvents);
+            });
+
+        }
+        function filterFuction(){
+            const filterEventType = document.getElementById("filter-eveType").value;
+            console.log("Selected Filter:", filterEventType);
+            const myClgEvent = document.querySelector(".myclg-content");
+            myClgEvent.innerHTML = "";
+
+        if (response.ok && Array.isArray(result.data)) {
+            const filteredEvents = result.data.filter(event => {
+                console.log("Event Type from DB:", event.eventType);
+                if (filterEventType === "all") return true;
+                return event.eventType === filterEventType;
+            });
+            console.log(filteredEvents);
+
+            if (filteredEvents.length === 0) {
+                myClgEvent.innerHTML = `<p>No ${filterEventType} events found.</p>`;
+                return;
+            }
+
+            filteredEvents.forEach(myEvents => {
+                renderMyEvents(myEvents);
+            });
+        }
+        }
+        document.getElementById("filter-eveType").addEventListener("change", filterFuction);
+
+    } catch (err) {
+        console.error("Failed to fetch events", err);
+    }
+}
+
+function renderMyEvents(myEvents){
+    const myClgEvent = document.querySelector(".myclg-content");
+    const fileDisplay = myEvents.file
                     ? myEvents.file.endsWith('.pdf')
-                        ? `<a href="/uploads/event_files/${myEvents.file}" download class="file-link">Download PDF</a>`
-                        : `<a href="javascript:void(0)" class="file-link" onclick="showImagePopup('/uploads/event_files/${myEvents.file}')">View Image</a>`
+                        ? `<a href="/event_files/${myEvents.file}" download class="file-link">Download PDF</a>`
+                        : `<a href="javascript:void(0)" class="file-link" onclick="showImagePopup('/event_files/${myEvents.file}')">View Image</a>`
                     : '';
 
                 const ownEvents = `
-                    <div class="each-my-events" data-id="${myEvents.id}">
+                    <div class="each-my-events" data-id="${myEvents._id}">
                         <div>
                             <h2 class="event-name ">${myEvents.eventName}</h2>
                             <h3>${myEvents.eventType} | ${myEvents.eventDate}</h3>
@@ -535,17 +591,9 @@ async function displayStoredEvents() {
                     </div>
                 `;
                 myClgEvent.innerHTML += ownEvents;
-            }); 
-            // activePage('MyCollege-Events', 1);
-
-        }
-    } catch (err) {
-        console.error("Failed to fetch events", err);
-    }
 }
 
 function showImagePopup(src) {
-    // Remove existing popup if any
     const existingPopup = document.querySelector('.image-popup');
     if (existingPopup) existingPopup.remove();
 
@@ -569,7 +617,7 @@ setTimeout(() => {
     attachDeleteEventListeners();
 }, 500);
 
-function attachDeleteEventListeners() {
+async function attachDeleteEventListeners() {
     const deleteButtons = document.querySelectorAll(".delete-event-btn");
     deleteButtons.forEach(button => {
         button.addEventListener("click", async function () {
@@ -580,7 +628,7 @@ function attachDeleteEventListeners() {
             if (!confirmDelete) return;
 
             try {
-                const response = await fetch(`http://localhost:3000/api/v2/events/delete-event/${eventId}`, {
+                const response = await fetch(`/api/v2/events/delete-event/${eventId}`, {
                     method: "DELETE"
                 });
 
@@ -599,29 +647,61 @@ function attachDeleteEventListeners() {
     });
 }
 
-function handleEditEvent(button) {
-    console.log("edit button clicked");
+
+
+async function handleEditEvent(button) {
     const eventDiv = button.closest(".each-my-events");
     const eventId = eventDiv.getAttribute("data-id");
-    const eventName = eventDiv.querySelector(".event-name").textContent.trim();
-    const eventType = eventDiv.querySelector("h3").textContent.split("|")[0].trim();
-    const eventDate = eventDiv.querySelector("h3").textContent.split("|")[1].trim();
-    const eventDescription = eventDiv.querySelector("p").textContent.trim();
-    console.log(eventId);
 
-    
+    try {
+        const response = await fetch(`/api/v2/events/get-event/${eventId}`, {
+            headers: {
+                "userid": localStorage.getItem("userid")
+            }
+        });
+        const result = await response.json();
 
-    document.getElementById("new-event").value = eventName;
-    document.getElementById("event-type").value = eventType;
-    document.getElementById("event-date").value = eventDate;
-    document.getElementById("new-event-description").value = eventDescription;
-    document.getElementById("edit-event-id").value = eventId;
+        if (!response.ok) {
+            alert("Failed to load event details");
+            return;
+        }
 
-    document.getElementById("create-btn").textContent = "Update";
-    document.querySelector(".pop-title").style.display = "none";
+        const eventData = result.data;
+        const eventName = eventDiv.querySelector(".event-name").textContent.trim();
+        const eventType = eventDiv.querySelector("h3").textContent.split("|")[0].trim();
+        const eventDate = eventDiv.querySelector("h3").textContent.split("|")[1].trim();
+        const eventDescription = eventDiv.querySelector("p").textContent.trim();
 
-    openCreateForm();
+        document.getElementById("new-event").value = eventName;
+        document.getElementById("event-type").value = eventType;
+        document.getElementById("event-date").value = eventDate;
+        document.getElementById("new-event-description").value = eventDescription;
+        document.getElementById("edit-event-id").value = eventData._id;
+        
+        const previewContainer = document.getElementById("existing-file-preview");
+        previewContainer.style.display = 'block';
+        if (eventData.file) {
+        const ext = eventData.file.split('.').pop().toLowerCase();
+        const filePath = `/event_files/${eventData.file}`;
+        previewContainer.innerHTML = ext === "pdf"
+            ? `<p>Existing File: <a href="${filePath}" target="_blank" download>Download PDF</a></p>`
+            : `<p>Existing File: <a href="javascript:void(0)" onclick="showImagePopup('${filePath}')">View Image</a></p>`;
+        } else {
+        previewContainer.innerHTML = "<p>No existing file uploaded.</p>";
+        }
+
+        document.getElementById("create-btn").textContent = "Update";
+        document.querySelector(".pop-title").style.display = "none";
+
+        openCreateForm();
+
+    } catch (err) {
+        console.error("Failed to fetch event details:", err);
+        alert("Something went wrong.");
+    }
 }
+
+
 
 // ACHIEVEMENTS CREATE FORM VALIDATION
 const achievementTitleInput = document.getElementById("new-achieve");

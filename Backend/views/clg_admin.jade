@@ -64,6 +64,11 @@ block body
           button#submit-btn(type="submit") Submit
 
     #MyCollege-Events.section.hidden-page-content
+      .filter-event-type
+        select#filter-eveType(name="filter-eveType") 
+          option(value="all") All Events 
+          option(value="inter") Inter Events
+          option(value="intra") Intra Events
       #myclg-event
         .myclg-content
         div
@@ -102,6 +107,7 @@ block body
             .form-group
               label(for="file") Upload file:
               input#file(type="file", name="file")
+              div#existing-file-preview
             small#createAlertmsg.hidden
             button#create-btn(type="submit") Create
       #viewRegStudents-popup

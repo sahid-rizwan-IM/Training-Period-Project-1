@@ -26,7 +26,7 @@ router.get('/get-event/:id', eventController.getSingleEvent);
 router.get('/get-allevents', eventController.getAllEvents);
 router.post('/create-event',authMiddleware,upload.single('file'), eventValidator.createEvent, eventController.createEvent);
 router.delete('/delete-event/:id',eventValidator.deleteEvent, eventController.deleteEvent);
-router.put('/update-event/:id', eventController.updateEvent);
+router.put('/update-event/:id', upload.single('file'),eventController.updateEvent);
 router.get('/get-other-events', eventController.getOtherCollegeEvents);
 
 module.exports = router;

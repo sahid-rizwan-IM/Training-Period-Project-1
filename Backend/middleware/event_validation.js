@@ -19,7 +19,7 @@ function createEvent(req, res, next) {
 
 async function deleteEvent(req, res, next) {
     const eventId = req.params.id;
-    const event = await myEventsModel.findOneAndDelete({ id: eventId });
+    const event = await myEventsModel.findOneAndDelete({ _id: eventId });
     if (event.file) {
         const filePath = path.join(event_files, event.file);
 

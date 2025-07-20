@@ -12,7 +12,6 @@ const eventController = {
         userId: { $ne: currentUserId },
         eventType: "inter" // Only other colleges' events
       }).populate("userId", "collegeName location logofile");
-      console.log(events);
 
       res.status(200).json({
         success: true,
@@ -32,7 +31,7 @@ const eventController = {
   async getSingleEvent(req, res) {
     try {
       const eventId = req.params.id;
-      const event = await myEventsModel.findOne({ id: eventId });
+      const event = await myEventsModel.findOne({ _id: eventId });
 
       if (!event) {
         return res.status(404).json({
@@ -61,10 +60,6 @@ const eventController = {
   async getAllEvents(req, res) {
   try {
     const userId = req.headers.userid;
-    // console.log("data user:", userId);
-    // const events = await myEventsModel.find({
-    //   userId
-    // });
     if (!userId) {
       return res.status(400).json({
         success: false,
@@ -72,17 +67,10 @@ const eventController = {
       });
     }
 
-    // const userObjectId = new mongoose.Types.ObjectId(userId);
-
     const events = await myEventsModel.find({userId}).populate({
       path: "userId",
-      select: "collegeName location logofile" // only these fields
+      select: "collegeName location logofile"
     });
-    // console.log("Populated user data:", events[0].userId);
-    // console.log(req.session);
-    // console.log(req.headers);
-    // console.log("User ID received:", req.headers['userid']);
-
     
 
     res.status(200).json({
@@ -161,13 +149,24 @@ const eventController = {
   async updateEvent(req, res) {
     try {
       const eventId = req.params.id;
-      const updatedData = req.body;
+      const { eventName, eventType, eventDate, eventDescription } = req.body;
+
+      if (!eventName || !eventType || !eventDate || !eventDescription) {
+        return res.status(400).json({ success: false, message: "Missing fields" });
+      }
+
+      const updatedData = {
+        eventName,
+        eventType,
+        eventDate,
+        eventDescription,
+      };
       if (req.file) {
         updatedData.file = req.file.filename;
       }
 
       const updated = await myEventsModel.findOneAndUpdate(
-        { id: eventId },
+        { _id: eventId },
         updatedData,
         { new: true }
       );
@@ -180,6 +179,7 @@ const eventController = {
         });
       }
 
+      // await updated.save();
       res.status(200).json({
         success: true,
         message: "Event updated successfully",

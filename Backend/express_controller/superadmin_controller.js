@@ -1,32 +1,32 @@
 const userModel = require('../Model/registeredusers');
-const superAdminModel = require('../Model/super_admin');
+// const superAdminModel = require('../Model/super_admin');
 
-const renderSuperAdminDashboard = async (req, res) => {
-  try {
-    const users = await userModel.find();
-    const collegeAdmins = users.filter(u => u.role === 'college admin');
-    const students = users.filter(u => u.role === 'student');
+// const renderSuperAdminDashboard = async (req, res) => {
+//   try {
+//     const users = await userModel.find();
+//     const collegeAdmins = users.filter(u => u.role === 'college admin');
+//     const students = users.filter(u => u.role === 'student');
 
-    res.render('superadmin_dashboard', {
-      collegeAdmins,
-      students
-    });
-  } catch (err) {
-    res.status(500).send("Error loading dashboard");
-  }
-};
+//     res.render('superadmin_dashboard', {
+//       collegeAdmins,
+//       students
+//     });
+//   } catch (err) {
+//     res.status(500).send("Error loading dashboard");
+//   }
+// };
 
-const superAdminLogin = async (req, res) => {
-  const { email, passcode } = req.body;
-  try {
-    const admin = await superAdminModel.findOne({ email, passcode });
-    if (!admin) return res.status(401).json({ success: false, message: "Invalid credentials" });
+// const superAdminLogin = async (req, res) => {
+//   const { email, passcode } = req.body;
+//   try {
+//     const admin = await superAdminModel.findOne({ email, passcode });
+//     if (!admin) return res.status(401).json({ success: false, message: "Invalid credentials" });
 
-    res.status(200).json({ success: true, redirectUrl: '/superadmin/dashboard' });
-  } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
-  }
-};
+//     res.status(200).json({ success: true, redirectUrl: '/superadmin/dashboard' });
+//   } catch (err) {
+//     res.status(500).json({ success: false, message: err.message });
+//   }
+// };
 
 const approveUser = async (req, res) => {
   try {
@@ -53,8 +53,8 @@ const deleteUser = async (req, res) => {
 };
 
 module.exports = {
-  renderSuperAdminDashboard,
-  superAdminLogin,
+  // renderSuperAdminDashboard,
+  // superAdminLogin,
   approveUser,
   deleteUser
 };

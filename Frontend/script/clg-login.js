@@ -122,6 +122,9 @@ adminLoginForm.addEventListener("submit", async function (e) {
             window.location.href = "/events";
         } else if (result.role === "student") {
             window.location.href = "/student-dashboard";
+        } else if (result.role === "super admin"){
+            loginClgCode.style.display = "none";
+            window.location.href = "/superadmindash";
         }
 
 

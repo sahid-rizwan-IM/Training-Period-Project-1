@@ -4,6 +4,7 @@ const path = require('path');
 // const bodyParser = require('body-parser');
 const fronendData = require('../Backend/dataModels/frontendData');
 const homePage = require('./express_routes/home_routes');
+const RegisteredUser = require('./Model/registeredusers');
 const eventRoutes = require('./express_routes/event_routes');
 const registeredUserRoutes = require('./express_routes/registeredusers_routes');
 const superAdminRoutes = require('./express_routes/superadmin_routes');
@@ -101,20 +102,16 @@ app.get("/superadmin", (req,res) => {
 })
 
 app.get("/superadmindash", async (req, res) => {
-  try {
-    const allUsers = await RegisteredUser.find();
-    const collegeAdmins = allUsers.filter(u => u.role === "collegeAdmin");
-    const students = allUsers.filter(u => u.role === "student");
+    const users = await RegisteredUser.find();
+    const collegeAdmins = users.filter(u => u.role === 'college admin');
+    const students = users.filter(u => u.role === 'student');
 
-    res.render("superadmin_dashboard.jade", {
-      webTitle: 'Super Admin Dashboard',
-      collegeAdmins,
-      students
+    res.render('superadmin_dashboard', {
+        webTitle: 'Super Admin Dashboard',
+        collegeAdmins,
+        students
     });
-  } catch (err) {
-    console.error("Error fetching users:", err.message);
-    res.status(500).send("Internal Server Error");
-  }
+
 });
 
 //incorrect url error page
