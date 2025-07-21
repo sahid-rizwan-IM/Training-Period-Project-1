@@ -11,53 +11,56 @@ html(lang="en")
     .section
       h2 College Admins
       if collegeAdmins && collegeAdmins.length
-        tr
-          th College Name
-          th College Code
-          th Official Email
-          th Location
-          th Affiliation No.
-          th College Logo
-          th Action
-        each admin in collegeAdmins
-          .user-card
+        table
           tr
-            td #{admin.collegeName || 'N/A'}
-            td #{admin.email || 'N/A'}
-            td #{admin.collegeCode || 'N/A'}
-            td #{admin.location || 'N/A'}
-            td #{admin.affiliationNumber || 'N/A'}
-            if admin.logofile
-              img(src=`/admin_users_logo/${admin.logofile}`, alt="College Logo", width="60")
-            else
-              p No logo uploaded
-            td
-              button(onclick=`approveUser('${admin._id}')`) Approve
-              button(onclick=`editUser('${admin._id}')`) Edit
-              button(onclick=`deleteUser('${admin._id}')`) Delete
+            th College Name
+            th College Code
+            th Official Email
+            th Location
+            th Affiliation No.
+            th College Logo
+            th Action
+          each admin in collegeAdmins
+            .user-card
+            tr
+              td #{admin.collegeName || 'N/A'}
+              td #{admin.email || 'N/A'}
+              td #{admin.collegeCode || 'N/A'}
+              td #{admin.location || 'N/A'}
+              td #{admin.affiliationNumber || 'N/A'}
+              td 
+                if admin.logofile
+                  img(src=`/admin_users_logo/${admin.logofile}`, alt="College Logo", width="60")
+                else
+                  p No logo uploaded
+              td
+                button(onclick=`approveUser('${admin._id}')`) Approve
+                button(onclick=`editUser('${admin._id}')`) Edit
+                button(onclick=`deleteUser('${admin._id}')`) Delete
       else
         p No college admin users found.
 
     .section
       h2 Student Users
       if students && students.length
-        tr
-          th Student Name
-          th Email Id
-          th College Code
-          th Register Number
-          th Action
-        each student in students
-          .user-card
+        table
           tr
-            td #{student.studentName || 'N/A'}
-            td #{student.email || 'N/A'}
-            td #{student.collegeCode || 'N/A'}
-            td #{student.registerNumber || 'N/A'}
-            td 
-              button(onclick=`approveUser('${student._id}')`) Approve
-              button(onclick=`editUser('${student._id}')`) Edit
-              button(onclick=`deleteUser('${student._id}')`) Delete
+            th Student Name
+            th Email Id
+            th College Code
+            th Register Number
+            th Action
+          each student in students
+            .user-card
+            tr
+              td #{student.studentName || 'N/A'}
+              td #{student.email || 'N/A'}
+              td #{student.collegeCode || 'N/A'}
+              td #{student.registerNumber || 'N/A'}
+              td 
+                button(onclick=`approveUser('${student._id}')`) Approve
+                button(onclick=`editUser('${student._id}')`) Edit
+                button(onclick=`deleteUser('${student._id}')`) Delete
       else
         p No student users found.
 
