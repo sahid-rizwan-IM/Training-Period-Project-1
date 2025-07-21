@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const authMiddleware = require('../middleware/auth_middleware');
-const eventValidator = require('../middleware/event_validation')
+const {pageAuth} = require('../middleware/auth_middleware');
+const eventValidator = require('../middleware/event_validation');
+console.log(eventValidator);
 const eventController = require('../express_controller/events_controller');
 const multer = require('multer');
 const storage = multer.diskStorage({
@@ -24,9 +25,9 @@ const upload = multer({ storage, fileFilter });
 
 router.get('/get-event/:id', eventController.getSingleEvent);
 router.get('/get-allevents', eventController.getAllEvents);
-router.post('/create-event',authMiddleware,upload.single('file'), eventValidator.createEvent, eventController.createEvent);
-router.delete('/delete-event/:id',eventValidator.deleteEvent, eventController.deleteEvent);
-router.put('/update-event/:id', upload.single('file'),eventController.updateEvent);
+router.post('/create-event',pageAuth,upload.single('file'), eventValidator.createEvent, eventController.createEvent);
+router.delete('/delete-event/:id',pageAuth,eventValidator.deleteEvent, eventController.deleteEvent);
+router.put('/update-event/:id',pageAuth, upload.single('file'),eventController.updateEvent);
 router.get('/get-other-events', eventController.getOtherCollegeEvents);
 
 module.exports = router;

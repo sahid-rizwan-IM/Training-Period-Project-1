@@ -1,3 +1,25 @@
+function logoutUser() {
+  fetch('/api/v4/auth/logout', {
+    method: 'GET',
+    credentials: 'include' // Important to include cookies (session)
+  })
+  
+  .then(response => {
+    alert("Click ok to Logout");
+    if (response.redirected) {
+      window.location.href = response.url; // If redirect is sent
+    } else if (response.ok) {
+      window.location.href = '/login'; // Or manually redirect
+    } else {
+      alert("Logout failed");
+    }
+  })
+  .catch(error => {
+    console.error("Logout error:", error);
+    alert("Logout failed due to server error");
+  });
+}
+
 
 //Desciption display part
 function otherClgEventDescPopup(collegeName, eventName, date, description) {

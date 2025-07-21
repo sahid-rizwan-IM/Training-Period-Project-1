@@ -8,8 +8,19 @@ const RegisteredUser = require('./Model/registeredusers');
 const eventRoutes = require('./express_routes/event_routes');
 const registeredUserRoutes = require('./express_routes/registeredusers_routes');
 const superAdminRoutes = require('./express_routes/superadmin_routes');
+const {pageAuth} = require('./middleware/auth_middleware');
 const authRoutes = require('./express_routes/auth_routes');
 const mongoose = require('mongoose');
+const session = require('express-session');
+
+app.use(session({
+    secret: 'yourSecretKey', // Use a strong secret key in production
+    resave: false,
+    saveUninitialized: false,
+    // cookie: {
+    //     maxAge: 360000 // 1 hour session
+    // }
+}));
 // const myEventsModel = require('./Model/events');
 // const path = require('path'); //to find path based on os by itself.
 // use() - its a middleware function/method - it works for all the routes automatically.
@@ -52,6 +63,7 @@ app.use(async(req,res,next)=>{
         req.session.user = await RegisteredUser.findOne({
             _id: req.session.userId
         })
+        console.log("session:",req.session.user);
     }
     next();
 })
@@ -76,10 +88,13 @@ app.get("/", (req, res) => {
     
 });
 
-app.get("/events",(req,res) =>{
+app.get("/events",pageAuth,(req,res) =>{
+    const user = req.session.user;
     res.render("clg_admin.jade",  {
         ...fronendData,
-        reqUrl : req.url
+        reqUrl : req.url,
+        user: user,
+        logo: user?.logofile || null
     });
 })
 

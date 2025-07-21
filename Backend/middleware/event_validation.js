@@ -20,16 +20,7 @@ function createEvent(req, res, next) {
 async function deleteEvent(req, res, next) {
     const eventId = req.params.id;
     const event = await myEventsModel.findOneAndDelete({ _id: eventId });
-    if (event.file) {
-        const filePath = path.join(event_files, event.file);
-
-        fs.unlink(filePath, (err) => {
-            if (err) {adminUserLogoFile
-                console.error("File deletion error:", err.message);
-            }
-        });
-    }
-
+    
     if (!event) {
         return res.status(404).json({
             success: false,
@@ -37,6 +28,17 @@ async function deleteEvent(req, res, next) {
             status: 404
         });
     }
+    
+    if (event.file) {
+        const filePath = path.join(event_files, event.file);
+
+        fs.unlink(filePath, (err) => {
+            if (err) {
+                console.error("File deletion error:", err.message);
+            }
+        });
+    }
+
     return next();
 }
 

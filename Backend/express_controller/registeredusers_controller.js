@@ -6,7 +6,10 @@ const registeredUsersController = {
     try {
       const user = await UserModel.findById(req.params.id);
       if (!user) {
-        return res.status(404).json({ success: false, error: "User not found" });
+        return res.status(404).json({ 
+          success: false, 
+          error: "User not found" 
+        });
       }
       res.status(200).json({ success: true, data: user });
     } catch (err) {
@@ -47,11 +50,6 @@ const registeredUsersController = {
       newUserData.studentName = req.body.studentName;
       newUserData.registerNumber = req.body.registerNumber;
     }
-    // if (role === "college admin") {
-    //   if (!req.file) {
-    //     return res.status(400).json({ error: "Logo file is required" });
-    //   }
-    // }
 
     const user = new UserModel(newUserData);
     await user.save();

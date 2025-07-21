@@ -1,7 +1,8 @@
 const RegisteredUser = require('../Model/registeredusers');
 // const bcrypt = require('bcrypt');
 
-exports.loginUser = async (req, res) => {
+const authController = {
+  async loginUser (req, res){
   try {
     const { email, collegeCode, password } = req.body;
 
@@ -29,15 +30,10 @@ exports.loginUser = async (req, res) => {
     if (password !== user.password) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
-    req.session= {
-        userId : user._id
-    };
 
-    // res.status(200).json({
-    //   message: "Login successful",
-    //   role: user.role,
-    //   userId: user._id
-    // });
+    req.session.userId = user._id;
+    req.session.user = user;
+
     res.status(200).json({
       success: true,
       userid: user._id,
@@ -48,4 +44,15 @@ exports.loginUser = async (req, res) => {
     console.error("Login error:", err);
     res.status(500).json({ success: false, message: 'Server error', error: err.message });
   }
-};
+},
+
+async logoutUser (req, res) {
+    req.session.destroy(err => {
+        if (err) return res.status(500).send("Logout failed");
+        res.redirect('/login'); // or send JSON
+    })
+}
+
+}
+
+module.exports = authController;
