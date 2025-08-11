@@ -1,15 +1,15 @@
 function logoutUser() {
   fetch('/api/v4/auth/logout', {
     method: 'GET',
-    credentials: 'include' // Important to include cookies (session)
+    credentials: 'include'
   })
   
   .then(response => {
     alert("Click ok to Logout");
     if (response.redirected) {
-      window.location.href = response.url; // If redirect is sent
+      window.location.href = response.url;     
     } else if (response.ok) {
-      window.location.href = '/login'; // Or manually redirect
+      window.location.href = '/login'; 
     } else {
       alert("Logout failed");
     }
@@ -53,7 +53,7 @@ fetch(`/api/v2/events/get-other-events?userId=${currentUserId}`)
         const eventHTML = `
             <div class="otherclg-content">
                 <div class="event-header">
-                    <img src="/admin_users_logo/${logo}" alt="college-logo">
+                    <img class="navLogo" src="/admin_users_logo/${logo}" alt="college-logo">
                     <div>
                         <h4>${event.userId.collegeName}</h4>
                         <h6>${event.userId.location}</h6>
@@ -413,6 +413,7 @@ createEventBtn.addEventListener("click", () => {
     previewContainer.style.display = 'none';
 });
 
+
 const createEventMessage = document.getElementById("createAlertmsg");
 const createEventForm = document.getElementById("create-form");
 createEventForm.addEventListener("submit", async function (e) {
@@ -557,6 +558,9 @@ async function displayStoredEvents() {
                 renderMyEvents(myEvents);
             });
 
+        } else {
+            const myClgEvent = document.querySelector(".myclg-content");
+            myClgEvent.innerHTML = "<p class='no-events'>No events available. Add your events now!</p>";
         }
         function filterFuction(){
             const filterEventType = document.getElementById("filter-eveType").value;
@@ -573,7 +577,7 @@ async function displayStoredEvents() {
             console.log(filteredEvents);
 
             if (filteredEvents.length === 0) {
-                myClgEvent.innerHTML = `<p>No ${filterEventType} events found.</p>`;
+                myClgEvent.innerHTML = `<p class="no-events">No ${filterEventType} events found. Add your events now!</p>`;
                 return;
             }
 
@@ -590,6 +594,7 @@ async function displayStoredEvents() {
 }
 
 function renderMyEvents(myEvents){
+
     const myClgEvent = document.querySelector(".myclg-content");
     const fileDisplay = myEvents.file
                     ? myEvents.file.endsWith('.pdf')

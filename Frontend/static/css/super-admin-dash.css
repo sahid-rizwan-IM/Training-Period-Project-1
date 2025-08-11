@@ -1,0 +1,122 @@
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    background-color: #e9d0b6;
+    position: fixed;
+    z-index: 10;
+    color: #343148FF;
+    width: 100%;
+
+}
+.header h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+nav {
+    margin-left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 10px 10px;
+}
+
+nav ul li a {
+    color: #343148FF;
+    text-decoration: none;
+    position: relative;
+}
+
+nav a {
+    text-decoration: none;
+    color: #343148FF;
+    font-weight: 600;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.nav-link::after {
+    content: '';
+    width: 0px;
+    height: 3px;
+    background: #343148FF;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    box-shadow: 2px 0px 2px #343148FF, 2px 2px 25px #343148FF, 2px 2px 50px #343148FF;
+}
+.logout {
+    color: #e9d0b6;
+    border: none;
+    border-radius: 6px;
+    margin-left: 20px;
+    padding: 5px;
+    font-size: 14px;
+    background-color: #343148FF;
+}
+
+.logout:hover {
+    opacity: 0.6;
+    color: white;
+    box-shadow: 2px 5px 5px white;
+}
+
+.logout i {
+    padding-left: 10px;
+}
+
+i .profile {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#userCategory{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.users{
+    margin-top: 78px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex:1;
+    background: linear-gradient(rgb(20, 29, 51),rgb(56, 23, 38));
+    height: 100vh;
+}
+
+.users .clgAdminUsers, .users .studentUsers{
+    flex: 1;
+    text-align: center;
+    border: 2px solid rgb(252, 251, 251);
+    border-radius: 17px;
+    margin: 0px 10%;
+    padding: 5%;
+    font-size: 30px;
+    font-weight: bolder;
+}
+.clgAdminUsers div, .studentUsers div{
+    color: white;
+}

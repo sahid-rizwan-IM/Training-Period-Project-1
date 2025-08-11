@@ -14,20 +14,23 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 
 app.use(session({
-    secret: 'yourSecretKey', // Use a strong secret key in production
+    secret: 'yourSecretKey',
     resave: false,
     saveUninitialized: false,
     // cookie: {
     //     maxAge: 360000 // 1 hour session
     // }
 }));
+app.use((req, res, next) => {
+  res.setHeader("Cache-Control", "no-store");
+  next();
+});
 // const myEventsModel = require('./Model/events');
 // const path = require('path'); //to find path based on os by itself.
 // use() - its a middleware function/method - it works for all the routes automatically.
 // get() and post() - these are router methods - works only when a particular url is called or requested.
 // send() - used in express, it identifies the content-type of the passed data by itself.
 //sendFile() - if a file is passed, it reads the whole file (like html file).
-
 // app.use(bodyParser.json());//next handle function
 // app.use(express.json());
 app.use((err, req, res, next) => {
@@ -71,13 +74,9 @@ app.use(async(req,res,next)=>{
 app.use('/api/v1/home',homePage);
 app.use(express.json());
 app.use('/api/v2/events', eventRoutes);
-// app.use('/api/v2/events', eventRoutes);
 app.use('/api/v3/registeredusers', registeredUserRoutes);
 app.use('/api/v4/superadmin', superAdminRoutes);
-
 app.use('/api/v4/auth', authRoutes);
-
-
 
 app.get("/", (req, res) => {
     res.render("home.jade", {
@@ -105,15 +104,25 @@ app.get("/login",(req,res) =>{
     });
 })
 
-app.get("/student-dash",(req,res) =>{
+// app.get("/logout", (req, res) => {
+//   req.session.destroy(() => {
+//     res.clearCookie("connect.sid"); // default session cookie
+//     res.redirect("/login");
+//   });
+// });
+
+app.get("/student-dash",pageAuth,(req,res) =>{
     res.render("student_dashboard.jade",  {
         ...fronendData,
         reqUrl : req.url
     });
 })
 
-app.get("/superadmin", (req,res) => {
-    res.render("super_admin_login.jade");
+app.get("/superadmin",pageAuth, (req,res) => {
+    const user = req.session.user;
+    res.render("super_admin_login.jade",{
+        user : user
+    });
 })
 
 app.get("/superadmindash", async (req, res) => {

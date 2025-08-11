@@ -35,3 +35,25 @@ async function deleteUser(userId) {
 function editUser(userId) {
   alert(`Want to edit this user?`);
 }
+
+function logoutUser() {
+  fetch('/api/v4/auth/logout', {
+    method: 'GET',
+    credentials: 'include' 
+  })
+  
+  .then(response => {
+    alert("Click ok to Logout");
+    if (response.redirected) {
+      window.location.href = response.url; 
+    } else if (response.ok) {
+      window.location.href = '/login'; 
+    } else {
+      alert("Logout failed");
+    }
+  })
+  .catch(error => {
+    console.error("Logout error:", error);
+    alert("Logout failed due to server error");
+  });
+}
